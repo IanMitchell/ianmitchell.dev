@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "inspect": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build && node ./.next/server/scripts/generate-rss.js",
+    "build": "next build && node ./.next/serverless/scripts/generate-rss.js",
     "start": "next start"
   },
   "dependencies": {
