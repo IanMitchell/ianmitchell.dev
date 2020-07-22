@@ -1,0 +1,163 @@
+.about {
+  margin-top: 40px;
+
+  h1 {
+    font-weight: 400;
+    background-color: var(--dark);
+    font-size: 2.4rem;
+
+    @include media('>small') {
+      font-size: 3.4rem;
+    }
+
+    @include media('>medium') {
+      font-size: 5.4rem;
+    }
+  }
+}
+
+
+.masthead {
+  @include media('>medium') {
+    position: relative;
+    padding-top: 50px;
+  }
+
+  img {
+    width: 100%;
+
+    @include media('>phone') {
+      width: auto;
+    }
+  }
+
+  .big-me {
+    display: none;
+
+    @include media('>medium') {
+      display: inline;
+    }
+  }
+
+  .mini-me {
+    display: block;
+    filter: brightness(50%);
+    border-radius: 400px;
+    width: 75%;
+    margin-bottom: 10px;
+
+    @include media('>medium') {
+      display: none;
+    }
+  }
+
+  &-container {
+    overflow: auto;
+    border-bottom: 2px solid var(--light);
+    margin-bottom: 35px;
+
+    @include media('>medium') {
+      border-bottom: 0;
+      display: inline;
+      position: absolute;
+      top: 0;
+      margin-left: -100px;
+    }
+  }
+
+  &-content {
+    background: var(--dark);
+    filter: brightness(200%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+
+    @include media('>medium') {
+
+    }
+  }
+
+  &-contact {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    justify-content: space-between;
+
+    @include media('>medium') {
+      justify-content: flex-end;
+    }
+
+    & svg {
+      fill: var(--light);
+      color: var(--light);
+      width: 36px;
+      height: 36px;
+      margin: 20px 20px 10px 20px;
+    }
+
+    a {
+      text-decoration: none;
+      border-bottom: 0;
+    }
+
+    a:focus svg,
+    a:hover svg {
+      fill: var(--highlight);
+      cursor: pointer;
+    }
+  }
+
+  p {
+    filter: brightness(50%);
+    margin-bottom: 0;
+  }
+}
+
+
+.blog-link {
+  padding: 20px;
+  text-align: center;
+  display: block;
+  background-color: var(--dark);
+  filter: brightness(200%);
+
+  // Prevent screenshift on hover
+  border-bottom: 0;
+
+  span {
+    filter: brightness(50%);
+  }
+}
+
+.recent-posts {
+  @include media('>small') {
+    margin-top: 35px;
+  }
+
+  h2 {
+    font-size: 3.6rem;
+
+    @include media('>small') {
+      font-size: 4.2rem;
+    }
+  }
+
+  .rss {
+    fill: var(--light);
+    color: var(--light);
+    width: 24px;
+    height: 24px;
+  }
+
+  a {
+    text-decoration: none;
+    border-bottom: 0;
+  }
+
+  a:focus .rss,
+  a:hover .rss {
+    fill: var(--highlight);
+    cursor: pointer;
+  }
+}

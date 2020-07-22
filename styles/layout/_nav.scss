@@ -1,0 +1,11 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  // align-items: flex-end;
+
+  & h1,
+  & h2 {
+    padding: 20px;
+    font-size: 3.6rem;
+  }
+}

@@ -1,0 +1,27 @@
+---
+title: Ghost
+date: 2014-09-15
+tags:
+  - Tools
+---
+
+Over the past few months (when time allows) I've slowly been migrating my personal website to the Ghost platform, experimenting with things as I go. As such, I've been spending a lot of time crawling around GitHub issues and IRC, trying to determine best practices, known bugs, and fixes to common problems. I eventually ended up contributing to their [0.5 release](http://blog.ghost.org/ghost-0-5/).
+
+## Thoughts on Ghost
+
+Although the software is still a far ways from a 1.0 release, I don't have any second thoughts about using it as a platform for my personal website. The biggest issue I have right now is the difficulty in theming. There are a lot of restrictions due to the unfinished state of Ghost; in order to work around these, you need to sometimes edit Ghost Core, making future upgrades a pain in the neck. I've decided to just use the default theme (Casper) for now, and work on a custom theme later down the road.
+
+The two changes I still make to the codebase is allowing HTML in the blog description and [adding Google Analytics](https://ghost.org/forum/installation/413-implementing-google-analytics/). I allow HTML by modifying Casper's `index.hbs`, changing `{{ "{{@blog.description" }}}}` to `{{ "{{{@blog.description"}}}}}`. This way I can link to static pages and offsite profiles, such as GitHub. I'm hoping in the future allowing linking is the default -- it's currently being discussed in [issue 1517](https://github.com/TryGhost/Ghost/issues/1517).
+
+## How I Helped
+
+Ghost 0.5 was tagged as being the multi-user release. Most of my contributions were cleaning up the administrator "settings" interface. I helped add visual restrictions based on the account group of the logged-in user. If you were just an author for instance, you shouldn't be able to change blog settings; you should be restricted to seeing the New Post menu. If you were an editor, you should be able to view user accounts, but not change blog settings.
+
+The hardest part was figuring out where things were. Since the 0.5 release also included an extensive code rewrite, documentation was sparse. Reading through a massive codebase trying to figure out how things tied together took a lot of time, but the team was incredibly helpful. Whenever I had a question, someone in the `#ghost` Freenode channel had a quick response.
+
+![Contributors](/images/posts/ghost_credits.png)
+_Contributor list for Ghost 0.5.2_
+
+## The Future
+
+Now that I have some experience under my belt, I'm hoping I can increase the level of my contributions. I'm a fan of the Ghost platform, and I think [Erin](https://github.com/ErisDS) has done a fantastic job running things. I'm looking forward to giving back!

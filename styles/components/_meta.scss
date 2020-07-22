@@ -1,0 +1,35 @@
+.meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono';
+
+  @include media('>small') {
+    flex-direction: row;
+  }
+
+  &-border {
+    border-bottom: 1px solid var(--light);
+    padding-bottom: 8px;
+    margin-bottom: 30px;
+  }
+
+  & time {
+    font-size: 1.6rem;
+  }
+
+  & span {
+    font-size: 1.6rem;
+
+    & a {
+      color: var(--light);
+      border-bottom: 1px dashed var(--light);
+
+      &:hover {
+        color: var(--highlight);
+        border-color: var(--highlight);
+        border-bottom-style: solid;
+      }
+    }
+  }
+}

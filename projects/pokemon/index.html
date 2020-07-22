@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokemon GO Avatars</title>
+
+  <meta content="width=device-width" name="viewport" />
+  <link rel="stylesheet" href="/projects/pokemon/normalize.css" />
+
+  <style>
+    body {
+      background: #333;
+    }
+
+    a {
+      color: #ccc;
+    }
+
+    p {
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .wrapper {
+      padding-top: 15px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .canvas-container {
+      text-align: center;
+    }
+
+    #canvas {
+      border: 2px solid #fff;
+      width: 600px;
+      height: 400px;
+      display: inline;
+    }
+
+    .teams {
+      max-width: 600px;
+      margin: 20px auto 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    #instinct,
+    #mystic,
+    #valor {
+      cursor: pointer;
+      width: 20%;
+      background: #666;
+      padding: 20px;
+    }
+
+    #instinct:hover,
+    #instinc:focus,
+    #mystic:hover,
+    #mystic:focus,
+    #valor:hover,
+    #valor:focus,
+    .selected {
+      background: #888;
+      outline: 2px solid #fff;
+    }
+
+    .toolbar {
+      margin: 30px auto 40px auto;
+      padding-top: 10px;
+      border-top: 2px solid #fff;
+      max-width: 600px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="canvas-container">
+      <canvas id="canvas" width="600" height="400"></canvas>
+    </div>
+
+    <div class="teams">
+      <img id="instinct" src="/projects/pokemon/instinct.svg" alt="Instinct Logo">
+      <img id="mystic" src="/projects/pokemon/mystic.svg" alt="Mystic Logo">
+      <img id="valor" src="/projects/pokemon/valor.svg" alt="Valor Logo">
+    </div>
+
+    <div class="toolbar">
+      <input type="file" id="upload">
+      <button id="download">Download Image</button>
+    </div>
+
+    <p>SVG Logos from <a href="https://www.reddit.com/r/pokemongo/comments/4rws28/vector_team_logo_for_each_team/">Cole_the_Kosmonaut</a></p>
+    <p>Images are not uploaded; everything is done in the browser. Images are not saved.</p>
+  </div>
+
+  <!-- Please don't judge -->
+  <script src="/projects/pokemon/script.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-54840314-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>

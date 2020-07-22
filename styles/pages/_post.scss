@@ -1,0 +1,40 @@
+.post {
+  .footnotes {
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6em;
+  }
+
+  .footnotes li {
+    margin: 0.6rem 0;
+  }
+
+  .footnotes p {
+    margin: 0;
+  }
+
+  .footnotes p a:last-child {
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 126%;
+    height: auto;
+    padding: 0.6em 0;
+    /* Centers an image by (1) pushing its left edge to the
+       center of its container and (2) shifting the entire image
+       in the opposite direction by half its own width.
+       Works for images that are larger than their containers. */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include media('<=small') {
+      padding: 0;
+      width: calc(100% + 32px); /* expand with to image + margins */
+      min-width: 0;
+      max-width: 112%; /* fallback when calc doesn't work */
+    }
+  }
+}

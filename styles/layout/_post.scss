@@ -1,0 +1,15 @@
+.post-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon-link {
+    stroke: var(--highlight);
+    margin-right: 10px;
+  }
+}

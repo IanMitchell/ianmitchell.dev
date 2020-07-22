@@ -1,0 +1,13 @@
+/* DEVELOPER */
+	Name: Ian Mitchell
+	Contact: ian.mitchel1@live.com
+	Twitter: @IanMitchel1
+	From: Seattle, Washington
+
+
+/* SITE */
+	Last update:2012/02/04
+	IDE: VS Code
+  Host: Vercel
+  Framework: Next.js
+  Repository: https://github.com/ianmitchell/ianmitchell.io

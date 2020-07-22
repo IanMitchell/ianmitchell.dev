@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+footer {
+  margin-top: 30px;
+  padding: 30px;
+  // border-top: 2px solid var(--light);
+  font-size: 1.6rem;
+  background: var(--dark);
+  filter: brightness(200%);
+  @include angled-border(before);
+
+  .footer-content {
+    filter: brightness(50%);
+    margin: auto;
+    padding: 20px;
+  }
+
+  h4 {
+    margin-top: 0;
+    font-size: 3.2rem;
+    @include bottom-border-separator;
+  }
+
+
+  p {
+    margin: 10px 0 5px 0;
+  }
+
+  span {
+    vertical-align: center;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-left: 5px;
+    fill: var(--light);
+  }
+
+  .copyright {
+    font-style: italic;
+  }
+}
