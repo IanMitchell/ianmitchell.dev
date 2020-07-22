@@ -31,5 +31,11 @@
         "Location": "/blog/$1"
       }
     }
+  ],
+  "builds": [
+    {
+      "src": "projects/**",
+      "use": "@now/static"
+    }
   ]
 }
