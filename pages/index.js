@@ -46,11 +46,6 @@ export default function Home({ entries }) {
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/ianmitchel1/">
-                  <LinkedIn />
-                </a>
-              </li>
-              <li>
                 <a href="https://discordapp.com/channels/@me/90339695967350784">
                   <Discord />
                 </a>

@@ -42,7 +42,7 @@ export default function Blog({ posts }) {
               {posts[year] &&
                 posts[year].map((post) => (
                   <li key={post.title}>
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href="/blog/[post]" as={`/blog/${post.slug}`}>
                       <a>
                         {getIcon(post)}
                         {post.title}

@@ -19,7 +19,11 @@ export default function Post({ frontmatter, content }) {
         </Link>
       }
     >
-      <Social title={frontmatter.title} description="TODO!" />
+      <Social
+        title={frontmatter.title}
+        // TODO: Improve the description
+        description={frontmatter.excerpt ?? frontmatter.title}
+      />
       <Meta
         date={new Date(frontmatter.date)}
         tags={frontmatter.tags}

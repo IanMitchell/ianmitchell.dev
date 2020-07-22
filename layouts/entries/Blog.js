@@ -7,7 +7,7 @@ export default function Blog({ slug, title, date, tags, excerpt }) {
     <article className="entry">
       <Meta date={date} tags={tags} />
       <h4>
-        <Link href={`/blog/${slug}`}>
+        <Link href="/blog/[post]" as={`/blog/${slug}`}>
           <a>{title}</a>
         </Link>
       </h4>
