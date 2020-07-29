@@ -36,12 +36,12 @@ export default function Home({ entries }) {
                 </a>
               </li>
               <li>
-                <a href="https://github.com/IanMitchell">
+                <a href="https://github.com/IanMitchell" rel="me">
                   <GitHub />
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/ianmitchel1">
+                <a href="https://twitter.com/ianmitchel1" rel="me">
                   <Twitter />
                 </a>
               </li>
