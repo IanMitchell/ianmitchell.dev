@@ -1,37 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "routes": [
-    {
-      "src": "/what-i-use",
-      "status": 301,
-      "headers": {
-        "Location": "/uses"
-      }
-    },
-    {
-      "src": "/tools",
-      "status": 301,
-      "headers": {
-        "Location": "/uses"
-      }
-    },
-    {
-      "src": "/pokemon",
-      "dest": "/projects/pokemon/index.html"
-    },
-    {
-      "src": "/resume",
-      "dest": "/projects/resume/index.html"
-    },
-    {
-      "src": "\/\\d{4}\/\\d{2}\/\\d{2}\/(.+)\/?",
-      "status": 301,
-      "headers": {
-        "Location": "/blog/$1"
-      }
-    }
-  ],
   "builds": [
     {
       "src": "next.config.js",
