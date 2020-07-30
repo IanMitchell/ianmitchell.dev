@@ -65,11 +65,11 @@ module.exports = withMDX({
         destination: '/uses',
         permanent: true,
       },
-      // {
-      //   source: '/:year/:month/:day/:post',
-      //   destination: '/blog/:post',
-      //   permanent: true,
-      // },
+      {
+        source: '/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:post',
+        destination: '/blog/:post',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
