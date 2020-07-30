@@ -67,6 +67,17 @@ export default function App({ Component, pageProps }) {
           title="RSS"
           href="/feed.xml"
         />
+
+        <link
+          key="webmention"
+          rel="webmention"
+          href="https://webmention.io/ianmitchell.dev/webmention"
+        />
+        <link
+          key="pingback"
+          rel="pingback"
+          href="https://webmention.io/ianmitchell.dev/xmlrpc"
+        />
       </Head>
 
       <Font href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" />

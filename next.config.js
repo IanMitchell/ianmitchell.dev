@@ -53,4 +53,35 @@ module.exports = withMDX({
   env: {
     DOMAIN: 'https://ianmitchell.dev',
   },
+  async redirects() {
+    return [
+      {
+        source: '/what-i-use',
+        destination: '/uses',
+        permanent: true,
+      },
+      {
+        source: '/tools',
+        destination: '/uses',
+        permanent: true,
+      },
+      {
+        source: '/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:post',
+        destination: '/blog/:post',
+        permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/pokemon',
+        destination: '/projects/pokemon/index.html',
+      },
+      {
+        source: '/resume',
+        destination: '/projects/resume/index.html',
+      },
+    ];
+  },
 });
