@@ -92,9 +92,8 @@ main {
 }
 
 a {
-  text-decoration: none;
+  text-underline-offset: 3px;
   color: var(--highlight);
-  border-bottom: 1px dashed var(--highlight);
 
   &:hover {
     border-bottom: 1px solid var(--highlight);

@@ -5,10 +5,20 @@
     font-size: 1.8rem;
     display: block;
     font-family: 'IBM Plex Mono';
+
+    a:link,
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: underline;
+    }
   }
 
   a {
-
     line-height: 1;
     border-bottom: 0;
   }

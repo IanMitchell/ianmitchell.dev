@@ -11,6 +11,7 @@
       margin-left: 0;
       margin: 15px 0;
       display: flex;
+      line-height: 1.5em;
       flex-direction: column-reverse;
 
       @include media('>medium') {
@@ -26,11 +27,8 @@
 
       a:link,
       a:visited {
-        // border-bottom: 2px solid var(--highlight);
+        text-decoration: none;
         border-bottom: 2px solid rgba(#ff007e, 0.3)
-        // border-bottom: 2px solid;
-        // border-image-source: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
-        // border-image-slice: 1;
       }
 
       a:focus,
