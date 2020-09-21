@@ -8,6 +8,8 @@ excerpt: Panic has released their new native macOS editor Nova - here are my tho
 
 [Panic launched Nova last week](https://nova.app), a new native macOS code editor aimed at web development. Their previous editor, Coda 2, was well-received, and although it wasn’t a match for my development workflows I appreciated certain aspects of it. Nova is the spiritual successor to Coda 2 - I've taken it for a spin over the past few days, and wrote about my experience and thoughts below!
 
+_Last edited on 9/21 for the 1.1 update_
+
 ## How I used it
 
 My opinions are formed by my particular usage patterns, and it's worth mentioning right off that bat that I don't believe my style of development is the target demographic Panic is pursuing with Nova. I expect Panic has consciously decided not to include a couple of the things I feel are missing, and there are a lot of features in Nova that I haven’t found a use for. Here are some more details on how I have been using Nova over the past few days:
@@ -42,7 +44,7 @@ I've used VS Code for years. I've used Nova for hours. Editors are complex piece
 _Top: VS Code. Bottom: Nova_
 
 4. **Highlighting the file for the selected tab in the sidebar** - This is a personal problem, but I discovered I don't look at tab names to figure out what file I'm in when navigating codebases. I look at the sidebar to see which item is highlighted, since it usually corresponds with the selected tab. In Nova, these are separate - your last highlight on the sidebar persists independent of your selected tab. This screws with me more than I would have thought!
-5. **Files without extensions don't open previews** - Much like other editors do, if you single-click an item in the sidebar, Nova will pop open a preview tab (italicized title, auto closes when it loses focus or you open a preview for a different file). This doesn't happen on files without file extensions though. My codebases have a lot of these files - `Procfile`, `Dockerfile`, `.gitignore`, `.env`, and my scripts. Having to double click these to open them instead of being able to glance at them is a surprisingly large source of friction for me.
+5. **Files without extensions don't open previews** - Much like other editors do, if you single-click an item in the sidebar, Nova will pop open a preview tab (italicized title, auto closes when it loses focus or you open a preview for a different file). This doesn't happen on files without file extensions though. My codebases have a lot of these files - `Procfile`, `Dockerfile`, `.gitignore`, `.env`, and my scripts. Having to double click these to open them instead of being able to glance at them is a surprisingly large source of friction for me. (_The 1.1 update fixes custom file extensions opening a preview tab, but files without an extension still don't open_)
 6. **Auto Indentation** - When I'm writing Ruby, Nova insists on shifting `end` back one level too many. It's super annoying.
 
 <video
@@ -71,3 +73,7 @@ I want to reiterate that my style of development doesn’t appear to completely 
 I like Nova, and it feels like something that I could use for Rails development. Nova doesn't feel compelling enough to use for my style of JavaScript development (React, Next.js, Node.js) over VS Code, but in all fairness that is an exceptionally challenging value proposition to make. I'm excited to see how Nova changes and what Panic iterates on! One of the areas I will be watching closely is the extension ecosystem - I’m hoping we see a steady flow of high quality extensions over the next few weeks and months.
 
 I’ll continue using Nova throughout the week and weekend, and will keep this post updated with things I find. My plan is to work on the typography and design of this website, which should be a fun opportunity to see how Nova handles CSS!
+
+**Edits:**
+
+- 9/21: Updated to reflect the [1.1 update](https://twitter.com/panic/status/1308172575135076352)
