@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
 
-  @include media('>small') {
+  @include media(">small") {
     flex-direction: row;
   }
 
@@ -23,6 +23,7 @@
 
     & a {
       color: var(--light);
+      text-decoration: none;
       border-bottom: 1px dashed var(--light);
 
       &:hover {

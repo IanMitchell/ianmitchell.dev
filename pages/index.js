@@ -1,13 +1,13 @@
-import Link from 'next/link';
-import Entry from '../layouts/Entry';
-import { getAllPosts, getSerializeableFrontmatter } from '../lib/posts';
-import Page from '../layouts/Page';
-import Email from '../components/icons/Email';
-import GitHub from '../components/icons/GitHub';
-import LinkedIn from '../components/icons/LinkedIn';
-import Twitter from '../components/icons/Twitter';
-import RSS from '../components/icons/RSS';
-import Discord from '../components/icons/Discord';
+import Link from "next/link";
+import Entry from "../layouts/Entry";
+import { getAllPosts, getSerializeableFrontmatter } from "../lib/posts";
+import Page from "../layouts/Page";
+import Email from "../components/icons/Email";
+import GitHub from "../components/icons/GitHub";
+import LinkedIn from "../components/icons/LinkedIn";
+import Twitter from "../components/icons/Twitter";
+import RSS from "../components/icons/RSS";
+import Discord from "../components/icons/Discord";
 
 export default function Home({ entries }) {
   return (
@@ -21,10 +21,10 @@ export default function Home({ entries }) {
               <img className="avatar mini-me" src="/ian.jpg" loading="lazy" />
               <p>
                 Welcome to my website! I'm a web developer from Seattle,
-                Washington. I{' '}
+                Washington. I{" "}
                 <Link href="/resume">
                   <a>work at Facebook</a>
-                </Link>{' '}
+                </Link>{" "}
                 as a Software Engineer. In my free time I like to play video
                 games, follow politics, and tinker with coding projects.
               </p>
