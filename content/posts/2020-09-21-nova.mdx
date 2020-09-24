@@ -31,7 +31,7 @@ I've used VS Code for years. I've used Nova for hours. Editors are complex piece
 ## Features that have potential
 
 1. **Tasks** - Nova allows the creation and execution of tasks (scripts) through a clean and clear UI. I used this feature over the weekend to define tasks for several common workflows I have (for instance, I made a task for ‘wipe the development database and recreate it with data pulled from the Heroku production database'). Intuitively it feels like Tasks should be light wrappers around script files to avoid getting locked into an ecosystem - I would love to spend more time figuring out if there are additional ways to leverage Tasks.
-2. **Preview** - Having an inline preview is useful, but it is locked to Safari. I would like the ability to use either Chrome or Firefox depending on the task at hand (their respective devtools excel in different ways). Nova's Preview also appears to not support several scripts and development tools that run fine in the standalone Safari app - React’s Fast Refresh doesn't work in the Preview, despite working in the standalone Safari app.
+2. **Preview** - Having an inline preview is useful, but it is locked to Safari. I would like the ability to use either Chrome or Firefox depending on the task at hand (their respective devtools excel in different ways). ~~Nova's Preview also appears to not support several scripts and development tools that run fine in the standalone Safari app - React’s Fast Refresh doesn't work in the Preview, despite working in the standalone Safari app.~~ _(The 1.1 update appears to have fixed this - Fast Refresh now works in the inline Preview mode.)_
 3. **Sidebar** - I like their sidebar system and default file icons a lot. Putting the tabs on the top is a nice touch - I vastly prefer Nova’s style as opposed to a two-tiered sidebar like VS Code has popularized. I do wish that I could scroll left and right on the sidebar though - for long filenames you have to hover over the file to see the full name. I also hope extensions can extend the default file icons to include new ones (I haven't looked into whether this is already possible).
 
 ## Things that could be better
@@ -48,9 +48,9 @@ _Top: VS Code. Bottom: Nova_
 6. **Auto Indentation** - When I'm writing Ruby, Nova insists on shifting `end` back one level too many. It's super annoying.
 
 <video
-  style={{ margin: "auto", display: "block" }}
+  style={{ margin: 'auto', display: 'block' }}
   src="/videos/nova/indent.mp4"
-  autoplay
+  autoPlay
   controls
 />
 
