@@ -53,6 +53,7 @@ export default function Blog({ posts }) {
                       {new Date(post.date).toLocaleString('en-US', {
                         month: 'numeric',
                         day: 'numeric',
+                        timeZone: 'UTC',
                       })}
                     </span>
                   </li>
