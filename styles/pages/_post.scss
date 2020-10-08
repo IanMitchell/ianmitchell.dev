@@ -1,4 +1,10 @@
 .post {
+  .content-body {
+    a {
+      text-decoration: none;
+    }
+  }
+
   .footnotes {
     font-style: italic;
     font-size: 1.3rem;
