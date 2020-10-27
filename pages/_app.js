@@ -7,21 +7,7 @@ import { SWRConfig } from 'swr';
 import Font from '../components/Font';
 import MDX from '../components/MDX';
 import Social from '../components/Social';
-import { logMetric } from '../lib/metrics';
 import '../styles/main.scss';
-
-export function reportWebVitals(metric) {
-  // Log our top five metrics
-  switch (metric.name) {
-    case 'FCP': // First Contentful Paint
-    case 'LCP': // Largest Contentful Paint
-    case 'FID': // First Input Delay
-    case 'CLS': // Cumulative Layout Shift
-    case 'TTFB': // Time to First Byte
-      logMetric(metric);
-      break;
-  }
-}
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
