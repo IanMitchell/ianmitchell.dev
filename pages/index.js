@@ -1,13 +1,13 @@
-import Link from "next/link";
-import Entry from "../layouts/Entry";
-import { getAllPosts, getSerializeableFrontmatter } from "../lib/posts";
-import Page from "../layouts/Page";
-import Email from "../components/icons/Email";
-import GitHub from "../components/icons/GitHub";
-import LinkedIn from "../components/icons/LinkedIn";
-import Twitter from "../components/icons/Twitter";
-import RSS from "../components/icons/RSS";
-import Discord from "../components/icons/Discord";
+import Link from 'next/link';
+import Image from 'next/image';
+import Entry from '../layouts/Entry';
+import { getAllPosts, getSerializeableFrontmatter } from '../lib/posts';
+import Page from '../layouts/Page';
+import Email from '../components/icons/Email';
+import GitHub from '../components/icons/GitHub';
+import Twitter from '../components/icons/Twitter';
+import RSS from '../components/icons/RSS';
+import Discord from '../components/icons/Discord';
 
 export default function Home({ entries }) {
   return (
@@ -15,16 +15,36 @@ export default function Home({ entries }) {
       <section className="about">
         <h1>Hello! My name is Ian Mitchell.</h1>
         <header className="masthead">
-          <img className="avatar big-me" src="/ian.jpg" loading="lazy" />
+          <figure className="big-me">
+            <Image
+              src="/ian.jpg"
+              alt="My profile picture"
+              width={366}
+              height={350}
+              loading="eager"
+              priority
+              unoptimized
+            />
+          </figure>
           <div className="masthead-container">
             <div className="masthead-content">
-              <img className="avatar mini-me" src="/ian.jpg" loading="lazy" />
+              <figure className="mini-me">
+                <Image
+                  src="/ian.jpg"
+                  alt="My profile picture"
+                  width={366}
+                  height={350}
+                  loading="eager"
+                  priority
+                  unoptimized
+                />
+              </figure>
               <p>
                 Welcome to my website! I'm a web developer from Seattle,
-                Washington. I{" "}
+                Washington. I{' '}
                 <Link href="/resume">
                   <a>work at Facebook</a>
-                </Link>{" "}
+                </Link>{' '}
                 as a Software Engineer. In my free time I like to play video
                 games, follow politics, and tinker with coding projects.
               </p>
