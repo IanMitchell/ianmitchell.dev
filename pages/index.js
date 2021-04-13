@@ -9,7 +9,7 @@ import Twitter from '../components/icons/Twitter';
 import RSS from '../components/icons/RSS';
 import Discord from '../components/icons/Discord';
 
-export default function Home({ entries }) {
+export default function Home({ posts }) {
   return (
     <Page>
       <section className="about">
@@ -83,8 +83,7 @@ export default function Home({ entries }) {
           </a>
         </header>
 
-        {entries &&
-          entries.map((entry) => <Entry {...entry} key={entry.slug} />)}
+        {posts && posts.map((entry) => <Entry {...entry} key={entry.slug} />)}
 
         <Link href="/blog">
           <a className="blog-link">
@@ -97,13 +96,14 @@ export default function Home({ entries }) {
 }
 
 export async function getStaticProps() {
-  const entries = (await getAllPosts())
+  const entries = await getAllPosts();
+  const posts = entries
     .slice(0, 10)
     .map((post) => getSerializeableFrontmatter(post.frontmatter));
 
   return {
     props: {
-      entries,
+      posts,
     },
   };
 }

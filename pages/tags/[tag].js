@@ -55,10 +55,10 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const { tags } = await import('../../content/tags.json');
+  const tagList = await import('../../content/tags.json');
 
   return {
-    paths: tags.map((tag) => ({
+    paths: tagList.tags.map((tag) => ({
       params: {
         tag: tag.name.toLowerCase(),
       },

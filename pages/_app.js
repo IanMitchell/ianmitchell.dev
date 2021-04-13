@@ -1,16 +1,21 @@
-import React, { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import * as Fathom from 'fathom-client';
 import { SWRConfig } from 'swr';
 import Font from '../components/Font';
-import MDX from '../components/MDX';
 import Social from '../components/Social';
 import '../styles/main.scss';
+import { MDXProvider } from '@mdx-js/react';
+import SubHeading from '../components/SubHeading';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+
+  const [components, setComponents] = useState({
+    h2: SubHeading,
+  });
 
   useEffect(() => {
     // Initialize Fathom when the app loads
@@ -79,9 +84,9 @@ export default function App({ Component, pageProps }) {
           fetcher: (...args) => fetch(...args).then((res) => res.json()),
         }}
       >
-        <MDX>
+        <MDXProvider components={components}>
           <Component {...pageProps} />
-        </MDX>
+        </MDXProvider>
       </SWRConfig>
     </Fragment>
   );

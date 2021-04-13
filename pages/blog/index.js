@@ -68,18 +68,23 @@ export default function Blog({ posts }) {
 export async function getStaticProps(context) {
   const entries = {};
 
-  const posts = (await getAllPosts()).map((post) =>
+  const posts = await getAllPosts();
+  const frontmatterEntries = posts.map((post) =>
     getSerializeableFrontmatter(post.frontmatter)
   );
 
-  const years = new Set(posts.map((post) => new Date(post.date).getFullYear()));
+  console.log({ frontmatterEntries });
+
+  const years = new Set(
+    frontmatterEntries.map((fm) => new Date(fm.date).getFullYear())
+  );
 
   years.forEach((year) => {
     entries[year] = new Array();
   });
 
-  posts.forEach((post) =>
-    entries[new Date(post.date).getFullYear()].push(post)
+  frontmatterEntries.forEach((fm) =>
+    entries[new Date(fm.date).getFullYear()].push(fm)
   );
 
   years.forEach((year) => {
