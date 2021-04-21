@@ -7,26 +7,15 @@ tags:
   - Design
 ---
 
+import CodePen from '../components/CodePen';
+
 I recently [created a pen](http://codepen.io/IanMitchell/pen/grBvxw) that shows how to use a Sass mixin to display the value of a variable alongside the name, but in a way that doesn't allow the user to select it - no copy pasting the value, just the name!
 
 I did this recently for Zillow's styleguide (we use Less) and figured I'd port it to Sass. The trick is pretty simple in nature - you just assign the value of the variable to the [CSS content](https://developer.mozilla.org/en-US/docs/Web/CSS/content) attribute.
 
-<iframe
-  height="265"
-  scrolling="no"
-  title="CSS Styleguide Color Variable / Hex Value Displys"
-  src="https://codepen.io/IanMitchell/embed/grBvxw?height=265&theme-id=0&default-tab=css,result"
-  frameBorder="no"
-  allowtransparency="true"
-  allowFullScreen={true}
-  width="100%"
->
-  See the Pen{' '}
-  <a href="https://codepen.io/IanMitchell/pen/grBvxw">
-    CSS Styleguide Color Variable / Hex Value Displys
-  </a>{' '}
-  by Ian Mitchell (<a href="https://codepen.io/IanMitchell">@IanMitchell</a>) on{' '}
-  <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<CodePen
+  id="grBvxw"
+  title="CSS Styleguide Color Variable / Hex Value Displays"
+/>
 
 The downside is you won't be able to search for the value - searching for "2ECC40" returns 0 results.
