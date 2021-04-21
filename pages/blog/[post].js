@@ -10,6 +10,7 @@ import {
 } from '../../lib/posts';
 import Social from '../../components/Social';
 import { getMDXComponent } from 'mdx-bundler/client';
+import SubHeading from '../../components/SubHeading';
 
 export default function Post({ frontmatter, content }) {
   const Component = useMemo(() => getMDXComponent(content), [content]);
@@ -36,7 +37,7 @@ export default function Post({ frontmatter, content }) {
       />
 
       <PostLayout {...frontmatter}>
-        <Component />
+        <Component components={{ h2: SubHeading }} />
       </PostLayout>
     </Page>
   );

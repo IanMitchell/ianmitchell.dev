@@ -7,15 +7,9 @@ import { SWRConfig } from 'swr';
 import Font from '../components/Font';
 import Social from '../components/Social';
 import '../styles/main.scss';
-import { MDXProvider } from '@mdx-js/react';
-import SubHeading from '../components/SubHeading';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-
-  const [components, setComponents] = useState({
-    h2: SubHeading,
-  });
 
   useEffect(() => {
     // Initialize Fathom when the app loads
@@ -84,9 +78,7 @@ export default function App({ Component, pageProps }) {
           fetcher: (...args) => fetch(...args).then((res) => res.json()),
         }}
       >
-        <MDXProvider components={components}>
-          <Component {...pageProps} />
-        </MDXProvider>
+        <Component {...pageProps} />
       </SWRConfig>
     </Fragment>
   );
