@@ -73,8 +73,6 @@ export async function getStaticProps(context) {
     getSerializeableFrontmatter(post.frontmatter)
   );
 
-  console.log({ frontmatterEntries });
-
   const years = new Set(
     frontmatterEntries.map((fm) => new Date(fm.date).getFullYear())
   );
