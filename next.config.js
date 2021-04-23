@@ -28,7 +28,7 @@ function exportFrontmatter() {
 const withMDX = require('@next/mdx')({
   options: {
     remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
-    rehypePlugins: [prism],
+    // rehypePlugins: [prism],
   },
 });
 
