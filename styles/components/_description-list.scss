@@ -1,0 +1,48 @@
+.description-list {
+  --size: 100px;
+
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 2em;
+
+  dt,
+  dd {
+    margin: 0;
+  }
+
+  .description-item {
+    &_small {
+      --size: 50px;
+
+      margin-left: auto;
+    }
+
+    margin: 0;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 12px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px 0 rgba(#000, 0.1);
+
+    &_icon {
+      height: calc(var(--size) * 3 / 4);
+      width: calc(var(--size) * 3 / 4);
+      position: relative;
+      z-index: 1;
+    }
+
+    &_blur {
+      width: var(--size);
+      height: var(--size);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(20px) opacity(0.4);
+    }
+  }
+}

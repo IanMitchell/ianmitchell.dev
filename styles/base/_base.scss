@@ -17,19 +17,17 @@
   --prism-property: #fff;
 
   @include dark-mode {
-
   }
 }
 
 /* Display-P3 color, when supported. */
 @supports (color: color(display-p3 1 1 1 / 1)) {
   :root {
-    --dark: color(display-p3 0.12 0.13 0.21 / 1.00);
-    --light: color(display-p3 0.96 0.97 1.00 / 1.00);
+    --dark: color(display-p3 0.12 0.13 0.21 / 1);
+    --light: color(display-p3 0.96 0.97 1 / 1);
     --highlight: color(display-p3 1 0 0.492 / 1);
   }
 }
-
 
 /**
  * Set up a decent box model on the root element
@@ -62,7 +60,6 @@ h6 {
   font-weight: 400;
 }
 
-
 /**
  * Make all elements from the DOM inherit from the parent box-sizing
  * Since `*` has a specificity of 0, it does not override the `html` value
@@ -76,8 +73,8 @@ h6 {
 }
 
 body {
-  background-color: var(--dark);
-  color: var(--light);
+  background-color: var(--light);
+  color: var(--dark);
   font-family: 'Inter';
 }
 
@@ -100,29 +97,14 @@ a {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: inherit;
 }
 
@@ -133,12 +115,15 @@ body {
 }
 
 ::selection {
-  background: #D6EDFF; // TODO: Calculate
+  background: #d6edff; // TODO: Calculate
 }
 
-h1, h2, h3,
-h4, h5, h6 {
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   // color: #2E2E2E; // TODO: Calculate
   line-height: 1.15em;
   margin: 0 0 0.3em 0;
@@ -209,7 +194,10 @@ a:hover {
   // color: darken($color-dark, 15%);
 }
 
-p, ul, ol, dl {
+p,
+ul,
+ol,
+dl {
   margin: 0 0 1.75em 0;
 
   @include media('<=small') {
@@ -218,7 +206,8 @@ p, ul, ol, dl {
   }
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 2em;
 
   @include media('>medium') {
@@ -226,8 +215,10 @@ ol, ul {
   }
 }
 
-ol ol, ul ul,
-ul ol, ol ul {
+ol ol,
+ul ul,
+ul ol,
+ol ul {
   margin: 0 0 0.4em 0;
   padding-left: 2em;
 }
@@ -246,7 +237,7 @@ dl dt {
 
 dl dd {
   margin-left: 200px;
-  margin-bottom: 1em
+  margin-bottom: 1em;
 }
 
 li {
@@ -261,7 +252,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: #EFEFEF 1px solid; // TODO: Calculate
+  border-top: #efefef 1px solid; // TODO: Calculate
   margin: 3.2em 0;
   padding: 0;
 
@@ -296,7 +287,7 @@ blockquote small {
 }
 
 blockquote small:before {
-  content: "\2014 \00A0";
+  content: '\2014 \00A0';
 }
 
 blockquote cite {
@@ -315,12 +306,12 @@ kbd {
   display: inline-block;
   margin-bottom: 0.4em;
   padding: 1px 8px;
-  border: #CCC 1px solid; // TODO: Calculate
+  border: #ccc 1px solid; // TODO: Calculate
   color: #666; // TODO: Calculate
   // text-shadow: $color-light 0 1px 0;
   font-size: 0.9em;
   font-weight: 700;
-  background: #F4F4F4; // TODO: Calculate
+  background: #f4f4f4; // TODO: Calculate
   border-radius: 4px;
   // box-shadow:
   //   0 1px 0 rgba(0, 0, 0, 0.2), // TODO: Calculate
@@ -340,7 +331,7 @@ table td {
   line-height: 20px;
   text-align: left;
   vertical-align: top;
-  border-top: #EFEFEF 1px solid; // TODO: Calculate
+  border-top: #efefef 1px solid; // TODO: Calculate
 }
 
 table th {
@@ -353,11 +344,11 @@ table colgroup + thead tr:first-child th,
 table colgroup + thead tr:first-child td,
 table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td {
-    border-top: 0;
+  border-top: 0;
 }
 
 table tbody + tbody {
-  border-top: #EFEFEF 2px solid; // TODO: Calculate
+  border-top: #efefef 2px solid; // TODO: Calculate
 }
 
 table table table {
@@ -376,7 +367,8 @@ table.plain tbody > tr:nth-child(odd) > th {
   background: transparent;
 }
 
-iframe, .fluid-width-video-wrapper {
+iframe,
+.fluid-width-video-wrapper {
   display: block;
   margin: 1.75em 0;
 }

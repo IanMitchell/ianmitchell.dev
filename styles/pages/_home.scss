@@ -3,7 +3,6 @@
 
   h1 {
     font-weight: 400;
-    background-color: var(--dark);
     font-size: 2.4rem;
 
     @include media('>small') {
@@ -15,7 +14,6 @@
     }
   }
 }
-
 
 .masthead {
   @include media('>medium') {
@@ -57,7 +55,7 @@
 
   &-container {
     overflow: auto;
-    border-bottom: 2px solid var(--light);
+    border-bottom: 2px solid var(--dark);
     margin-bottom: 35px;
 
     @include media('>medium') {
@@ -70,7 +68,7 @@
   }
 
   &-content {
-    background: var(--dark);
+    background: var(--light);
     filter: brightness(200%);
     display: flex;
     flex-direction: column;
@@ -78,7 +76,6 @@
     padding: 30px;
 
     @include media('>medium') {
-
     }
   }
 
@@ -93,8 +90,8 @@
     }
 
     & svg {
-      fill: var(--light);
-      color: var(--light);
+      fill: var(--dark);
+      color: var(--dark);
       width: 36px;
       height: 36px;
       margin: 20px 20px 10px 20px;
@@ -118,12 +115,11 @@
   }
 }
 
-
 .blog-link {
   padding: 20px;
   text-align: center;
   display: block;
-  background-color: var(--dark);
+  background-color: var(--light);
   filter: brightness(200%);
 
   // Prevent screenshift on hover
@@ -148,8 +144,8 @@
   }
 
   .rss {
-    fill: var(--light);
-    color: var(--light);
+    fill: var(--dark);
+    color: var(--dark);
     width: 24px;
     height: 24px;
   }
