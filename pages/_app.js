@@ -68,7 +68,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <Font href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" />
-      <Font href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" />
+      <Font href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&display=swap" />
       <Font href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
 
       <Social />

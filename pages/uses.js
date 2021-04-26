@@ -3,6 +3,10 @@ import Link from 'next/link';
 import Page from '../layouts/Page';
 import SubHeading from '../components/SubHeading';
 import Social from '../components/Social';
+import {
+  DescriptionItem,
+  DescriptionList,
+} from '../components/DescriptionList';
 
 export default function Use() {
   return (
@@ -25,10 +29,33 @@ export default function Use() {
         <a href="https://uses.tech">here</a>
       </p>
 
-      <SubHeading>Development</SubHeading>
-      <ol>
-        <li>
-          VS Code
+      <span>// insert picture of setup here</span>
+
+      <SubHeading>The Heavyweights</SubHeading>
+
+      <DescriptionList>
+        <DescriptionItem
+          title="MacBook Pro"
+          icon="/icons/laptop.svg"
+          alt="MacBook Pro"
+        >
+          Discord stuff and descriptions go here
+        </DescriptionItem>
+
+        <DescriptionItem
+          title="Discord"
+          icon="/icons/discord.svg"
+          alt="Discord"
+        >
+          Discord stuff and descriptions go here
+        </DescriptionItem>
+
+        <DescriptionItem
+          title="Visual Studio Code"
+          icon="/icons/discord.svg"
+          alt="Discord"
+          size="small"
+        >
           <ul>
             <li>Auto Close Tag</li>
             <li>Auto Rename Tag</li>
@@ -48,8 +75,13 @@ export default function Use() {
             <li>Todo Tree</li>
             <li>Toggle Quotes</li>
           </ul>
-        </li>
-        <li>Figma</li>
+        </DescriptionItem>
+      </DescriptionList>
+
+      <SubHeading>Development</SubHeading>
+
+      <ol>
+        <li>VS Code</li>
         <li>
           iTerm / Terminal
           <ul>
@@ -65,11 +97,9 @@ export default function Use() {
         <li>Notion </li>
         <li>Hey </li>
         <li>GitHub </li>
-        <li>Microsoft Todo </li>
         <li>Pocket </li>
-        <li>Discord </li>
         <li>Spotify </li>
-        <li>Feedly </li>
+        <li>Feedbin</li>
         <li>Fathom </li>
         <li>Vercel </li>
         <li>Netlify </li>
@@ -80,27 +110,32 @@ export default function Use() {
       <SubHeading>Hardware</SubHeading>
       <ol>
         <li>Windows Desktop</li>
-        <li>Work MacBook Pro</li>
         <li>iPhone X</li>
         <li>Leica Q2</li>
         <li>Nintendo Switch</li>
+        <li>monitor</li>
+        <li>webcam</li>
+        <li>keyboard and mouse</li>
+        <li>pen and paper</li>
+        <li>desk</li>
+        <li>chair</li>
+        <li>backpack</li>
+        <li>headphones</li>
       </ol>
 
-      <SubHeading>macOS</SubHeading>
+      <SubHeading>Apps</SubHeading>
       <ol>
         <li>Pixave</li>
         <li>Tweetbot</li>
         <li>Kap</li>
-      </ol>
-
-      <SubHeading>iPhone</SubHeading>
-      <ol>
+        <li>Net News Wire</li>
+        <li>iA Writer</li>
         <li>Tweetbot</li>
         <li>Copilot</li>
         <li>Cash App</li>
         <li>Dark Sky</li>
         <li>Darkroom</li>
-        <li>Shonen Jump</li>
+        <li>1 Password</li>
       </ol>
     </Page>
   );
