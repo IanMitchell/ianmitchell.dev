@@ -15,13 +15,13 @@ Next.js doesn't currently support different response types when you statically g
 
 First, let's install the `rss` npm package to help create the RSS XML structure.
 
-```bash
+```terminal
 npm install rss
 ```
 
 Then let's create a new `scripts/generate-rss.js` file with the following:
 
-```jsx
+```jsx file=scripts/generate-rss.js copy
 import fs from 'fs';
 import RSS from 'rss';
 
@@ -59,7 +59,7 @@ posts.forEach((post) => {
 
 Next we'll want to hook this script up to Webpack (this lets us use ESM and import code from our Next.js codebase). To do this we need to add an entry to the `next.config.js` file. We'll only add it during the build step for performance reasons.
 
-```javascript
+```javascript file=next.config.js
   webpack: (config, { dev, isServer }) => {
     if (!dev && isServer) {
       const originalEntry = config.entry;
@@ -101,16 +101,12 @@ Finally we need to add a `<link>` reference! I include the following in my `_app
 
 _I've included my version of `generate-rss.js` here, which compiles MDX to HTML for use with RSS. Depending on the format of your content you might need to make some revisions to it._
 
-Add the following to your `.gitignore` file:
-
-```yaml
+```yaml file=.gitignore
 # Generated Files
 public/feed.xml
 ```
 
-Create a new `scripts/generate-rss.js` file with the following:
-
-```jsx
+```jsx file=scripts/generate-rss.js
 import fs from 'fs';
 import RSS from 'rss';
 import ReactDOMServer from 'react-dom/server';
@@ -147,23 +143,21 @@ async function generate() {
 generate();
 ```
 
-Add a link in `_app.js`:
-
-```jsx
+```jsx file=_app.js
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
   return (
     <Fragment>
-      <Head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="RSS"
-          href="/feed.xml"
-        />
-      </Head>
++      <Head>
++        <link
++          rel="alternate"
++          type="application/rss+xml"
++          title="RSS"
++          href="/feed.xml"
++        />
++      </Head>
       <Component {...pageProps} />
     </Fragment>
   );
@@ -172,27 +166,27 @@ export default function App({ Component, pageProps }) {
 
 Add the script to webpack by adding this to `next.config.js`:
 
-```javascript
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && isServer) {
-      const originalEntry = config.entry;
-
-      config.entry = async () => {
-        const entries = { ...(await originalEntry()) };
-
-        // These scripts can import components from the app and use ES modules
-        entries['./scripts/generate-rss.js'] = './scripts/generate-rss.js';
-
-        return entries;
-      };
-    }
-
-    return config;
-  },
+```javascript file=next.config.js
+module.exports = {
++  webpack: (config, { dev, isServer }) => {
++    if (!dev && isServer) {
++      const originalEntry = config.entry;
++
++      config.entry = async () => {
++        const entries = { ...(await originalEntry()) };
++
++        // These scripts can import components from the app and use ES modules
++        entries['./scripts/generate-rss.js'] = './scripts/generate-rss.js';
++
++        return entries;
++      };
++    }
++
++    return config;
++  },
+}
 ```
 
-Finally, call the script during the build step by adding a call to it in `package.json`:
-
-```json
+```json file=package.json
     "build": "next build && node ./.next/server/scripts/generate-rss.js",
 ```

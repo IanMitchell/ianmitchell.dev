@@ -1,5 +1,4 @@
 const detectFrontmatter = require('remark-frontmatter');
-const prism = require('@mapbox/rehype-prism');
 const visit = require('unist-util-visit');
 const remove = require('unist-util-remove');
 const builder = require('unist-builder');
@@ -28,7 +27,7 @@ function exportFrontmatter() {
 const withMDX = require('@next/mdx')({
   options: {
     remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
-    // rehypePlugins: [prism],
+    rehypePlugins: [],
   },
 });
 
