@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import * as CopyToClipboard from 'react-copy-to-clipboard';
 
 export default function CopyButton({ text, children }) {
   const [copied, setCopied] = useState(false);
@@ -10,18 +11,18 @@ export default function CopyButton({ text, children }) {
   };
 
   return (
-    // <CopyToClipboard text={text} onCopy={onCopyContent}>
-    <div className="copy-icon">
-      {copied && (
-        <div
-          className="indicator"
-          style={{ color: 'var(--list-bullet-color)' }}
-        >
-          Copied
-        </div>
-      )}
-      {children}
-    </div>
-    // </CopyToClipboard>
+    <CopyToClipboard text={text} onCopy={onCopyContent}>
+      <div className="copy-icon">
+        {copied && (
+          <div
+            className="indicator"
+            style={{ color: 'var(--list-bullet-color)' }}
+          >
+            Copied
+          </div>
+        )}
+        {children}
+      </div>
+    </CopyToClipboard>
   );
 }

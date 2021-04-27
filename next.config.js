@@ -24,14 +24,18 @@ function exportFrontmatter() {
   };
 }
 
-const withMDX = require('@next/mdx')({
-  options: {
-    remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
-    rehypePlugins: [],
-  },
-});
+// const withMDX = require('@next/mdx')({
+//   options: {
+//     remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
+//     rehypePlugins: [],
+//   },
+// });
 
-module.exports = withMDX({
+// module.exports = withMDX({
+module.exports = {
+  future: {
+    webpack5: true,
+  },
   pageExtensions: ['js', 'mdx'],
   webpack: (config, { dev, isServer }) => {
     if (!dev && isServer) {
@@ -83,4 +87,4 @@ module.exports = withMDX({
       },
     ];
   },
-});
+};

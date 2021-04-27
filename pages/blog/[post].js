@@ -1,14 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
-import ReactDOMServer from 'react-dom/server';
+import renderToString from 'next-mdx-remote/render-to-string';
+import hydrate from 'next-mdx-remote/hydrate';
 import Page from '../../layouts/Page';
 import Meta from '../../components/Meta';
 import MDX from '../../components/MDX';
+import CodePen from '../../components/CodePen';
 import PostLayout from '../../layouts/Post';
 import { getAllPosts, getSerializeableFrontmatter } from '../../lib/posts';
 import Social from '../../components/Social';
 
-export default function Post({ frontmatter, content }) {
+const COMPONENTS = {
+  CodePen,
+};
+
+export default function Post({ frontmatter, source }) {
+  const content = hydrate(source, { components: COMPONENTS });
+
   return (
     <Page
       title={frontmatter.title}
@@ -30,7 +38,7 @@ export default function Post({ frontmatter, content }) {
         className="meta-border"
       />
 
-      <PostLayout content={content} {...frontmatter} />
+      <PostLayout {...frontmatter}>{content}</PostLayout>
     </Page>
   );
 }
@@ -40,16 +48,20 @@ export async function getStaticProps(context) {
     (post) => post.frontmatter.slug === context.params.post
   );
 
-  const { frontmatter, MDXContent } = post;
+  const { frontmatter, content } = post;
+  const source = await renderToString(content, {
+    components: COMPONENTS,
+    provider: { component: MDX },
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+    },
+  });
 
   return {
     props: {
       frontmatter: getSerializeableFrontmatter(frontmatter),
-      content: ReactDOMServer.renderToString(
-        <MDX>
-          <MDXContent />
-        </MDX>
-      ),
+      source,
     },
   };
 }

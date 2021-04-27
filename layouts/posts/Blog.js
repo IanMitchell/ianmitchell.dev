@@ -1,10 +1,5 @@
 import React from 'react';
 
-export default function Blog({ content }) {
-  return (
-    <article
-      className="content-body"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  );
+export default function Blog({ children }) {
+  return <article className="content-body">{children}</article>;
 }

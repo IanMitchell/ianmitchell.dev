@@ -9,6 +9,11 @@
     right: -8px;
     top: -6px;
   }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .copy-icon {
@@ -42,6 +47,7 @@
 .code-block {
   margin-top: 24px;
   margin-bottom: 24px;
+  position: relative;
 
   &_file {
     font-weight: 600;
