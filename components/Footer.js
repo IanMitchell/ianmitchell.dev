@@ -7,7 +7,7 @@ import Markdown from './icons/Markdown';
 export default function Footer() {
   return (
     <footer>
-      <img class="splash" src="/footer.svg" />
+      <img className="splash" src="/footer.svg" />
       <section>
         <p>&copy; Copyright {new Date().getFullYear()} Ian Mitchell.</p>
       </section>

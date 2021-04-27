@@ -68,8 +68,7 @@
   }
 
   &-content {
-    background: var(--light);
-    filter: brightness(200%);
+    background: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,7 +109,6 @@
   }
 
   p {
-    filter: brightness(50%);
     margin-bottom: 0;
   }
 }
@@ -119,15 +117,10 @@
   padding: 20px;
   text-align: center;
   display: block;
-  background-color: var(--light);
-  filter: brightness(200%);
+  background-color: #fff;
 
   // Prevent screenshift on hover
   border-bottom: 0;
-
-  span {
-    filter: brightness(50%);
-  }
 }
 
 .recent-posts {

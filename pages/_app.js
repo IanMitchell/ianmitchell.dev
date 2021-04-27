@@ -31,6 +31,26 @@ export default function App({ Component, pageProps }) {
     };
   }, [router]);
 
+  useEffect(() => {
+    const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = localStorage.getItem('theme');
+
+    if (theme === 'dark' || (darkMode && theme == null)) {
+      document.documentElement.classList.add('dark-mode');
+    } else if (theme === 'light') {
+      document.documentElement.classList.remove('dark-mode');
+    }
+
+    // // Whenever the user explicitly chooses light mode
+    // localStorage.theme = 'light';
+
+    // // Whenever the user explicitly chooses dark mode
+    // localStorage.theme = 'dark';
+
+    // // Whenever the user explicitly chooses to respect the OS preference
+    // localStorage.removeItem('theme');
+  }, []);
+
   return (
     <Fragment>
       <Head>
@@ -67,7 +87,7 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
 
-      <Font href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" />
+      <Font href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&display=swap" />
       <Font href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&display=swap" />
       <Font href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
 

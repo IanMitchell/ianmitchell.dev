@@ -8,13 +8,11 @@
 // 2. Vendors
 @import
   'vendors/include-media',
-  'vendors/normalize',
-  'vendors/prism';
+  'vendors/normalize';
 
 // 3. Base stuff
 @import
   'base/base',
-  'base/fonts',
   'base/typography';
 
 // 4. Layout-related sections
@@ -26,12 +24,14 @@
 
 // 5. Components
 @import
+  'components/bookmarks',
   'components/code',
   'components/description-list',
   'components/entry',
   'components/horizontal-stack',
   'components/meta',
   'components/page-title',
+  'components/prism',
   'components/separator',
   'components/subheading',
   'components/tag-list';

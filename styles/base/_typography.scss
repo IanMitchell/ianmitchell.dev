@@ -1,3 +1,79 @@
 /**
  * Basic typography style for copy text
  */
+
+html {
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  font-family: 'Inter';
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 1.25em;
+  line-height: 2rem;
+}
+
+blockquote {
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-top: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+img {
+}
+
+ol,
+ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+ol > li,
+ul > li {
+  padding-left: 1.75em;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+ol > li:first-child,
+ul > li:first-child {
+}
+
+ol > li:last-child,
+ul > li:last-child {
+}
