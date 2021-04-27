@@ -29,6 +29,11 @@
   }
 }
 
+::selection {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
 /**
  * Set up a decent box model on the root element
  */
@@ -112,10 +117,6 @@ body {
   letter-spacing: 0.01rem;
   font-size: 1.8rem;
   line-height: 1.75em;
-}
-
-::selection {
-  background: #d6edff; // TODO: Calculate
 }
 
 h1,

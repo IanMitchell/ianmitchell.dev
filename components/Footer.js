@@ -7,7 +7,11 @@ import Markdown from './icons/Markdown';
 export default function Footer() {
   return (
     <footer>
-      <section className="footer-content container">
+      <img class="splash" src="/footer.svg" />
+      <section>
+        <p>&copy; Copyright {new Date().getFullYear()} Ian Mitchell.</p>
+      </section>
+      {/* <section className="footer-content container">
         <h4>About this Site</h4>
         <p>
           This website is developed using{' '}
@@ -36,7 +40,7 @@ export default function Footer() {
         <p className="copyright">
           &copy; Copyright {new Date().getFullYear()} Ian Mitchell.
         </p>
-      </section>
+      </section> */}
     </footer>
   );
 }
