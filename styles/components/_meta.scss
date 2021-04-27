@@ -10,16 +10,16 @@
 
   &-border {
     border-bottom: 1px solid var(--dark);
-    padding-bottom: 8px;
-    margin-bottom: 30px;
+    padding-bottom: 0.5em;
+    margin-bottom: 2em;
   }
 
   & time {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 
   & span {
-    font-size: 1.6rem;
+    font-size: 1rem;
 
     & a {
       color: var(--dark);

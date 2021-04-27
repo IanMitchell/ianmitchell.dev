@@ -1,16 +1,16 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import Entry from '../layouts/Entry';
 import Page from '../layouts/Page';
-import Email from '../components/icons/Email';
-import GitHub from '../components/icons/GitHub';
-import Twitter from '../components/icons/Twitter';
-import RSS from '../components/icons/RSS';
-import Discord from '../components/icons/Discord';
 
 export default function Home({ entries }) {
   return (
-    <Page title="Typography">
+    <Page
+      title="Typography"
+      breadcrumb={
+        <Link href="/">
+          <a>&larr; Home</a>
+        </Link>
+      }
+    >
       <p>
         This page is a demo page to test typography changes that I make to my
         styles. It serves no other purpose, but I made it live for fun.
@@ -20,8 +20,8 @@ export default function Home({ entries }) {
         <h1>H1 Tag Here</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis
-          nulla faucibus, fermentum elit nec, pulvinar nulla. Nam venenatis orci
-          sit amet massa auctor, at ullamcorper sem luctus.
+          nulla faucibus, fermentum elit nec, <a href="#">pulvinar nulla</a>.
+          Nam venenatis orci sit amet massa auctor, at ullamcorper sem luctus.
         </p>
         <hr />
         <p>
@@ -41,13 +41,11 @@ export default function Home({ entries }) {
           finibus fermentum, dolor orci elementum eros, nec mattis orci odio ut
           risus. Morbi venenatis nec lectus eget suscipit.
         </p>
-        <ul>
+        <ol>
           <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
           <li>Donec ut tortor id ex sagittis tempor.</li>
           <li>Sed mattis magna quis augue scelerisque porttitor.</li>
-          <li>Vestibulum elementum risus et mi ornare sollicitudin.</li>
-          <li>Maecenas dignissim dolor sit amet consectetur feugiat.</li>
-        </ul>
+        </ol>
         <h3>H3 Tag Here</h3>
         <blockquote>
           <p>
@@ -61,6 +59,16 @@ export default function Home({ entries }) {
             </a>
           </cite>
         </blockquote>
+        <p>
+          Ut pharetra finibus lectus eget euismod. Maecenas a odio nec ante
+          consequat molestie. Aliquam commodo, lectus nec bibendum varius,
+          ligula ligula commodo enim, quis euismod mi massa a sapien.
+        </p>
+        <ul>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+          <li>Donec ut tortor id ex sagittis tempor.</li>
+          <li>Sed mattis magna quis augue scelerisque porttitor.</li>
+        </ul>
         <h4>H4 Tag Here</h4>
         <table>
           <thead>

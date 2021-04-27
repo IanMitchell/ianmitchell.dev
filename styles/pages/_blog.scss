@@ -9,7 +9,7 @@
 
     & li {
       margin-left: 0;
-      margin: 15px 0;
+      margin: 1em 0;
       display: flex;
       line-height: 1.5em;
       flex-direction: column-reverse;
@@ -28,7 +28,7 @@
       a:link,
       a:visited {
         text-decoration: none;
-        border-bottom: 2px solid rgba(#ff007e, 0.3)
+        border-bottom: 2px solid rgba(#ff007e, 0.3);
       }
 
       a:focus,
@@ -42,7 +42,7 @@
         opacity: 0.6;
 
         @include media('>medium') {
-          margin-left: 6px;
+          margin-left: 0.5em;
         }
       }
     }

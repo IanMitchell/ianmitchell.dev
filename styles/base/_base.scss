@@ -107,4 +107,28 @@ hr {
 }
 
 table {
+  width: 100%;
+  margin-top: 2em;
+  text-align: left;
+}
+
+thead {
+  font-weight: 700;
+  border-bottom: 1px solid #333;
+}
+
+tr {
+  border-bottom: 1px solid #333;
+}
+
+tbody td {
+  padding: 0.75em;
+}
+
+tbody td:first-child {
+  padding-left: 0;
+}
+
+tbody td:last-child {
+  padding-left: 0;
 }

@@ -1,15 +1,15 @@
 .post-link {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 2em;
 
   & svg {
-    width: 24px;
-    height: 24px;
+    width: 1.5em;
+    height: 1.5em;
   }
 
   .icon-link {
     stroke: var(--highlight);
-    margin-right: 10px;
+    margin-right: 1em;
   }
 }

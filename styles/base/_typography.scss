@@ -29,6 +29,14 @@ p {
 }
 
 blockquote {
+  border-left: 2px solid var(--highlight);
+  padding-left: 1em;
+}
+
+cite {
+  display: block;
+  font-weight: 400;
+  text-align: right;
 }
 
 h1 {
@@ -59,21 +67,17 @@ img {
 
 ol,
 ul {
+  font-size: 1.25rem;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
 }
 
 ol > li,
 ul > li {
-  padding-left: 1.75em;
-  margin-top: 0.75em;
+  margin-top: 0.5em;
   margin-bottom: 0.75em;
 }
-
-ol > li:first-child,
-ul > li:first-child {
-}
-
-ol > li:last-child,
-ul > li:last-child {
+ol:first-child,
+ul:first-child {
+  margin-top: 0.75rem;
 }
