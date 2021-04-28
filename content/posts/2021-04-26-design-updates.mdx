@@ -26,7 +26,7 @@ The last design iteration was very dark. I like having a dark mode, but I don't 
 
 ## Readability / Typography
 
-I'm still working on this, but I tried to make things just generally... nicer. I did some work specifying font weights instead of using browser-computed values[^1] Font updates, increasing sizes, padding, line-height, unit types... there was a lot to change.
+I'm still working on this, but I tried to make things just generally... nicer. I clean up some code by specifying font weights instead of using browser-computed styles (oops). Font updates, increasing sizes, padding, line-height, unit types... there was a lot to change.
 
 I spent a lot of time studying how [Josh Comeau](https://www.joshwcomeau.com) laid out his typography styles. I think he absolutely nailed it.
 
@@ -68,7 +68,7 @@ My old system compiled MDX in a way that prevented it from rehydrating on the cl
 
 Seems like a small thing, so why does it matter? Because it turns out that this prevents a lot of embeds / other HTML from working as expected. Take a CodePen embed for instance
 
-```jsx
+```jsx lines
 <iframe {...props}>
   See the Pen <a href={`https://codepen.io/IanMitchell/pen/${id}/`}>{title}</a>{' '}
   by Ian Mitchell (<a href="https://codepen.io/IanMitchell">@IanMitchell</a>) on{' '}
@@ -93,5 +93,3 @@ There's still a lot to write here, and some pictures to take, but at least the p
 # Let me know what you think!
 
 Personally I really like how the design ended up, but that's just me. If you have any feedback on the current design, let me know on [Twitter](https://twitter.com/ianmitchel1)!
-
-[^1]: Don't use `font-weight: bold` with variable fonts. I can't find the Tweet that taught me this anymore, but Browsers scale that up differently, and if you don't have the right font weight pulled in from your variable font, the Browser will apply its own algorithm to bold a font. And that looks _nasty_. Instead, specify the weight on the variable font and then use `font-weight: 700` or similar.

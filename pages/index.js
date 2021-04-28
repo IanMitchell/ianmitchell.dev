@@ -43,10 +43,11 @@ export default function Home({ entries }) {
                 Welcome to my website! I'm a web developer from Seattle,
                 Washington. I{' '}
                 <Link href="/resume">
-                  <a>work at Facebook</a>
+                  <a>work at Discord</a>
                 </Link>{' '}
-                as a Software Engineer. In my free time I like to play video
-                games, follow politics, and tinker with coding projects.
+                as a Senior Software Engineer on the Bots and API team. In my
+                free time I like to play video games, follow politics, and
+                tinker with coding projects.
               </p>
             </div>
             <ul className="masthead-contact horizontal-stack">
