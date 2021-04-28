@@ -1,28 +1,23 @@
-import { useState } from 'react';
-import * as CopyToClipboard from 'react-copy-to-clipboard';
+import classnames from "classnames";
+import { COPY_STATUS, useClipboard } from "../hooks/useClipboard";
 
 export default function CopyButton({ text, children }) {
-  const [copied, setCopied] = useState(false);
-  let copyTimer;
+  const { copy, status } = useClipboard(text);
+  let value = children;
 
-  const onCopyContent = () => {
-    setCopied(true);
-    copyTimer = window.setTimeout(() => setCopied(false), 500);
-  };
+  if (status === COPY_STATUS.SUCCESS) {
+    value = "Copied!";
+  } else if (status === COPY_STATUS.ERROR) {
+    value = "Copy failed :(";
+  }
+
+  const classes = classnames("clipboard", {
+    clipboard_notification: status !== COPY_STATUS.INACTIVE,
+  });
 
   return (
-    <CopyToClipboard text={text} onCopy={onCopyContent}>
-      <div className="copy-icon">
-        {copied && (
-          <div
-            className="indicator"
-            style={{ color: 'var(--list-bullet-color)' }}
-          >
-            Copied
-          </div>
-        )}
-        {children}
-      </div>
-    </CopyToClipboard>
+    <button type="button" className={classes} onClick={() => copy()}>
+      {value}
+    </button>
   );
 }

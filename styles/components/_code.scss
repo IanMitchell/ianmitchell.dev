@@ -1,46 +1,12 @@
 .copy-button {
-  transition: opacity 100ms ease;
   position: absolute;
   top: 20px;
   right: 16px;
   z-index: 2;
 
-  > div {
+  > button {
     right: -8px;
     top: -6px;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.copy-icon {
-  & {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-  }
-  @keyframes copying {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, 0);
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-50%, 30px);
-    }
-  }
-  .indicator {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    transform: translate(-50%, 0);
-    animation: copying 700ms linear;
   }
 }
 
@@ -49,14 +15,31 @@
   margin-bottom: 24px;
   position: relative;
 
+  // &_file {
+  //   font-weight: 600;
+  //   font-size: 14px;
+  //   font-family: "IBM Plex Mono";
+  //   margin-bottom: 0.5rem;
+
+  //   span {
+  //     display: inline-flex;
+  //     align-items: center;
+
+  //     svg {
+  //       margin-right: 8px;
+  //       height: 16px;
+  //       width: 16px;
+  //     }
+  //   }
+  // }
   &_file {
     font-weight: 600;
-    // color: 'gray';
     font-size: 14px;
-    font-family: 'IBM Plex Mono';
+    font-family: "IBM Plex Mono";
     margin-bottom: 0.5rem;
+    display: flex;
 
-    span {
+    &_name {
       display: inline-flex;
       align-items: center;
 
@@ -66,9 +49,14 @@
         width: 16px;
       }
     }
+
+    &_language {
+      margin-left: auto;
+    }
   }
 
   pre {
+    position: relative;
     margin-top: 32px;
     text-align: left;
     margin: 0 0 16px 0;

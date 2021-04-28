@@ -1,27 +1,27 @@
-import React from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import rangeParser from 'parse-numeric-range';
-import classnames from 'classnames';
-import FileIcon from '../icons/File';
-import CopyIcon from '../icons/Copy';
-import CopyButton from '../CopyButton';
+import React from "react";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import rangeParser from "parse-numeric-range";
+import classnames from "classnames";
+import FileIcon from "../icons/File";
+import CopyIcon from "../icons/Copy";
+import CopyButton from "../CopyButton";
 
 const diffBgColorMap = {
-  '+': 'var(--prism-highlight-added-background)',
-  '-': 'var(--prism-highlight-removed-background)',
-  '|': 'var(--prism-highlight-background)',
+  "+": "var(--prism-highlight-added-background)",
+  "-": "var(--prism-highlight-removed-background)",
+  "|": "var(--prism-highlight-background)",
 };
 
 const symColorMap = {
-  '+': 'var(--prism-higlight-added-text)',
-  '-': 'var(--prism-higlight-removed-text)',
-  '|': 'var(--prism-highlight-text)',
+  "+": "var(--prism-higlight-added-text)",
+  "-": "var(--prism-higlight-removed-text)",
+  "|": "var(--prism-highlight-text)",
 };
 
 const symbols = {
-  normal: '|',
-  add: '+',
-  delete: '-',
+  normal: "|",
+  add: "+",
+  delete: "-",
 };
 
 function cleanTokens(tokens) {
@@ -37,17 +37,17 @@ function cleanTokens(tokens) {
   return tokens;
 }
 
-const propList = ['copy', 'terminal', 'no-lines'];
+const propList = ["copy", "terminal", "no-lines"];
 
 export default function Code({ children, className, ...props }) {
-  let language = className && className.replace(/language-/, '');
+  let language = className && className.replace(/language-/, "");
   let breakWords = false;
   let diffArray = [];
 
-  if (props?.metastring?.includes('highlight')) {
-    const parts = props.highlight.split('|');
+  if (props?.metastring?.includes("highlight")) {
+    const parts = props.highlight.split("|");
     parts.forEach((part) => {
-      diffArray = [part.split(';'), ...diffArray];
+      diffArray = [part.split(";"), ...diffArray];
     });
   }
 
@@ -56,25 +56,26 @@ export default function Code({ children, className, ...props }) {
   }
 
   const code = children;
-  const hasCopy = props.copy || language === 'copy';
-  const isTerminal = props.terminal || language === 'terminal';
-  const fileName = props.file || language === 'file';
+  const hasCopy = props.copy || language === "copy";
+  const isTerminal = props.terminal || language === "terminal";
+  const fileName = props.file || language === "file";
   const hasLines = fileName || props.lines;
 
-  const tokenCopyClass = `${hasCopy ? 'has-copy-button' : ''} ${
-    breakWords ? 'break-words' : ''
+  const tokenCopyClass = `${hasCopy ? "has-copy-button" : ""} ${
+    breakWords ? "break-words" : ""
   }`;
 
   return (
     <div className="code-block">
-      {fileName && (
-        <div className="code-block_file">
-          <span>
+      <div className="code-block_file">
+        {fileName && (
+          <span className="code-block_file_name">
             <FileIcon />
             {fileName}
           </span>
-        </div>
-      )}
+        )}
+        <span className="code-block_file_language">{language}</span>
+      </div>
       <div className="code-block_highlight">
         <Highlight {...defaultProps} code={code} language={language}>
           {({
@@ -86,11 +87,11 @@ export default function Code({ children, className, ...props }) {
           }) => (
             <pre
               className={classnames(blockClassName, {
-                'is-terminal': isTerminal,
+                "is-terminal": isTerminal,
               })}
               style={style}
             >
-              {(props.copy || language === 'copy') && (
+              {(props.copy || language === "copy") && (
                 <div className="copy-button">
                   <CopyButton text={code}>
                     <CopyIcon />
@@ -100,25 +101,25 @@ export default function Code({ children, className, ...props }) {
               <code>
                 {cleanTokens(tokens).map((line, i) => {
                   let lineClass = {
-                    backgroundColor: '',
-                    symbColor: '',
+                    backgroundColor: "",
+                    symbColor: "",
                   };
 
                   let isDiff = false;
-                  let diffSymbol = '';
+                  let diffSymbol = "";
 
                   if (
                     (line[0] &&
                       line[0].content.length &&
-                      (line[0].content[0] === '+' ||
-                        line[0].content[0] === '-' ||
-                        line[0].content[0] === '|')) ||
+                      (line[0].content[0] === "+" ||
+                        line[0].content[0] === "-" ||
+                        line[0].content[0] === "|")) ||
                     (line[0] &&
-                      line[0].content === '' &&
+                      line[0].content === "" &&
                       line[1] &&
-                      (line[1].content === '+' ||
-                        line[1].content === '-' ||
-                        line[1].content === '|'))
+                      (line[1].content === "+" ||
+                        line[1].content === "-" ||
+                        line[1].content === "|"))
                   ) {
                     diffSymbol =
                       line[0] && line[0].content.length
@@ -161,19 +162,19 @@ export default function Code({ children, className, ...props }) {
                           className="line_number"
                           style={{ color: lineClass.symbColor }}
                         >
-                          {['+', '-'].includes(diffSymbol) ? diffSymbol : i + 1}
+                          {["+", "-"].includes(diffSymbol) ? diffSymbol : i + 1}
                         </span>
                       )}
                       <span
-                        className={classnames('line_content', tokenCopyClass)}
+                        className={classnames("line_content", tokenCopyClass)}
                       >
                         {line.map((token, key) => {
                           if (isDiff) {
                             if (
                               (key === 0 || key === 1) &&
-                              (token.content.charAt(0) === '+' ||
-                                token.content.charAt(0) === '-' ||
-                                token.content.charAt(0) === '|')
+                              (token.content.charAt(0) === "+" ||
+                                token.content.charAt(0) === "-" ||
+                                token.content.charAt(0) === "|")
                             ) {
                               return (
                                 <span

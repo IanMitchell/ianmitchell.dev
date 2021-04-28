@@ -7,12 +7,12 @@ export default function CodePen({ title, id }) {
       src={`//codepen.io/IanMitchell/embed/${id}/?height=265&theme-id=0&default-tab=css,result&embed-version=2`}
       frameBorder="no"
       allowtransparency="true"
-      allowFullScreen={true}
+      allowFullScreen
       width="100%"
     >
-      See the Pen{' '}
+      See the Pen{" "}
       <a href={`https://codepen.io/IanMitchell/pen/${id}/`}>{title}</a> by Ian
-      Mitchell (<a href="https://codepen.io/IanMitchell">@IanMitchell</a>) on{' '}
+      Mitchell (<a href="https://codepen.io/IanMitchell">@IanMitchell</a>) on{" "}
       <a href="https://codepen.io">CodePen</a>.
     </iframe>
   );
