@@ -1,6 +1,6 @@
 .blog {
   & h2 {
-    margin-top: 50px;
+    margin-top: 2em;
   }
 
   & ul {
@@ -8,6 +8,7 @@
     padding-left: 0;
 
     & li {
+      font-size: 1rem;
       margin-left: 0;
       margin: 1em 0;
       display: flex;
@@ -38,7 +39,7 @@
       }
 
       & span {
-        font-size: 1.2rem;
+        font-size: 0.75rem;
         opacity: 0.6;
 
         @include media('>medium') {
