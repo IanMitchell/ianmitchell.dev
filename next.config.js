@@ -56,6 +56,19 @@ module.exports = {
   env: {
     DOMAIN: 'https://ianmitchell.dev',
   },
+  async Headers() {
+    return [
+      {
+        source: '*',
+        headers: [
+          {
+            key: 'Permission-Policy',
+            value: 'interest-cohort=()',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
