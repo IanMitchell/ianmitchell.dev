@@ -52,6 +52,7 @@ html {
  */
 body {
   // background-color: hsl(210, 21, 95);
+  background-image: url("/header.svg") no-repeat;
 
   // Have to manually do dark mode checks on the body element since the
   // dark-mode mixin would double nest the `body` tag
@@ -84,7 +85,7 @@ main {
   margin: auto;
   width: 80%;
 
-  @include media('>small') {
+  @include media(">small") {
     padding: 2em;
   }
 }
@@ -99,11 +100,29 @@ a {
 }
 
 hr {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  height: 1px;
   border: 0;
   border-top: 1px solid var(--highlight);
-  width: 80%;
   margin-top: 3em;
   margin-bottom: 3em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1em;
+    left: 50%;
+    display: block;
+    margin-left: -1.5em;
+    width: 1px;
+    height: 2em;
+    background: var(--highlight);
+    box-shadow: 0 0 0 0.75em var(--light);
+    transform: rotate(45deg);
+  }
 }
 
 table {

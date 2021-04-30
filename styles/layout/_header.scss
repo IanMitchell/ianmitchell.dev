@@ -1,0 +1,81 @@
+header {
+  .splash {
+    display: block;
+    width: 100%;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+
+  h1 {
+    a {
+      color: var(--dark);
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+
+      @include link-hover {
+        border-bottom: 0;
+        color: var(--highlight);
+      }
+    }
+
+    img {
+      border-radius: 24px;
+    }
+
+    span {
+      font-family: "Inter";
+      font-weight: 700;
+      font-size: 1.75rem;
+      margin-left: 0.5em;
+    }
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: lowercase;
+  }
+
+  ol {
+    display: flex;
+    font-size: 1rem;
+    counter-reset: count 0;
+    list-style-type: none;
+  }
+
+  li {
+    counter-increment: count 1;
+    display: flex;
+    align-items: center;
+
+    & a {
+      display: block;
+      padding: 1em 1em 0.25em 1em;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      color: var(--dark);
+
+      &::before {
+        font-weight: 700;
+        margin-right: 0.5em;
+        // content: counters(count, ".", decimal) ". ";
+        content: "0" counters(count, ".", decimal);
+      }
+
+      @include link-hover {
+        color: var(--highlight);
+        border-bottom: 2px solid var(--highlight);
+
+        &::before {
+          color: var(--dark);
+        }
+      }
+    }
+  }
+}

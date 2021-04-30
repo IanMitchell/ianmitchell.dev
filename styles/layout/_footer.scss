@@ -14,7 +14,18 @@ footer {
     padding: 2em;
   }
 
+  .container {
+    margin: auto;
+  }
+
   p {
     text-align: center;
+    font-size: 1rem;
+  }
+
+  svg {
+    height: 1em;
+    width: 1em;
+    fill: var(--light);
   }
 }
