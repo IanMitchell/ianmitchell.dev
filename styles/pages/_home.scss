@@ -3,11 +3,6 @@
   display: grid;
   grid-template-rows: 2fr 1fr;
 
-  @include media(">medium") {
-    position: relative;
-    padding-top: 3rem;
-  }
-
   &_about {
     background: #fff;
     display: flex;
@@ -30,9 +25,13 @@
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     $inactive-fade: 0.5;
     $active-fade: 1;
+
+    @include media(">650px") {
+      grid-template-columns: repeat(4, 1fr);
+    }
 
     & svg {
       fill: var(--light);
