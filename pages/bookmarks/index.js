@@ -3,6 +3,12 @@ import Link from "next/link";
 import Page from "../../layouts/Page";
 import Social from "../../components/Social";
 import RightArrow from "../../components/icons/RightArrow";
+import BookmarkPanel from "../../components/BookmarkPanel";
+import {
+  DescriptionItem,
+  DescriptionList,
+} from "../../components/DescriptionList";
+import { PullQuote } from "../../components/Pullquote";
 
 export default function Bookmarks({ posts }) {
   return (
@@ -20,301 +26,86 @@ export default function Bookmarks({ posts }) {
         description="My collection of bookmarks on a variety of web development and web design topics."
       />
 
+      <p>
+        Over the years I've accumulated a lot of web design and development
+        bookmarks. Some I read every year, some I hold on to just in case I need
+        them someday. I read once that you can think of it as lazy-loading
+        information - you might not read a tutorial and commit it to memory, but
+        you save it so when you do need that information you know where to go to
+        look.
+      </p>
+
       <section>
-        <h2>The Best</h2>
-        <p>Stuff here</p>
+        <h2>The Best of the Best</h2>
+        <p>
+          Look, everything here is objectively stellar content, but sometimes...
+          there are stars within stars.
+        </p>
+
+        {/* Stockman said so: https://twitter.com/evocateur/status/1387997719797460993 */}
+        <PullQuote cite="Ian Mitchell, Quarantine Year One">
+          "Sometimes... there are stars within stars ⭐"
+        </PullQuote>
+
+        <p>
+          These posts and people are ones that I keep coming back to, either
+          because they deeply impacted my development as a web developer or
+          because their content is consistently amazing.
+        </p>
+
+        <DescriptionList>
+          <DescriptionItem
+            title="7 Principles of Rich Web Applications"
+            icon="https://pbs.twimg.com/profile_images/1029230542716264448/LgLb--Of_400x400.jpg"
+            alt="7 Principles of Rich Web Applications"
+            href="https://rauchg.com/2014/7-principles-of-rich-web-applications"
+          >
+            This article has influenced how I approach web development for years
+            now. A lot of it has since become relatively mainstream, but there
+            are still sections that need a slightly more-conscious approach.
+          </DescriptionItem>
+          <DescriptionItem
+            title="7 Rules for Creating Gorgeous UI"
+            icon="https://learnui.design/blog/img/posts/7-rules-1.jpeg"
+            alt="7 Rules for Creating Gorgeous UI"
+            href="https://learnui.design/blog/7-rules-for-creating-gorgeous-ui-part-1.html"
+          >
+            Is seven a lucky number or something? Look, I'm a developer first
+            and foremost. I know a good design when I see one, and I definitely
+            can point out UX and UI issues in an existing design. But if you sat
+            me down and asked me to develop something from scratch, I'd have a
+            real rough time of it. I've read several articles over the years
+            that teach you how to do styles, but this article was incredibly
+            helpful teaching me <em>fundamentals</em>. 'Course, I still violate
+            these all the time, but that's on me.
+          </DescriptionItem>
+        </DescriptionList>
       </section>
 
+      <hr />
+
       <section>
-        <p>Design!</p>
+        <h2>People and Blogs</h2>
+        <p></p>
 
         <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>User Experience</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
+          <BookmarkPanel href="#" title="Blogs">
+            Be an artisanal web dev and add RSS to your website.
+          </BookmarkPanel>
 
-          <article className="bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>User Interface</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Typography</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Design</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Animation</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
+          <BookmarkPanel href="#" title="Twitter Accounts">
+            Twitter is the drug I can't quit, no matter how desperately I crave
+            freedom
+          </BookmarkPanel>
         </div>
       </section>
 
       <section>
-        <p>CSS Goodness!</p>
-
-        <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>CSS3</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Sass / SCSS</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <p>JavaScript ohMY!</p>
-
-        <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>jQuery</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>React</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Node</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Vanilla JS</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <p>HTML Goodness!</p>
-
-        <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>HTML5</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>SVG</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Platform Integration</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <p>HTML Goodness!</p>
-
-        <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Documentation</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Analytics</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Security</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <p>Cross section important items</p>
-
-        <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry bookmarks-entry_full">
-            <a href="">
-              <header>
-                <h2>Accessibility</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Performance</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Tools</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Theory</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <p>Ruby!</p>
-
-        <div className="bookmarks-entrylist">
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Gems</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Rails</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Configuration</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-
-          <article className="bookmarks-entry bookmarks-entry">
-            <a href="">
-              <header>
-                <h2>Tutorials</h2>
-                <RightArrow />
-              </header>
-              <p>Description</p>
-            </a>
-          </article>
-        </div>
+        <h2>More coming soon!</h2>
+        <p>
+          lol I've been saying this for over four years, but I need to launch
+          this redesign without codifying my 400 links.
+        </p>
       </section>
     </Page>
   );

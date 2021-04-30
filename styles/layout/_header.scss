@@ -5,78 +5,100 @@ header {
   }
 
   .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 2em;
     margin: auto;
-  }
 
-  h1 {
-    margin: 0;
+    display: grid;
+    grid-template-columns: 6em 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: row;
+    column-gap: 2em;
 
-    a {
-      color: var(--dark);
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
+    &_mugshot {
+      grid-row: 1 / span 2;
 
-      @include link-hover {
-        border-bottom: 0;
-        color: var(--highlight);
+      a {
+        @include link-hover {
+          border-bottom: 0;
+        }
       }
+    }
+
+    &_title {
+      display: flex;
+      align-items: center;
+    }
+
+    &_navigation {
     }
 
     img {
-      border-radius: 24px;
+      border-radius: 72px;
     }
 
-    span {
+    h1 {
       font-family: "Inter";
       font-weight: 700;
-      font-size: 1.75rem;
+      font-size: 2.5rem;
       margin-left: 0.5em;
-    }
-  }
+      margin: 0;
 
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-transform: lowercase;
-  }
+      a {
+        color: var(--dark);
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
 
-  ol {
-    display: flex;
-    font-size: 1rem;
-    counter-reset: count 0;
-    list-style-type: none;
-  }
-
-  li {
-    counter-increment: count 1;
-    display: flex;
-    align-items: center;
-
-    & a {
-      display: block;
-      padding: 1em 1em 0.25em 1em;
-      text-decoration: none;
-      border-bottom: 4px solid transparent;
-      color: var(--dark);
-
-      &::before {
-        font-weight: 700;
-        margin-right: 0.5em;
-        // content: counters(count, ".", decimal) ". ";
-        content: "0" counters(count, ".", decimal);
+        @include link-hover {
+          border-bottom: 0;
+          color: var(--highlight);
+        }
       }
+    }
 
-      @include link-hover {
-        color: var(--highlight);
-        border-bottom: 4px solid var(--highlight);
+    nav {
+      display: flex;
+      align-items: center;
+      text-transform: lowercase;
+    }
+
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      counter-reset: count 0;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      counter-increment: count 1;
+      display: flex;
+      align-items: center;
+      margin: 0;
+
+      & a {
+        display: block;
+        margin: 0em 2em 0.25em 0em;
+        // padding: 0 1em;
+        text-decoration: none;
+        border-bottom: 4px solid transparent;
+        color: var(--dark);
 
         &::before {
-          color: var(--dark);
+          font-weight: 700;
+          margin-right: 0.5em;
+          content: "0" counter(count);
+        }
+
+        @include link-hover {
+          color: var(--highlight);
+          border-bottom: 4px solid var(--highlight);
+
+          &::before {
+            color: var(--dark);
+          }
         }
       }
     }

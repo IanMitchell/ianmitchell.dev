@@ -1,12 +1,12 @@
-import React from 'react';
-import Blog from './posts/Blog';
-import Link from './posts/Link';
+import React from "react";
+import Blog from "./posts/Blog";
+import LinkPost from "./posts/LinkPost";
 
-export default function Post({ layout = 'blog', ...props }) {
+export default function Post({ layout = "blog", ...props }) {
   switch (layout.toLowerCase()) {
-    case 'link':
-      return <Link {...props} />;
-    case 'blog':
+    case "link":
+      return <LinkPost {...props} />;
+    case "blog":
     default:
       return <Blog {...props} />;
   }

@@ -13,8 +13,8 @@
   }
 
   & svg {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
   }
 
   .icon-link {
@@ -23,12 +23,12 @@
 }
 
 .entry-link {
-  & > a {
+  & > h4 > a {
     display: flex;
     align-items: center;
   }
 
   svg {
-    margin-right: 0.75em;
+    margin-right: 0.5em;
   }
 }

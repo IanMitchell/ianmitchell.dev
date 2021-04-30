@@ -1,13 +1,17 @@
-import classnames from 'classnames';
-import { Fragment } from 'react';
+import classnames from "classnames";
+import { Fragment } from "react";
+
+function LinkWrapper(props) {
+  return <a {...props} />;
+}
 
 export function DescriptionList({ children }) {
   return <dl className="description-list">{children}</dl>;
 }
 
-export function DescriptionItem({ icon, size, alt, title, children }) {
-  const classes = classnames('description-item', {
-    'description-item_small': size === 'small',
+export function DescriptionItem({ href, icon, size, alt, title, children }) {
+  const classes = classnames("description-item", {
+    "description-item_small": size === "small",
   });
 
   return (
@@ -21,7 +25,7 @@ export function DescriptionItem({ icon, size, alt, title, children }) {
         </div>
       </dt>
       <dd>
-        <h4>{title}</h4>
+        <h4>{href ? <a href={href}>{title}</a> : title}</h4>
         <p>{children}</p>
       </dd>
     </Fragment>

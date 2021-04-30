@@ -1,0 +1,16 @@
+.pullquote {
+  position: relative;
+  background: var(--highlight);
+  color: var(--light);
+  font-size: 1.75rem;
+  padding: 1em;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 1em;
+
+  cite {
+    margin-top: 1em;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+}

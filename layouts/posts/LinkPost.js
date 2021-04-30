@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-import ExternalLink from '../../components/icons/ExternalLink';
+import React, { Fragment } from "react";
+import ExternalLink from "../../components/icons/ExternalLink";
 
-export default function Blog({ children, href, link }) {
+export default function LinkPost({ children, href, link }) {
   return (
     <Fragment>
       <a href={href} className="post-link">

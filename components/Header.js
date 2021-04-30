@@ -7,24 +7,30 @@ export default function Footer() {
     <header>
       <img className="splash" src="/header.svg" alt="" />
 
-      <section className="header-content container">
-        <h1>
+      <section className="header-content content">
+        <div className="header-content_mugshot">
           <Link href="/">
             <a>
               <Image
                 src="/ian.jpg"
                 alt="My profile picture. My mom says I'm a handsome boy!"
-                width={48}
-                height={48}
+                width={96}
+                height={96}
                 loading="eager"
                 priority
                 unoptimized
               />
-              <span>Ian</span>
             </a>
           </Link>
-        </h1>
-        <nav className="container">
+        </div>
+        <div className="header-content_title">
+          <h1>
+            <Link href="/">
+              <a>Ian</a>
+            </Link>
+          </h1>
+        </div>
+        <nav className="header-content_navigation">
           <ol>
             <li>
               <Link href="/">
