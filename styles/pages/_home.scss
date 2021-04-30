@@ -115,9 +115,9 @@
 
 .blog-link {
   padding: 1.5em;
-  text-align: center;
+  text-align: right;
   display: block;
-  background-color: #fff;
+  border-top: 4px solid var(--highlight);
 
   // Prevent screenshift on hover
   border-bottom: 0;
