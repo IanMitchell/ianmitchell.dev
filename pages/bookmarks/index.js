@@ -1,10 +1,10 @@
-import React from 'react';
-import Link from 'next/link';
-import Page from '../../layouts/Page';
-import Social from '../../components/Social';
-import RightArrow from '../../components/icons/RightArrow';
+import React from "react";
+import Link from "next/link";
+import Page from "../../layouts/Page";
+import Social from "../../components/Social";
+import RightArrow from "../../components/icons/RightArrow";
 
-export default function Blog({ posts }) {
+export default function Bookmarks({ posts }) {
   return (
     <Page
       title="Bookmarks"

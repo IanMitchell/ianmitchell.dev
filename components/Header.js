@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import RSS from "./icons/RSS";
 
 export default function Footer() {
   return (
@@ -27,13 +28,13 @@ export default function Footer() {
         <nav className="container">
           <ol>
             <li>
-              <Link href="/blog">
-                <a>Blog</a>
+              <Link href="/">
+                <a>Home</a>
               </Link>
             </li>
             <li>
-              <Link href="/snippets">
-                <a>Snippets</a>
+              <Link href="/blog">
+                <a>Blog</a>
               </Link>
             </li>
             <li>
@@ -42,12 +43,14 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/uses">
-                <a>My Stack</a>
+              <Link href="/snippets">
+                <a>Snippets</a>
               </Link>
             </li>
             <li>
-              <a href="/resume">Résumé</a>
+              <Link href="/uses">
+                <a>My Stack</a>
+              </Link>
             </li>
           </ol>
         </nav>

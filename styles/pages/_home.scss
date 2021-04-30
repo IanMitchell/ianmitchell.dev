@@ -125,22 +125,27 @@
 
 .recent-posts {
   @include media(">small") {
-    margin-top: 2em;
+    margin-top: 4em;
+  }
+
+  header {
+    margin-bottom: 2em;
   }
 
   h2 {
+    margin: 0;
     font-size: 2rem;
 
     @include media(">small") {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
   }
 
   .rss {
     fill: var(--dark);
     color: var(--dark);
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.75em;
+    height: 1.75em;
   }
 
   a {
