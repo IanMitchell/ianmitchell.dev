@@ -7,10 +7,13 @@ header {
   .header-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: auto;
   }
 
   h1 {
+    margin: 0;
+
     a {
       color: var(--dark);
       display: inline-flex;
