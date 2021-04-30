@@ -89,11 +89,11 @@ export default function Bookmarks({ posts }) {
         <p></p>
 
         <div className="bookmarks-entrylist">
-          <BookmarkPanel href="#" title="Blogs">
+          <BookmarkPanel href="/bookmarks/blogs" title="Blogs">
             Be an artisanal web dev and add RSS to your website.
           </BookmarkPanel>
 
-          <BookmarkPanel href="#" title="Twitter Accounts">
+          <BookmarkPanel href="/bookmarks/twitter" title="Twitter Accounts">
             Twitter is the drug I can't quit, no matter how desperately I crave
             freedom
           </BookmarkPanel>
@@ -103,8 +103,14 @@ export default function Bookmarks({ posts }) {
       <section>
         <h2>More coming soon!</h2>
         <p>
-          lol I've been saying this for over four years, but I need to launch
-          this redesign without codifying my 400 links.
+          I've been saying this for over four years, but I need to launch this
+          redesign without codifying my 400+ links.
+        </p>
+        <p>
+          It's just that every time I start, I start worrying and overthinking
+          it. How do I check for dead links? What if a link shows up twice? What
+          if I want to do things like auto-pull the website favicon? Bunch of me
+          problems, I know.
         </p>
       </section>
     </Page>

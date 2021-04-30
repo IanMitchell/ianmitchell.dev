@@ -1,42 +1,12 @@
-const detectFrontmatter = require('remark-frontmatter');
-const visit = require('unist-util-visit');
-const remove = require('unist-util-remove');
-const builder = require('unist-builder');
-const yaml = require('yaml');
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+});
 
-function extractFrontmatter() {
-  return (tree, file) => {
-    visit(tree, 'yaml', (node) => {
-      file.data.frontmatter = yaml.parse(node.value);
-    });
-    remove(tree, 'yaml');
-  };
-}
-
-function exportFrontmatter() {
-  return (tree, file) => {
-    const value = JSON.stringify(file.data.frontmatter, null, 2);
-    const frontmatter = builder(
-      'export',
-      `export const frontmatter = ${value}`
-    );
-    tree.children = [frontmatter, ...tree.children];
-  };
-}
-
-// const withMDX = require('@next/mdx')({
-//   options: {
-//     remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
-//     rehypePlugins: [],
-//   },
-// });
-
-// module.exports = withMDX({
-module.exports = {
+module.exports = withMDX({
   future: {
     webpack5: true,
   },
-  pageExtensions: ['js', 'mdx'],
+  pageExtensions: ["js", "mdx"],
   webpack: (config, { dev, isServer }) => {
     if (!dev && isServer) {
       const originalEntry = config.entry;
@@ -45,7 +15,7 @@ module.exports = {
         const entries = { ...(await originalEntry()) };
 
         // These scripts can import components from the app and use ES modules
-        entries['./scripts/generate-rss.js'] = './scripts/generate-rss.js';
+        entries["./scripts/generate-rss.js"] = "./scripts/generate-rss.js";
 
         return entries;
       };
@@ -54,16 +24,16 @@ module.exports = {
     return config;
   },
   env: {
-    DOMAIN: 'https://ianmitchell.dev',
+    DOMAIN: "https://ianmitchell.dev",
   },
   async Headers() {
     return [
       {
-        source: '*',
+        source: "*",
         headers: [
           {
-            key: 'Permission-Policy',
-            value: 'interest-cohort=()',
+            key: "Permission-Policy",
+            value: "interest-cohort=()",
           },
         ],
       },
@@ -72,18 +42,18 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/what-i-use',
-        destination: '/uses',
+        source: "/what-i-use",
+        destination: "/uses",
         permanent: true,
       },
       {
-        source: '/tools',
-        destination: '/uses',
+        source: "/tools",
+        destination: "/uses",
         permanent: true,
       },
       {
-        source: '/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:post',
-        destination: '/blog/:post',
+        source: "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:post",
+        destination: "/blog/:post",
         permanent: true,
       },
     ];
@@ -91,13 +61,13 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/pokemon',
-        destination: '/projects/pokemon/index.html',
+        source: "/pokemon",
+        destination: "/projects/pokemon/index.html",
       },
       {
-        source: '/resume',
-        destination: '/projects/resume/index.html',
+        source: "/resume",
+        destination: "/projects/resume/index.html",
       },
     ];
   },
-};
+});
