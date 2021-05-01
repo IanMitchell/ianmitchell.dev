@@ -16,6 +16,7 @@ header {
 
     &_mugshot {
       grid-row: 1 / span 2;
+      margin: auto;
 
       a {
         @include link-hover {
@@ -26,7 +27,8 @@ header {
 
     &_title {
       display: flex;
-      align-items: center;
+      align-self: flex-end;
+      margin-bottom: 0.5em;
     }
 
     &_navigation {

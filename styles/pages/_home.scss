@@ -26,7 +26,7 @@
     list-style: none;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    $inactive-fade: 0.5;
+    $inactive-fade: 0.6;
     $active-fade: 1;
 
     @include media(">650px") {
@@ -99,7 +99,8 @@
     }
 
     &_discord {
-      $brand: rgb(88, 101, 242);
+      // $brand: rgb(88, 101, 242);
+      $brand: rgb(114, 137, 218);
       background-color: rgba($brand, $inactive-fade);
 
       &:hover {

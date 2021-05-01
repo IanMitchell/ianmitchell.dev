@@ -1,17 +1,20 @@
-import React from 'react';
-import Link from 'next/link';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
-import Page from '../../layouts/Page';
-import Meta from '../../components/Meta';
-import MDX from '../../components/MDX';
-import CodePen from '../../components/CodePen';
-import PostLayout from '../../layouts/Post';
-import { getAllPosts, getSerializeableFrontmatter } from '../../lib/posts';
-import Social from '../../components/Social';
+import React from "react";
+import Link from "next/link";
+import renderToString from "next-mdx-remote/render-to-string";
+import hydrate from "next-mdx-remote/hydrate";
+import Page from "../../layouts/Page";
+import Meta from "../../components/Meta";
+import MDX from "../../components/MDX";
+import Alert from "../../components/Alert";
+import CodePen from "../../components/CodePen";
+import PostLayout from "../../layouts/Post";
+import { getAllPosts, getSerializeableFrontmatter } from "../../lib/posts";
+import Social from "../../components/Social";
 
 const COMPONENTS = {
   CodePen,
+  Link,
+  Alert,
 };
 
 export default function Post({ frontmatter, source }) {
@@ -77,7 +80,7 @@ export async function getStaticPaths() {
   const uniqueSlugs = new Set(posts.map((post) => post.frontmatter.slug));
 
   if (uniqueSlugs.size !== posts.length) {
-    console.error('Slugs are not unique!');
+    console.error("Slugs are not unique!");
     process.exit(1);
   }
 
