@@ -42,7 +42,7 @@ pre[class*="language-"] code {
     monospace;
   font-variant: no-common-ligatures no-discretionary-ligatures
     no-historical-ligatures no-contextual;
-  font-size: 14px;
+  font-size: 1rem;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -100,10 +100,9 @@ code.inline-code,
   vertical-align: baseline;
   padding: 0.05em 0.3em 0.2em 0.3em;
   background: var(--prism-background);
-  font-size: 14px;
   font-family: "IBM Plex Mono";
   font-style: normal;
-  line-height: 24px;
+  line-height: 1.5;
   border-radius: 5px;
   color: var(--main-font-color);
 }
