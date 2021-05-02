@@ -1,4 +1,4 @@
-export function PullQuote({ children, cite }) {
+export default function PullQuote({ children, cite }) {
   return (
     <blockquote className="pullquote">
       {children}

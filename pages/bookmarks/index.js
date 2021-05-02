@@ -2,13 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Page from "../../layouts/Page";
 import Social from "../../components/Social";
-import RightArrow from "../../components/icons/RightArrow";
 import BookmarkPanel from "../../components/BookmarkPanel";
 import {
   DescriptionItem,
   DescriptionList,
 } from "../../components/DescriptionList";
-import { PullQuote } from "../../components/Pullquote";
+import PullQuote from "../../components/PullQuote";
 
 export default function Bookmarks({ posts }) {
   return (
