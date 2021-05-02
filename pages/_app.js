@@ -74,6 +74,12 @@ export default function App({ Component, pageProps }) {
           title="RSS"
           href="/feed.xml"
         />
+        <link
+          rel="alternate"
+          title="Ian's Blog Feed"
+          type="application/json"
+          href="https://ianmitchell.dev/feed.json"
+        />
 
         <link
           key="webmention"
