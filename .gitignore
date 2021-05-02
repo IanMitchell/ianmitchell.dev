@@ -31,3 +31,4 @@ yarn-error.log*
 
 # Generated files
 public/feed.xml
+public/feed.json

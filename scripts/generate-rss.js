@@ -1,8 +1,8 @@
 import fs from "fs";
+import { Feed } from "feed";
 import RSS from "rss";
 import Link from "next/link";
 import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
 import React, { Fragment } from "react";
 import ReactDOMServer from "react-dom/server";
 import MDX from "../components/MDX";
@@ -17,10 +17,22 @@ const COMPONENTS = {
 };
 
 async function generate() {
-  const feed = new RSS({
+  const feed = new Feed({
     title: "Ian Mitchell",
-    site_url: "https://ianmitchell.dev",
-    feed_url: "https://ianmitchell.dev/feed.xml",
+    description: "My most recent blog posts",
+    id: "https://ianmitchell.dev",
+    link: "https://ianmitchell.dev",
+    // image: "http://example.com/image.png",
+    // favicon: "http://example.com/favicon.ico",
+    feedLinks: {
+      json: "https://ianmitchell.dev/json",
+      atom: "https://ianmitchell.dev/atom",
+    },
+    author: {
+      name: "Ian Mitchell",
+      email: "ian.mitchell@hey.com",
+      link: "https://ianmitchell.dev",
+    },
   });
 
   const posts = await getAllPosts();
@@ -45,12 +57,13 @@ async function generate() {
   );
 
   entries.forEach(({ frontmatter, source }) => {
-    feed.item({
+    feed.addItem({
       title: frontmatter.title,
       guid: frontmatter.slug,
-      url: frontmatter.slug,
+      link: `https://ianmitchell.dev/blog/${frontmatter.slug}`,
       date: frontmatter.date,
-      description: ReactDOMServer.renderToStaticMarkup(
+      // image: frontmatter.image,
+      content: ReactDOMServer.renderToStaticMarkup(
         <Fragment>
           <MDX>
             <section dangerouslySetInnerHTML={{ __html: source }} />
@@ -65,7 +78,8 @@ async function generate() {
     });
   });
 
-  fs.writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
+  fs.writeFileSync("./public/feed.xml", feed.rss2());
+  fs.writeFileSync("./public/feed.json", feed.json1());
 }
 
 generate();
