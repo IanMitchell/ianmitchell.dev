@@ -1,6 +1,5 @@
 import fs from "fs";
 import { Feed } from "feed";
-import RSS from "rss";
 import Link from "next/link";
 import renderToString from "next-mdx-remote/render-to-string";
 import React, { Fragment } from "react";
