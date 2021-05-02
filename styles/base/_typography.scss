@@ -4,6 +4,11 @@
 
 html {
   line-height: 1.6;
+
+  /**
+   * JUST SAFARI THINGS https://github.com/rsms/inter/issues/321
+  */
+  letter-spacing: 0.000001px;
 }
 
 h1,

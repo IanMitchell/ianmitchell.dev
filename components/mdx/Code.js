@@ -1,10 +1,16 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
+import Prism from "prism-react-renderer/prism";
 import rangeParser from "parse-numeric-range";
 import classnames from "classnames";
+
 import FileIcon from "../icons/File";
 import CopyIcon from "../icons/Copy";
 import CopyButton from "../CopyButton";
+
+// Extend base classes
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-docker");
 
 const diffBgColorMap = {
   "+": "var(--prism-highlight-added-background)",
@@ -13,8 +19,8 @@ const diffBgColorMap = {
 };
 
 const symColorMap = {
-  "+": "var(--prism-higlight-added-text)",
-  "-": "var(--prism-higlight-removed-text)",
+  "+": "var(--prism-highlight-added-text)",
+  "-": "var(--prism-highlight-removed-text)",
   "|": "var(--prism-highlight-text)",
 };
 

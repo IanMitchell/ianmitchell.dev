@@ -2,7 +2,7 @@
   background: var(--dark);
   color: var(--light);
   padding: 1.5em;
-  margin: 2em 0em 2em 1.25em;
+  margin: 2em;
 
   border-radius: 8px;
   position: relative;
@@ -30,6 +30,8 @@
   }
 
   &_content {
+    font-size: 1rem;
+
     & p:first-child {
       margin-top: 0;
     }

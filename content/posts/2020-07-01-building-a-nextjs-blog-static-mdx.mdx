@@ -1,5 +1,5 @@
 ---
-title: 'Building a Next.js Blog: Static MDX'
+title: "Building a Next.js Blog: Static MDX"
 date: 2020-07-01
 tags:
   - Code
@@ -7,6 +7,15 @@ tags:
   - Guides
 excerpt: Statically rendered MDX with Frontmatter in a `content` directory... kind of like Jekyll!
 ---
+
+<Alert title="Out of Date">
+
+The information below will still work, but I would highly recommend checking
+out [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) instead.
+It's seen some iteration since I published this article, and I've since moved my
+blog over to it.
+
+</Alert>
 
 I write all my content using [MDX](https://github.com/mdx-js/mdx). Getting it to work with Next.js and the [static site generation](https://nextjs.org/blog/next-9-3#next-gen-static-site-generation-ssg-support) it added in v9.3 isn't as easy as Gatsby makes it, but I got most of the way there with this method.
 
@@ -22,14 +31,14 @@ There is also the option of using the [next-mdx-remote](https://github.com/hashi
 
 Adding MDX support to a Next.js application is easiest if we use the [official plugin](https://github.com/vercel/next.js/tree/canary/packages/next-mdx). You can install it by running:
 
-```bash
+```terminal
 $ npm install @next/mdx @mdx-js/loader
 ```
 
 Next you'll need to create a `next.config.js`:
 
 ```jsx
-const withMDX = require('@next/mdx')();
+const withMDX = require("@next/mdx")();
 module.exports = withMDX();
 ```
 
@@ -37,10 +46,10 @@ This lets us import MDX files as if they're JavaScript files. Now all we need to
 
 Let's start with an index page. For this, we will want to load every blog post we have. Let's write a helper method that does this for us - create a `lib/posts.js` file with this function:
 
-```jsx
+```jsx file=lib/posts.js copy
 export async function getAllPosts() {
   // Get a list of all files in the content directory
-  const directory = path.join(process.cwd(), 'content', 'posts');
+  const directory = path.join(process.cwd(), "content", "posts");
   const files = fs.readdirSync(directory);
 
   // Loop through all the files and import them
@@ -50,7 +59,7 @@ export async function getAllPosts() {
 
   const posts = entries.map((entry, index) => ({
     // Use filename as our slug
-    slug: files[index].split('.')[0],
+    slug: files[index].split(".")[0],
     // Use the `default` export as the post body
     MDXContent: entry.default,
   }));
@@ -62,9 +71,9 @@ export async function getAllPosts() {
 
 Now that we have an object with all the posts we can use it to create a list of titles by adding a `getStaticProps` method to our home page.
 
-```jsx
-import Link from 'next/link';
-import { getAllPosts } from '../lib/posts';
+```jsx file=pages/index.js copy
+import Link from "next/link";
+import { getAllPosts } from "../lib/posts";
 
 export default function Home({ entries }) {
   return (
@@ -97,7 +106,7 @@ export async function getStaticProps() {
 
 Next let's generate the post page. We need to start by giving Next.js a list of all the pages it needs to generate. Create a `pages/blog/[post].js` file and use `getAllPosts` to create the list of pages in the `getStaticPaths` method:
 
-```jsx
+```jsx file=pages/blog/[post].js copy
 export async function getStaticPaths() {
   const posts = await getAllPosts();
 
@@ -114,7 +123,7 @@ export async function getStaticPaths() {
 
 For each of those pages we'll need to load the corresponding MDX file and render it. The trick for getting MDX to be serializable is to pre-emptively render it to static markup! This makes it seriablizable for Next.js.
 
-```jsx
+```jsx file=pages/blog/[post].js copy
 export async function getStaticProps(context) {
   const posts = await getAllPosts();
   const post = posts.find((post) => post.slug === context.params.post);
@@ -131,7 +140,7 @@ export async function getStaticProps(context) {
 
 To render it we need to treat it as static HTML:
 
-```jsx
+```jsx file=pages/blog/[post].js copy
 export default function Post({ content }) {
   return <article dangerouslySetInnerHTML={{ __html: content }} />;
 }
@@ -139,7 +148,7 @@ export default function Post({ content }) {
 
 All together, your file should look like this:
 
-```jsx
+```jsx file=pages/blog/[post].js copy
 export default function Post({ content }) {
   return <article dangerouslySetInnerHTML={{ __html: content }} />;
 }
@@ -178,9 +187,9 @@ A common pattern for using MDX with Next.js is putting an `<MDXProvider>` in you
 For this website I created a new `MDX.js` component that defines all the custom components I want to use.
 
 ```jsx
-import React, { useState } from 'react';
-import { MDXProvider } from '@mdx-js/react';
-import Heading from './Heading';
+import React, { useState } from "react";
+import { MDXProvider } from "@mdx-js/react";
+import Heading from "./Heading";
 
 export default function MDX({ children }) {
   // https://mdxjs.com/advanced/components#mdxprovider
@@ -195,7 +204,7 @@ export default function MDX({ children }) {
 Then I use this in `_app.js`:
 
 ```jsx
-import MDX from '../components/MDX';
+import MDX from "../components/MDX";
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -234,16 +243,16 @@ $ npm install remark-frontmatter unist-util-visit unist-util-remove unist-builde
 We can use these packages to modify the remark AST and convert frontmatter to an MDX supported JavaScript export. We'll need to find the frontmatter and extract it:
 
 ```jsx
-const visit = require('unist-util-visit');
-const remove = require('unist-util-remove');
-const yaml = require('yaml');
+const visit = require("unist-util-visit");
+const remove = require("unist-util-remove");
+const yaml = require("yaml");
 
 function extractFrontmatter() {
   return (tree, file) => {
-    visit(tree, 'yaml', (node) => {
+    visit(tree, "yaml", (node) => {
       file.data.frontmatter = yaml.parse(node.value);
     });
-    remove(tree, 'yaml');
+    remove(tree, "yaml");
   };
 }
 ```
@@ -251,13 +260,13 @@ function extractFrontmatter() {
 Then we need to take the new `data.frontmatter` object that we attached to the `file` and convert it to an export.
 
 ```jsx
-const builder = require('unist-builder');
+const builder = require("unist-builder");
 
 function exportFrontmatter() {
   return (tree, file) => {
     const value = JSON.stringify(file.data.frontmatter, null, 2);
     const frontmatter = builder(
-      'export',
+      "export",
       `export const frontmatter = ${value}`
     );
     tree.children = [frontmatter, ...tree.children];
@@ -268,9 +277,9 @@ function exportFrontmatter() {
 Then register the custom plugins with MDX:
 
 ```jsx
-const detectFrontmatter = require('remark-frontmatter');
+const detectFrontmatter = require("remark-frontmatter");
 
-const withMDX = require('@next/mdx')({
+const withMDX = require("@next/mdx")({
   options: {
     remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
     rehypePlugins: [],
@@ -281,7 +290,7 @@ const withMDX = require('@next/mdx')({
 Now whenever we import the mdx file, we can import the frontmatter like we would a named export.
 
 ```jsx
-const mdx = await import('../content/blog_post.mdx');
+const mdx = await import("../content/blog_post.mdx");
 
 const { frontmatter, default: MDXContent } = mdx;
 ```
@@ -293,18 +302,18 @@ const { frontmatter, default: MDXContent } = mdx;
 Add the following to `next.config.js`:
 
 ```jsx
-const detectFrontmatter = require('remark-frontmatter');
-const visit = require('unist-util-visit');
-const remove = require('unist-util-remove');
-const builder = require('unist-builder');
-const yaml = require('yaml');
+const detectFrontmatter = require("remark-frontmatter");
+const visit = require("unist-util-visit");
+const remove = require("unist-util-remove");
+const builder = require("unist-builder");
+const yaml = require("yaml");
 
 function extractFrontmatter() {
   return (tree, file) => {
-    visit(tree, 'yaml', (node) => {
+    visit(tree, "yaml", (node) => {
       file.data.frontmatter = yaml.parse(node.value);
     });
-    remove(tree, 'yaml');
+    remove(tree, "yaml");
   };
 }
 
@@ -312,14 +321,14 @@ function exportFrontmatter() {
   return (tree, file) => {
     const value = JSON.stringify(file.data.frontmatter, null, 2);
     const frontmatter = builder(
-      'export',
+      "export",
       `export const frontmatter = ${value}`
     );
     tree.children = [frontmatter, ...tree.children];
   };
 }
 
-const withMDX = require('@next/mdx')({
+const withMDX = require("@next/mdx")({
   options: {
     remarkPlugins: [detectFrontmatter, extractFrontmatter, exportFrontmatter],
     rehypePlugins: [],
@@ -327,7 +336,7 @@ const withMDX = require('@next/mdx')({
 });
 
 module.exports = withMDX({
-  pageExtensions: ['js', 'mdx'],
+  pageExtensions: ["js", "mdx"],
 });
 ```
 
@@ -335,7 +344,7 @@ Create `lib/posts.js` with the following:
 
 ```jsx
 export async function getAllPosts() {
-  const directory = path.join(process.cwd(), 'content', 'posts');
+  const directory = path.join(process.cwd(), "content", "posts");
   const files = fs.readdirSync(directory);
 
   const entries = await Promise.all(
@@ -359,10 +368,10 @@ export async function getAllPosts() {
 Create `pages/blog/[slug].js` with the following:
 
 ```jsx
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import MDX from '../../components/MDX';
-import { getAllPosts, getFrontmatterJSON } from '../../lib/posts';
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import MDX from "../../components/MDX";
+import { getAllPosts, getFrontmatterJSON } from "../../lib/posts";
 
 export default function Post({ frontmatter, content }) {
   return <article dangerouslySetInnerHTML={{ __html: content }} />;

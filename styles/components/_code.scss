@@ -15,25 +15,8 @@
   margin-bottom: 24px;
   position: relative;
 
-  // &_file {
-  //   font-weight: 600;
-  //   font-size: 14px;
-  //   font-family: "IBM Plex Mono";
-  //   margin-bottom: 0.5rem;
-
-  //   span {
-  //     display: inline-flex;
-  //     align-items: center;
-
-  //     svg {
-  //       margin-right: 8px;
-  //       height: 16px;
-  //       width: 16px;
-  //     }
-  //   }
-  // }
   &_file {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
     font-family: "IBM Plex Mono";
     margin-bottom: 0.5rem;
@@ -62,7 +45,6 @@
     margin: 0 0 16px 0;
     // padding: 2rem 1rem 1rem 1rem;
     overflow: auto;
-    webkit-overflow-scrolling: touch;
 
     .line {
       display: block;
