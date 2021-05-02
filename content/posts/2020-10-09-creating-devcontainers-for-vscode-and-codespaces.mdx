@@ -39,7 +39,7 @@ The Dockerfile defines the virtual machine your code runs on. If you're new to D
 
 To make one, create a `.devcontainer/Dockerfile` file that pulls in the image you need. For my Ruby on Rails applications, I'm using this:
 
-```Dockerfile
+```docker file=.devcontainer/Dockerfile copy
 # Create a variable with a default value of 2.7
 ARG VARIANT=2.7
 
@@ -67,7 +67,7 @@ This is a [modified version of the presets Microsoft has published](https://gith
 
 If you’re using Node.js, it might start like this instead:
 
-```Dockerfile
+```docker
 ARG VARIANT=14.9
 FROM node:${VARIANT}
 ```
@@ -76,8 +76,8 @@ FROM node:${VARIANT}
 
 Docker Compose is a great way of adding services to your environment. If your application needs a database for instance, an easy way to add it to your devcontainer is creating a `.devcontainer/docker-compose.yml` file that loads it in an image. For PostgreSQL, that looks like this:
 
-```yml
-version: '3'
+```yml file=.devcontainer/docker-compose.yml copy
+version: "3"
 
 services:
   app:
@@ -120,7 +120,7 @@ Now for the final part! We can piece it all together with a `.devcontainer/devco
 
 First, let’s add the basics on how to start the devcontainer:
 
-```json
+```json file=.devcontainer/devcontainer.json copy
 {
   "name": "project-name",
   "build": {
@@ -133,7 +133,7 @@ First, let’s add the basics on how to start the devcontainer:
 
 If you're using Docker Compose, this will be slightly different:
 
-```json
+```json file=.devcontainer/devcontainer.json copy
 {
   "name": "project-name",
   "dockerComposeFile": "docker-compose.yml",
@@ -147,7 +147,9 @@ If you're using Docker Compose, this will be slightly different:
 
 Next, add some default VS Code settings and extensions to install automatically by adding this to the file:
 
-```json
+```json file=.devcontainer/devcontainer.json copy
+{
+  //...
   "settings": {
     "terminal.integrated.shell.linux": "/bin/zsh",
     "sqltools.connections": [
@@ -178,7 +180,8 @@ Next, add some default VS Code settings and extensions to install automatically 
     "wix.vscode-import-cost",
     "esbenp.prettier-vscode",
     "prisma.prisma"
-  ],
+  ]
+}
 ```
 
 When VS Code loads this devcontainer it will automatically install the extensions and use the configured settings - it’s a great way to help new contributors get set up by including defaults like ESLint and Prettier.
@@ -193,7 +196,7 @@ Check out the [official documentation](https://aka.ms/devcontainer.json) to lear
 
 _My complete `devcontainer.json` for Aquarius:_
 
-```json
+```json file=.devcontainer/devcontainer.json copy
 {
   "name": "Aquarius",
   "dockerComposeFile": "docker-compose.yml",

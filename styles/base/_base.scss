@@ -17,25 +17,54 @@
   --prism-property: #fff;
 
   @include dark-mode {
-
   }
 }
 
 /* Display-P3 color, when supported. */
 @supports (color: color(display-p3 1 1 1 / 1)) {
   :root {
-    --dark: color(display-p3 0.12 0.13 0.21 / 1.00);
-    --light: color(display-p3 0.96 0.97 1.00 / 1.00);
+    --dark: color(display-p3 0.12 0.13 0.21 / 1);
+    --light: color(display-p3 0.96 0.97 1 / 1);
     --highlight: color(display-p3 1 0 0.492 / 1);
   }
 }
 
+::selection {
+  background-color: var(--dark);
+  color: var(--light);
+}
 
 /**
- * Set up a decent box model on the root element
+ * Configure box model: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
  */
 html {
   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Theme
+ */
+body {
+  // background-color: hsl(210, 21, 95);
+  background-image: url("/header.svg") no-repeat;
+
+  // Have to manually do dark mode checks on the body element since the
+  // dark-mode mixin would double nest the `body` tag
+  @media (prefers-color-scheme: dark) {
+    &:not(.light) {
+      // background-color: hsl(210, 21, 5);
+    }
+  }
+
+  &.dark {
+    // background-color: hsl(210, 21, 5);
+  }
 }
 
 /**
@@ -52,42 +81,12 @@ body,
   flex-flow: column;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
-}
-
-
-/**
- * Make all elements from the DOM inherit from the parent box-sizing
- * Since `*` has a specificity of 0, it does not override the `html` value
- * making all elements inheriting from the root box-sizing value
- * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
- */
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  background-color: var(--dark);
-  color: var(--light);
-  font-family: 'Inter';
-}
-
 main {
   margin: auto;
   width: 80%;
-  flex: 1 1 auto;
 
-  @include media('>small') {
-    padding: 20px;
+  @include media(">small") {
+    padding: 2em;
   }
 }
 
@@ -100,283 +99,55 @@ a {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
-
-*, ::before, ::after {
-  box-sizing: inherit;
-}
-
-body {
-  letter-spacing: 0.01rem;
-  font-size: 1.8rem;
-  line-height: 1.75em;
-}
-
-::selection {
-  background: #D6EDFF; // TODO: Calculate
-}
-
-h1, h2, h3,
-h4, h5, h6 {
-
-  // color: #2E2E2E; // TODO: Calculate
-  line-height: 1.15em;
-  margin: 0 0 0.3em 0;
-
-  @include media('>small') {
-    margin: 0 0 0.4em 0;
-  }
-}
-
-h1 {
-  font-size: 2.8rem;
-
-  @include media('>small', '<=medium') {
-    font-size: 4.5rem;
-  }
-
-  @include media('>medium') {
-    font-size: 5rem;
-  }
-}
-
-h2 {
-  font-size: 2.4rem;
-
-  @include media('>small') {
-    font-size: 3.6rem;
-  }
-}
-
-h3 {
-  font-size: 2.1rem;
-
-  @include media('>small') {
-    font-size: 3rem;
-  }
-}
-
-h4 {
-  font-size: 1.9rem;
-
-  @include media('>small') {
-    font-size: 2.5rem;
-  }
-}
-
-h5 {
-  font-size: 1.8rem;
-
-  @include media('>small') {
-    font-size: 2rem;
-  }
-}
-
-h6 {
-  font-size: 1.8rem;
-
-  @include media('>medium') {
-    font-size: 2rem;
-  }
-}
-
-a {
-  // color: lighten($color-dark, 10%);
-  // @include transition(color 0.3s ease);
-}
-
-a:hover {
-  // color: darken($color-dark, 15%);
-}
-
-p, ul, ol, dl {
-  margin: 0 0 1.75em 0;
-
-  @include media('<=small') {
-    font-size: 0.95em;
-    margin: 0 0 2.5rem 0;
-  }
-}
-
-ol, ul {
-  padding-left: 2em;
-
-  @include media('>medium') {
-    padding-left: 3rem;
-  }
-}
-
-ol ol, ul ul,
-ul ol, ol ul {
-  margin: 0 0 0.4em 0;
-  padding-left: 2em;
-}
-
-dl dt {
-  float: left;
-  width: 180px;
-  overflow: hidden;
-  clear: left;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 700;
-  margin-bottom: 1em;
-}
-
-dl dd {
-  margin-left: 200px;
-  margin-bottom: 1em
-}
-
-li {
-  margin: 0.4em 0;
-}
-
-li li {
-  margin: 0;
-}
-
 hr {
+  position: relative;
   display: block;
+  width: 100%;
+  padding: 0;
   height: 1px;
   border: 0;
-  border-top: #EFEFEF 1px solid; // TODO: Calculate
-  margin: 3.2em 0;
-  padding: 0;
+  border-top: 1px solid var(--highlight);
+  margin-top: 3em;
+  margin-bottom: 3em;
 
-  @include media('<=medium') {
-    margin: 2.4em 0;
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1em;
+    left: 50%;
+    display: block;
+    margin-left: -1.5em;
+    width: 1px;
+    height: 2em;
+    background: var(--highlight);
+    box-shadow: 0 0 0 0.75em var(--light);
+    transform: rotate(45deg);
   }
-
-  @include media('<=small') {
-    margin: 1.75em 0;
-  }
-}
-
-blockquote {
-  margin: 1.75em 0;
-  padding: 0 0 0 1.75em;
-  border-left: var(--highlight) 0.2em solid;
-
-  @include media('>medium') {
-    margin-left: -2.2em;
-  }
-}
-
-blockquote p {
-  margin: 0.8em 0;
-  font-style: italic;
-}
-
-blockquote small {
-  display: inline-block;
-  margin: 0.8em 0 0.8em 1.5em;
-  font-size: 0.9em;
-}
-
-blockquote small:before {
-  content: "\2014 \00A0";
-}
-
-blockquote cite {
-  font-weight: 700;
-}
-
-blockquote cite a {
-  font-weight: normal;
-}
-
-mark {
-  background-color: #fdffb6; // TODO: Calculate
-}
-
-kbd {
-  display: inline-block;
-  margin-bottom: 0.4em;
-  padding: 1px 8px;
-  border: #CCC 1px solid; // TODO: Calculate
-  color: #666; // TODO: Calculate
-  // text-shadow: $color-light 0 1px 0;
-  font-size: 0.9em;
-  font-weight: 700;
-  background: #F4F4F4; // TODO: Calculate
-  border-radius: 4px;
-  // box-shadow:
-  //   0 1px 0 rgba(0, 0, 0, 0.2), // TODO: Calculate
-  //   0 1px 0 0 $color-light inset;
 }
 
 table {
-  margin: 1.75em 0;
   width: 100%;
-  max-width: 100%;
-  background-color: transparent;
-}
-
-table th,
-table td {
-  padding: 8px;
-  line-height: 20px;
+  margin-top: 2em;
   text-align: left;
-  vertical-align: top;
-  border-top: #EFEFEF 1px solid; // TODO: Calculate
 }
 
-table th {
-  // color: #000; // TODO: Calculate
+thead {
+  font-weight: 700;
+  border-bottom: 1px solid #333;
 }
 
-table caption + thead tr:first-child th,
-table caption + thead tr:first-child td,
-table colgroup + thead tr:first-child th,
-table colgroup + thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-    border-top: 0;
+tr {
+  border-bottom: 1px solid #333;
 }
 
-table tbody + tbody {
-  border-top: #EFEFEF 2px solid; // TODO: Calculate
+tbody td {
+  padding: 0.75em;
 }
 
-table table table {
-  // background-color: $color-light;
-  // background-color: var(--dark);
+tbody td:first-child {
+  padding-left: 0;
 }
 
-table tbody > tr:nth-child(odd) > td,
-table tbody > tr:nth-child(odd) > th {
-  // background-color: #F6F6F6; // TODO: Calculate
-  // filter: brightness(80%);
-}
-
-table.plain tbody > tr:nth-child(odd) > td,
-table.plain tbody > tr:nth-child(odd) > th {
-  background: transparent;
-}
-
-iframe, .fluid-width-video-wrapper {
-  display: block;
-  margin: 1.75em 0;
+tbody td:last-child {
+  padding-left: 0;
 }

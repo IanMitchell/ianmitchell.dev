@@ -1,78 +1,51 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Entry from '../layouts/Entry';
-import { getAllPosts, getSerializeableFrontmatter } from '../lib/posts';
-import Page from '../layouts/Page';
-import Email from '../components/icons/Email';
-import GitHub from '../components/icons/GitHub';
-import Twitter from '../components/icons/Twitter';
-import RSS from '../components/icons/RSS';
-import Discord from '../components/icons/Discord';
+import Link from "next/link";
+import Entry from "../layouts/Entry";
+import { getAllPosts, getSerializeableFrontmatter } from "../lib/posts";
+import Page from "../layouts/Page";
+import Email from "../components/icons/Email";
+import GitHub from "../components/icons/GitHub";
+import Twitter from "../components/icons/Twitter";
+import RSS from "../components/icons/RSS";
+import Discord from "../components/icons/Discord";
 
 export default function Home({ entries }) {
   return (
     <Page>
-      <section className="about">
-        <h1>Hello! My name is Ian Mitchell.</h1>
-        <header className="masthead">
-          <figure className="big-me">
-            <Image
-              src="/ian.jpg"
-              alt="My profile picture"
-              width={366}
-              height={350}
-              loading="eager"
-              priority
-              unoptimized
-            />
-          </figure>
-          <div className="masthead-container">
-            <div className="masthead-content">
-              <figure className="mini-me">
-                <Image
-                  src="/ian.jpg"
-                  alt="My profile picture"
-                  width={366}
-                  height={350}
-                  loading="eager"
-                  priority
-                  unoptimized
-                />
-              </figure>
-              <p>
-                Welcome to my website! I'm a web developer from Seattle,
-                Washington. I{' '}
-                <Link href="/resume">
-                  <a>work at Facebook</a>
-                </Link>{' '}
-                as a Software Engineer. In my free time I like to play video
-                games, follow politics, and tinker with coding projects.
-              </p>
-            </div>
-            <ul className="masthead-contact horizontal-stack">
-              <li>
-                <a href="mailto:ian.mitchell@hey.com">
-                  <Email />
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/IanMitchell" rel="me">
-                  <GitHub />
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com/ianmitchel1" rel="me">
-                  <Twitter />
-                </a>
-              </li>
-              <li>
-                <a href="https://discordapp.com/channels/@me/90339695967350784">
-                  <Discord />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </header>
+      <section className="masthead">
+        <div className="masthead_about">
+          <h2>Hello! My name is Ian Mitchell.</h2>
+          <p>
+            I'm a web developer from Seattle, Washington. I{" "}
+            <Link href="/resume">
+              <a>work at Discord</a>
+            </Link>{" "}
+            as a Senior Software Engineer on the Bots and API team. In my free
+            time I like to play video games, follow politics, and tinker with
+            coding projects.
+          </p>
+        </div>
+        <ul className="masthead_contact">
+          <li className="masthead_contact_email">
+            <a href="mailto:ian.mitchell@hey.com">
+              <Email />
+            </a>
+          </li>
+          <li className="masthead_contact_github">
+            <a href="https://github.com/IanMitchell" rel="me">
+              <GitHub />
+            </a>
+          </li>
+          <li className="masthead_contact_twitter">
+            <a href="https://twitter.com/ianmitchel1" rel="me">
+              <Twitter />
+            </a>
+          </li>
+          <li className="masthead_contact_discord">
+            <a href="https://discordapp.com/channels/@me/90339695967350784">
+              <Discord />
+            </a>
+          </li>
+        </ul>
       </section>
 
       <section className="recent-posts">

@@ -2,29 +2,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: "IBM Plex Mono";
+  font-family: 'IBM Plex Mono';
 
-  @include media(">small") {
+  @include media('>small') {
     flex-direction: row;
   }
 
   &-border {
-    border-bottom: 1px solid var(--light);
-    padding-bottom: 8px;
-    margin-bottom: 30px;
+    border-bottom: 1px solid var(--dark);
+    padding-bottom: 0.5em;
+    margin-bottom: 2em;
   }
 
   & time {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 
   & span {
-    font-size: 1.6rem;
+    font-size: 1rem;
 
     & a {
-      color: var(--light);
+      color: var(--dark);
       text-decoration: none;
-      border-bottom: 1px dashed var(--light);
+      border-bottom: 1px dashed var(--dark);
 
       &:hover {
         color: var(--highlight);

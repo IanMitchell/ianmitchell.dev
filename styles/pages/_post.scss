@@ -1,7 +1,17 @@
 .post {
   .content-body {
+    h1 {
+      margin-top: 2em;
+    }
+
     a {
       text-decoration: none;
+    }
+  }
+
+  &-link {
+    @include link-hover {
+      border-bottom: 0;
     }
   }
 
@@ -36,7 +46,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    @include media('<=small') {
+    @include media("<=small") {
       padding: 0;
       width: calc(100% + 32px); /* expand with to image + margins */
       min-width: 0;

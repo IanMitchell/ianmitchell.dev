@@ -1,0 +1,50 @@
+.bookmarks-panel {
+  background: var(--dark);
+  color: var(--light);
+
+  &_full {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  a {
+    display: block;
+    color: var(--light);
+    padding: 1em;
+    text-decoration: none;
+
+    @include link-hover {
+      border-bottom: 0;
+
+      svg {
+        transform: translateX(0.25em);
+      }
+    }
+  }
+
+  & header {
+    display: flex;
+    flex-direction: row;
+
+    & h2 {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 1.5rem;
+      width: 100%;
+      padding-right: 1em;
+      margin: 0;
+    }
+
+    & svg {
+      transition: transform 0.2s;
+      width: 1.75em;
+      height: 1.75em;
+      margin-top: 5px;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}

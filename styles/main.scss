@@ -8,28 +8,34 @@
 // 2. Vendors
 @import
   'vendors/include-media',
-  'vendors/normalize',
-  'vendors/prism';
+  'vendors/normalize';
 
 // 3. Base stuff
 @import
   'base/base',
-  'base/fonts',
   'base/typography';
 
 // 4. Layout-related sections
 @import
   'layout/footer',
+  'layout/header',
   'layout/nav',
   'layout/page',
   'layout/post';
 
 // 5. Components
 @import
+  'components/alert',
+  'components/bookmarks-panel',
+  'components/clipboard',
+  'components/code',
+  'components/description-list',
   'components/entry',
   'components/horizontal-stack',
   'components/meta',
   'components/page-title',
+  'components/prism',
+  'components/pullquote',
   'components/separator',
   'components/subheading',
   'components/tag-list';
@@ -37,6 +43,7 @@
 // 6. Page-specific styles
 @import
   'pages/blog',
+  'pages/bookmarks',
   'pages/home',
   'pages/post',
   'pages/tag';

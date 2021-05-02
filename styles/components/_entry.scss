@@ -1,18 +1,20 @@
 .entry {
-  margin-bottom: 40px;
+  margin-bottom: 3em;
 
   & h4 {
-    font-size: 2.8rem;
+    font-size: 2rem;
+    line-height: 1.4;
     margin: 0;
   }
 
   & p {
-    font-size: 1.8rem;
+    font-size: 1.25rem;
+    margin-top: 0;
   }
 
   & svg {
-    width: 24px;
-    height: 24px;
+    width: 1em;
+    height: 1em;
   }
 
   .icon-link {
@@ -21,12 +23,12 @@
 }
 
 .entry-link {
-  & > a {
+  & > h4 > a {
     display: flex;
     align-items: center;
   }
 
   svg {
-    margin-right: 10px;
+    margin-right: 0.5em;
   }
 }

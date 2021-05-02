@@ -1,0 +1,82 @@
+.copy-button {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  z-index: 2;
+
+  > button {
+    right: -8px;
+    top: -6px;
+  }
+}
+
+.code-block {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  position: relative;
+
+  &_file {
+    font-weight: 700;
+    font-size: 14px;
+    font-family: "IBM Plex Mono";
+    margin-bottom: 0.5rem;
+    display: flex;
+
+    &_name {
+      display: inline-flex;
+      align-items: center;
+
+      svg {
+        margin-right: 8px;
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    &_language {
+      margin-left: auto;
+    }
+  }
+
+  pre {
+    position: relative;
+    margin-top: 32px;
+    text-align: left;
+    margin: 0 0 16px 0;
+    // padding: 2rem 1rem 1rem 1rem;
+    overflow: auto;
+
+    .line {
+      display: block;
+
+      &_number {
+        font-weight: 500;
+        line-height: 24px;
+        color: var(--prism-comment);
+        display: inline-block;
+        text-align: right;
+        user-select: none;
+        width: 24px;
+      }
+
+      &_content {
+        padding: 0 16px;
+
+        &.break-words {
+          display: inline-table;
+          white-space: break-spaces;
+          width: 95%;
+        }
+
+        &.token-line {
+          line-height: 1.3rem;
+          height: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+code {
+  padding: 1em;
+}
