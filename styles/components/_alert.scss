@@ -1,11 +1,27 @@
 .alert {
-  background: var(--dark);
-  color: var(--light);
-  padding: 1.5em;
-  margin: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 2em;
 
   border-radius: 8px;
   position: relative;
+
+  &_info {
+    background-color: rgba(#00a9ff, 0.3);
+    color: var(--dark);
+
+    svg {
+      fill: #00a9ff;
+    }
+
+    @supports (color: color(display-p3 1 1 1 / 1)) {
+      background-color: color(display-p3 0 0.65 1 / 30%);
+
+      svg {
+        fill: color(display-p3 0 0.65 1 / 1);
+      }
+    }
+  }
 
   &_icon {
     position: absolute;
@@ -13,12 +29,11 @@
     left: 0;
     background: var(--light);
     border-radius: 50%;
-    transform: translate(40%, -50%);
+    transform: translate(-50%, 60%);
     line-height: 1;
     padding: 0.5em;
 
     svg {
-      fill: var(--dark);
       height: 2em;
       width: 2em;
     }
@@ -26,7 +41,8 @@
 
   h4 {
     font-size: 1.75rem;
-    margin-top: 0.25em;
+    margin-top: 0;
+    margin-left: 0.5em;
   }
 
   &_content {

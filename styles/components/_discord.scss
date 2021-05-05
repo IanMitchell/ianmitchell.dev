@@ -1,0 +1,49 @@
+.discord {
+  background-color: #7288da;
+  color: #fff;
+  margin: 2rem auto;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  width: 25rem;
+
+  a {
+    display: flex;
+    padding: 0.75em;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+
+    @include link-hover {
+      border-bottom: 0;
+      text-decoration: none;
+
+      .discord_arrow {
+        transform: translateX(0.25em);
+      }
+    }
+  }
+
+  &_icon,
+  &_arrow {
+    fill: #fff;
+  }
+
+  &_icon {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &_arrow {
+    margin-left: 1em;
+    width: 2rem;
+    height: 2rem;
+    transition: transform 0.2s;
+  }
+
+  &_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 3em;
+  }
+}

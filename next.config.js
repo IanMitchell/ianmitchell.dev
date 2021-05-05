@@ -56,6 +56,11 @@ module.exports = withMDX({
         destination: "/blog/:post",
         permanent: true,
       },
+      {
+        source: "/discord",
+        destination: "https://discord.gg/fykBTchEeG",
+        permanent: false,
+      },
     ];
   },
   async rewrites() {

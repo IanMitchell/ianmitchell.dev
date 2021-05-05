@@ -1,8 +1,13 @@
+import classNames from "classnames";
 import InfoIcon from "./icons/Info";
 
-export default function Alert({ title, children }) {
+export default function Alert({ title, type = "info", children }) {
+  const classes = classNames("alert", {
+    alert_info: type === "info",
+  });
+
   return (
-    <aside className="alert">
+    <aside className={classes}>
       <div className="alert_icon">
         <InfoIcon />
       </div>

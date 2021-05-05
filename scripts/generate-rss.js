@@ -1,19 +1,10 @@
 import fs from "fs";
 import { Feed } from "feed";
-import Link from "next/link";
 import renderToString from "next-mdx-remote/render-to-string";
 import React, { Fragment } from "react";
 import ReactDOMServer from "react-dom/server";
-import MDX from "../components/MDX";
+import MDX, { COMPONENTS } from "../components/MDX";
 import { getAllPosts } from "../lib/posts";
-import Alert from "../components/Alert";
-import CodePen from "../components/CodePen";
-
-const COMPONENTS = {
-  CodePen,
-  Link,
-  Alert,
-};
 
 async function generate() {
   const feed = new Feed({

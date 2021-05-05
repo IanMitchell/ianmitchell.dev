@@ -4,18 +4,10 @@ import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import Page from "../../layouts/Page";
 import Meta from "../../components/Meta";
-import MDX from "../../components/MDX";
-import Alert from "../../components/Alert";
-import CodePen from "../../components/CodePen";
+import MDX, { COMPONENTS } from "../../components/MDX";
 import PostLayout from "../../layouts/Post";
 import { getAllPosts, getSerializeableFrontmatter } from "../../lib/posts";
 import Social from "../../components/Social";
-
-const COMPONENTS = {
-  CodePen,
-  Link,
-  Alert,
-};
 
 export default function Post({ frontmatter, source }) {
   const content = hydrate(source, { components: COMPONENTS });
