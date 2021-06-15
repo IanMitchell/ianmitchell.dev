@@ -41,7 +41,7 @@ export default function Home({ entries }) {
             </a>
           </li>
           <li className="masthead_contact_discord">
-            <a href="https://discordapp.com/channels/@me/90339695967350784">
+            <a href="https://discord.gg/ian">
               <Discord />
             </a>
           </li>
