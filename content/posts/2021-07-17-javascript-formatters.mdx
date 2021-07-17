@@ -1,0 +1,40 @@
+---
+title: JavaScript Formatters
+date: 2021-07-17
+tags:
+  - Code
+  - Guide
+  - Web
+---
+
+JavaScript has some excellent formatters in its newer APIs - they're starting to creep into StackOverflow answers, but check these out if you haven't seen them before!
+
+## Formatting Numbers
+
+Want to display a numerical value in a more human-readable format? Use [Number.prototype.toLocaleString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
+
+```javascript file=numbers.js
+const value = 1000000;
+console.log(value.toLocaleString());
+// => "1,000,000"
+```
+
+## Formatting Lists
+
+Want to format a list of options in a readable format? Rails had a great implmentation with `humanize`, and now JavaScript does too! Check out [Intl.ListFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat).
+
+```javascript file=humanize.js
+const formatter = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
+});
+
+console.log(
+  formatter.format(["Soccer", "Politics", "Video Games", "Programming"])
+);
+// => "Soccer, Politics, Video Games, and Programming"
+```
+
+## Formatting Dates
+
+Unfortunately, the Date API doesn't do well formatting time or durations - but the good news is that the new Temporal API does! The spec has a [fantastic section on formatting](https://tc39.es/proposal-temporal/docs/duration.html#toLocaleString). There are a few polyfills available, so you can use Temporal today if you want.
