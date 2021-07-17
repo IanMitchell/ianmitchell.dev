@@ -1,17 +1,17 @@
-import React from 'react';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+import React from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function Social({
-  twitterHandle = '@ianmitchel1',
-  image = '/ian.jpg',
-  title = 'Ian Mitchell | Web Dev',
-  description = '',
+  twitterHandle = "@ianmitchel1",
+  image,
+  title = "Ian Mitchell | Web Dev",
+  description = "",
 }) {
   const router = useRouter();
 
   const page = `${process.env.DOMAIN}${router.asPath}`;
-  const imagePath = `${process.env.DOMAIN}${image}`;
+  const imagePath = image ?? `${process.env.DOMAIN}/ian.jpg`;
 
   return (
     <Head>

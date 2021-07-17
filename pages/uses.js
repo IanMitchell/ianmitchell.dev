@@ -49,7 +49,7 @@ export default function Use() {
 
         <DescriptionItem
           title="Discord"
-          icon="/icons/discord.svg"
+          icon="/icons/discord-blurple.svg"
           alt="Discord"
         >
           In my defense, I used Discord a ton before I started working for them.

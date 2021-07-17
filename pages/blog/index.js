@@ -1,16 +1,15 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
-import { getSerializeableFrontmatter, getAllPosts } from '../../lib/posts';
-import Page from '../../layouts/Page';
-import Social from '../../components/Social';
-import ExternalLink from '../../components/icons/ExternalLink';
-import humanize from '../../lib/humanize';
+import React, { Fragment } from "react";
+import Link from "next/link";
+import { getSerializeableFrontmatter, getAllPosts } from "../../lib/posts";
+import Page from "../../layouts/Page";
+import Social from "../../components/Social";
+import ExternalLink from "../../components/icons/ExternalLink";
 
 function getIcon(post) {
-  const { layout = 'blog' } = post;
+  const { layout = "blog" } = post;
 
   switch (layout.toLowerCase()) {
-    case 'link':
+    case "link":
       return <ExternalLink className="layout-icon" />;
     default:
       return null;
@@ -49,11 +48,15 @@ export default function Blog({ posts }) {
                       </a>
                     </Link>
                     <span>
-                      {humanize(post.tags)} &bull;{' '}
-                      {new Date(post.date).toLocaleString('en-US', {
-                        month: 'numeric',
-                        day: 'numeric',
-                        timeZone: 'UTC',
+                      {new Intl.ListFormat("en", {
+                        style: "long",
+                        type: "conjunction",
+                      }).format(post.tags)}{" "}
+                      &bull;{" "}
+                      {new Date(post.date).toLocaleString("en-US", {
+                        month: "numeric",
+                        day: "numeric",
+                        timeZone: "UTC",
                       })}
                     </span>
                   </li>

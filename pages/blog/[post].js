@@ -8,8 +8,9 @@ import MDX, { COMPONENTS } from "../../components/MDX";
 import PostLayout from "../../layouts/Post";
 import { getAllPosts, getSerializeableFrontmatter } from "../../lib/posts";
 import Social from "../../components/Social";
+import getShareImage from "../../lib/share-image";
 
-export default function Post({ frontmatter, source }) {
+export default function Post({ frontmatter, source, social }) {
   const content = hydrate(source, { components: COMPONENTS });
 
   return (
@@ -24,6 +25,7 @@ export default function Post({ frontmatter, source }) {
     >
       <Social
         title={frontmatter.title}
+        image={social.image}
         // TODO: Improve the description
         description={frontmatter.excerpt ?? frontmatter.title}
       />
@@ -53,10 +55,15 @@ export async function getStaticProps(context) {
     },
   });
 
+  const socialImage = await getShareImage(frontmatter);
+
   return {
     props: {
       frontmatter: getSerializeableFrontmatter(frontmatter),
       source,
+      social: {
+        image: socialImage,
+      },
     },
   };
 }
