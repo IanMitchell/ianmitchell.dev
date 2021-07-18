@@ -1,9 +1,9 @@
-import React from 'react';
-import Link from 'next/link';
-import Page from '../../layouts/Page';
-import Entry from '../../layouts/Entry';
-import { getSerializeableFrontmatter, getAllPostsByTag } from '../../lib/posts';
-import Social from '../../components/Social';
+import React from "react";
+import Link from "next/link";
+import Page from "../../layouts/Page";
+import Entry from "../../layouts/Entry";
+import { getSerializeableFrontmatter, getAllPostsByTag } from "../../lib/posts";
+import Social from "../../components/Social";
 
 export default function Tag({ tag, posts }) {
   return (
@@ -39,7 +39,7 @@ export default function Tag({ tag, posts }) {
 }
 
 export async function getStaticProps(context) {
-  const { tags } = await import('../../content/tags.json');
+  const { tags } = await import("../../content/post-tags.json");
   const tag = tags.find((tag) => tag.name.toLowerCase() === context.params.tag);
 
   const posts = (await getAllPostsByTag(tag.name)).map((post) =>
@@ -55,7 +55,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const { tags } = await import('../../content/tags.json');
+  const { tags } = await import("../../content/post-tags.json");
 
   return {
     paths: tags.map((tag) => ({

@@ -4,7 +4,11 @@
 
   &_full {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 1;
+
+    @include media(">small") {
+      grid-column-end: 3;
+    }
   }
 
   a {

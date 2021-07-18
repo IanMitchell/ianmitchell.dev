@@ -1,0 +1,27 @@
+.bookmark-callout {
+  border-top: 1px solid var(--dark);
+  padding-top: 2em;
+
+  p,
+  strong {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  &_meta {
+    margin-bottom: 0;
+  }
+
+  &_help {
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  hr {
+    border-color: var(--dark);
+
+    &::after {
+      background-color: var(--dark);
+    }
+  }
+}

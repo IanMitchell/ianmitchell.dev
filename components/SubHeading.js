@@ -1,13 +1,13 @@
-import React from 'react';
-import Hyperlink from './icons/Hyperlink';
-import slug from '../lib/slug';
+import React from "react";
+import Hyperlink from "./icons/Hyperlink";
+import slug from "../lib/slug.js";
 
 function getText(node) {
-  if (typeof node === 'string') {
+  if (typeof node === "string") {
     return node;
   }
 
-  if (typeof node === 'number') {
+  if (typeof node === "number") {
     return node.toLocaleString();
   }
 
@@ -16,9 +16,9 @@ function getText(node) {
   }
 
   if (Array.isArray(node)) {
-    return node.map((element) => getText(element)).join('');
+    return node.map((element) => getText(element)).join("");
   }
-  return '';
+  return "";
 }
 
 export default function SubHeading({ children }) {

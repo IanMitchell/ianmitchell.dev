@@ -9,7 +9,15 @@ export function DescriptionList({ children }) {
   return <dl className="description-list">{children}</dl>;
 }
 
-export function DescriptionItem({ href, icon, size, alt, title, children }) {
+export function DescriptionItem({
+  href,
+  icon,
+  size,
+  alt,
+  title,
+  badges,
+  children,
+}) {
   const classes = classnames("description-item", {
     "description-item_small": size === "small",
   });
@@ -25,7 +33,10 @@ export function DescriptionItem({ href, icon, size, alt, title, children }) {
         </div>
       </dt>
       <dd>
-        <h4>{href ? <a href={href}>{title}</a> : title}</h4>
+        <header className="description-item_header">
+          <h4>{href ? <a href={href}>{title}</a> : title}</h4>
+          {badges}
+        </header>
         <p>{children}</p>
       </dd>
     </Fragment>

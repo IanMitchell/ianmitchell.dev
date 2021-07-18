@@ -2,8 +2,12 @@
   --size: 100px;
 
   display: grid;
-  grid-template-columns: 100px auto;
   gap: 2em;
+  grid-template-columns: 1fr;
+
+  @include media(">small") {
+    grid-template-columns: 100px auto;
+  }
 
   dt,
   dd {
@@ -27,6 +31,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 1px 2px 0 rgba(#000, 0.1);
+    justify-self: center;
 
     &_icon {
       height: calc(var(--size) * 3 / 4);
@@ -49,11 +54,16 @@
       transform: translate(-50%, -50%);
       filter: blur(20px) opacity(0.4);
     }
+
+    &_header {
+      display: flex;
+      align-items: center;
+    }
   }
 
   h4 {
     font-size: 1.5rem;
-    margin: 0;
+    margin: 0 1rem 0 0;
 
     a {
       text-decoration: none;
