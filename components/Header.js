@@ -47,11 +47,11 @@ export default function Footer() {
                 <a>Bookmarks</a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/snippets">
                 <a>Snippets</a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/uses">
                 <a>My Stack</a>

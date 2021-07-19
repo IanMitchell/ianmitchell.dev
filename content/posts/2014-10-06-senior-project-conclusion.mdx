@@ -31,13 +31,25 @@ I was responsible for most aspects of the project, with the exception of the que
 
 ## Page Flow
 
-![Page Flow](/images/posts/page_flow.png)
+<Image
+  src="/images/posts/page_flow.png"
+  alt="Page Flow"
+  width={962}
+  height={520}
+  unoptimized
+/>
 
 Our application had relatively few webpages. We needed a `Home` page, an `About` page with a short description of the application and developers involved, a generic `Pages` system where we could host standalone FAQ pages or site-wide announcements, a `User` system for account registration, and finally the `Stats` system that handled queries and their respective outputs. The above image outlines the page flow I designed; from the landing page, visitors could read the about page and announcements, or login and gain access to stats and settings.
 
 ## Database Structure
 
-![Database Relationships](/images/posts/database_structure.png)
+<Image
+  src="/images/posts/database_structure.png"
+  alt="Database Relations"
+  width={1280}
+  height={720}
+  unoptimized
+/>
 
 League of Legends has a lot of information that you can store. Baron Pit tracks over 500 stats per game; we didn't want to discard any data, since something we might not pay heed to could be incredibly valuable to a third party.
 
@@ -78,7 +90,13 @@ The concept we settled on was simple; use a key until it neared its cap, then sw
 
 ## Final Stats
 
-![Code Stats](/images/posts/code_stats.png)
+<Image
+  src="/images/posts/code_stats.png"
+  alt="Code Stats"
+  width={570}
+  height={366}
+  unoptimized
+/>
 
 Although these stats don't always paint the best picture, I still find they're fun to look at and can give a general impression of what we did. We had tests for the majority of our application, with the exception of some import pipelines. Due to frequent changes to the API, we tested parts of our pipeline manually.
 
@@ -96,7 +114,14 @@ Here are the [slides for our final presentation](https://cldup.com/8RLnsOhoVF.pd
 
 ## Result
 
-![Baron Pit](/images/posts/baron_pit.png)
+<Image
+  src="/images/posts/baron_pit.png"
+  alt="Baron Pit"
+  width={1252}
+  height={1132}
+  unoptimized
+/>
+
 _Baron Pit with placeholder artwork_
 
 At the end of two quarters, we had a website with a basic query interface users could interact with. We didn't have time to develop a nice theme complete with custom artwork, but we did our best to make the website look clean.

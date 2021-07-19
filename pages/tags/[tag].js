@@ -21,7 +21,7 @@ export default function Tag({ tag, posts }) {
         description={`#${tag} • ${posts.length} posts`}
       />
 
-      <section className="blog">
+      <section className="tag">
         {posts &&
           posts.map((post) => (
             <Entry

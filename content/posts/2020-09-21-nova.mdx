@@ -40,7 +40,14 @@ I've used VS Code for years. I've used Nova for hours. Editors are complex piece
 2. **A JavaScript debugger** - I would love a built in JavaScript debugger. This probably falls into the "outside Nova's scope" category, but the lack of a debugger means I can't feasibly use Nova to work on my discord bot Aquarius. The library Aquarius uses, discord.js, has too many circular data structures to effectively debug via `console.log` statements.
 3. **React syntax highlighting** - I'm not sure if this is caused by the built in themes or the parser itself, but component names and props aren't color differentiated. I really dislike this.
 
-![syntax highlighting](/images/posts/nova_highlighting.png)
+<Image
+  src="/images/posts/nova_highlighting.png"
+  alt="Syntax Highlighting"
+  width={1421}
+  height={1741}
+  unoptimized
+/>
+
 _Top: VS Code. Bottom: Nova_
 
 4. **Highlighting the file for the selected tab in the sidebar** - This is a personal problem, but I discovered I don't look at tab names to figure out what file I'm in when navigating codebases. I look at the sidebar to see which item is highlighted, since it usually corresponds with the selected tab. In Nova, these are separate - your last highlight on the sidebar persists independent of your selected tab. This screws with me more than I would have thought!
@@ -48,7 +55,7 @@ _Top: VS Code. Bottom: Nova_
 6. **Auto Indentation** - When I'm writing Ruby, Nova insists on shifting `end` back one level too many. It's super annoying.
 
 <video
-  style={{ margin: 'auto', display: 'block' }}
+  style={{ margin: "auto", display: "block" }}
   src="/videos/nova/indent.mp4"
   autoPlay
   controls

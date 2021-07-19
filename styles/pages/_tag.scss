@@ -1,5 +1,9 @@
 .tag {
-  & .blog {
+  .blog {
     margin-top: 2.5em;
+  }
+
+  .entry a {
+    text-decoration: none;
   }
 }
