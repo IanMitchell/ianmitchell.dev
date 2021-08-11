@@ -49,7 +49,11 @@ export function GeneratedSocial({
   return (
     <Head>
       {/* Twitter */}
-      <meta name="twitter:card" content="summary" key="twitter-card" />
+      <meta
+        name="twitter:card"
+        content="summary_large_image"
+        key="twitter-card"
+      />
       <meta
         name="twitter:creator"
         content={twitterHandle}
