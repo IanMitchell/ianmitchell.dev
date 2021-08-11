@@ -7,7 +7,7 @@ import Meta from "../../components/Meta";
 import MDX, { COMPONENTS } from "../../components/MDX";
 import PostLayout from "../../layouts/Post";
 import { getAllPosts, getSerializeableFrontmatter } from "../../lib/posts";
-import Social from "../../components/Social";
+import { GeneratedSocial } from "../../components/Social";
 
 export default function Post({ frontmatter, source }) {
   const content = hydrate(source, { components: COMPONENTS });
@@ -22,10 +22,17 @@ export default function Post({ frontmatter, source }) {
         </Link>
       }
     >
-      <Social
+      <GeneratedSocial
         title={frontmatter.title}
         // TODO: Improve the description
         description={frontmatter.excerpt ?? frontmatter.title}
+        date={new Date(frontmatter.date).toLocaleString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "UTC",
+        })}
+        tags={frontmatter.tags}
       />
       <Meta
         date={new Date(frontmatter.date)}
