@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import slug from "../lib/slug";
 
 export default function Social({
   twitterHandle = "@ianmitchel1",
@@ -43,17 +44,7 @@ export function GeneratedSocial({
   const router = useRouter();
 
   const page = `${process.env.DOMAIN}${router.asPath}`;
-
-  const ogURL = useMemo(() => {
-    const params = new URLSearchParams();
-    params.set("title", title);
-    params.set("date", date);
-    params.set("tags", tags);
-
-    const image = new URL("https://ianmitchell.dev/og");
-    image.search = params;
-    return image.toString();
-  }, [title, date, tags]);
+  const ogURL = encodeURIComponent(`https://ianmitchell.dev/og/${slug(title)}`);
 
   return (
     <Head>
