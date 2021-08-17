@@ -1,6 +1,6 @@
 import React from "react";
 import Hyperlink from "./icons/Hyperlink";
-import slug from "../lib/slug.js";
+import slug from "../lib/slug";
 
 function getText(node) {
   if (typeof node === "string") {

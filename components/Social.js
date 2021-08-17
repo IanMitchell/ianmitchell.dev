@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import slug from "../lib/slug";
@@ -39,8 +39,6 @@ export default function Social({
 export function GeneratedSocial({
   twitterHandle = "@ianmitchel1",
   title,
-  date,
-  tags,
   description,
 }) {
   const router = useRouter();

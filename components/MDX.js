@@ -18,12 +18,16 @@ export const COMPONENTS = {
   Confetti,
 };
 
+function InlineCode(props) {
+  return <code className="inline-code" {...props} />;
+}
+
 export default function MDX({ children }) {
   // https://mdxjs.com/advanced/components#mdxprovider
-  const [components, setComponents] = useState({
+  const [components] = useState({
     h2: SubHeading,
     code: Code,
-    inlineCode: (props) => <code className="inline-code" {...props} />,
+    inlineCode: InlineCode,
   });
 
   return <MDXProvider components={components}>{children}</MDXProvider>;

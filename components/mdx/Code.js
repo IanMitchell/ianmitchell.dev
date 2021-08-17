@@ -45,8 +45,9 @@ function cleanTokens(tokens) {
 
 const propList = ["copy", "terminal", "no-lines"];
 
+// TODO: This module needs some love
 export default function Code({ children, className, ...props }) {
-  let language = className && className.replace(/language-/, "");
+  const language = className && className.replace(/language-/, "");
   let breakWords = false;
   let diffArray = [];
 
@@ -156,6 +157,7 @@ export default function Code({ children, className, ...props }) {
                   lineProps.style = { ...lineClass };
 
                   return (
+                    // eslint-disable-next-line react/no-array-index-key
                     <div className="line" key={line + i} {...lineProps}>
                       {isTerminal && !isDiff && (
                         <span className="line_number">$</span>
@@ -195,6 +197,7 @@ export default function Code({ children, className, ...props }) {
                               );
                             }
                           }
+                          // eslint-disable-next-line react/jsx-key
                           return <span {...getTokenProps({ token, key })} />;
                         })}
                       </span>

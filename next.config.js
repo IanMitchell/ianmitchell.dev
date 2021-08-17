@@ -3,9 +3,10 @@ const withMDX = require("@next/mdx")({
 });
 
 module.exports = withMDX({
-  // future: {
-  //   webpack5: true,
-  // },
+  experimental: {
+    esmExternals: true,
+  },
+  webpack5: true,
   pageExtensions: ["js", "mdx"],
   webpack: (config, { dev, isServer }) => {
     if (!dev && isServer) {

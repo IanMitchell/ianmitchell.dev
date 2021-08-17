@@ -21,13 +21,13 @@ export default function Confetti({
       disableForReducedMotion: true,
       particleCount: count,
       startVelocity: velocity,
-      spread: spread,
+      spread,
       origin: {
         x: center.x / window.innerWidth,
         y: center.y / window.innerHeight,
       },
     });
-  }, []);
+  }, [count, spread, velocity]);
 
   return (
     <div ref={ref} className="confetti">
