@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Page from "../layouts/Page";
-import SubHeading from "../components/SubHeading";
 import Social from "../components/Social";
 import {
   DescriptionItem,

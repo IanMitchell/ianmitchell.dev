@@ -9,7 +9,7 @@ import {
 } from "../../components/DescriptionList";
 import PullQuote from "../../components/PullQuote";
 
-export default function Bookmarks({ posts }) {
+export default function Bookmarks() {
   return (
     <Page
       title="Bookmarks"
@@ -85,7 +85,6 @@ export default function Bookmarks({ posts }) {
 
       <section>
         <h2>People and Blogs</h2>
-        <p></p>
 
         <div className="bookmarks-entrylist">
           <BookmarkPanel href="/bookmarks/blogs" title="Blogs">
