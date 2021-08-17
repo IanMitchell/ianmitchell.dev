@@ -1,17 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 import Page from "../../layouts/Page";
 import Meta from "../../components/Meta";
-import MDX, { COMPONENTS } from "../../components/MDX";
+import { COMPONENTS } from "../../components/MDX";
 import PostLayout from "../../layouts/Post";
 import { getAllPosts, getSerializeableFrontmatter } from "../../lib/posts";
 import { GeneratedSocial } from "../../components/Social";
 
 export default function Post({ frontmatter, source }) {
-  const content = hydrate(source, { components: COMPONENTS });
-
   return (
     <Page
       title={frontmatter.title}
@@ -41,25 +39,20 @@ export default function Post({ frontmatter, source }) {
         className="meta-border"
       />
 
-      <PostLayout {...frontmatter}>{content}</PostLayout>
+      <PostLayout {...frontmatter}>
+        <MDXRemote {...source} components={COMPONENTS} />
+      </PostLayout>
     </Page>
   );
 }
 
 export async function getStaticProps(context) {
   const post = (await getAllPosts()).find(
-    (post) => post.frontmatter.slug === context.params.post
+    (item) => item.frontmatter.slug === context.params.post
   );
 
   const { frontmatter, content } = post;
-  const source = await renderToString(content, {
-    components: COMPONENTS,
-    provider: { component: MDX },
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-  });
+  const source = await serialize(content);
 
   return {
     props: {
@@ -80,8 +73,7 @@ export async function getStaticPaths() {
   const uniqueSlugs = new Set(posts.map((post) => post.frontmatter.slug));
 
   if (uniqueSlugs.size !== posts.length) {
-    console.error("Slugs are not unique!");
-    process.exit(1);
+    throw new Error("Slugs are not unique!");
   }
 
   return {

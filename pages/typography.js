@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import Page from '../layouts/Page';
+import Link from "next/link";
+import Page from "../layouts/Page";
 
-export default function Home({ entries }) {
+export default function Typography() {
   return (
     <Page
       title="Typography"
@@ -53,7 +53,7 @@ export default function Home({ entries }) {
             reality
           </p>
           <cite>
-            Werner Herzog,{' '}
+            Werner Herzog,{" "}
             <a href="https://twitter.com/SGJ72/status/1386093564925399043/photo/1">
               falsely attributing it to Andre Gide
             </a>

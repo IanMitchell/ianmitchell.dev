@@ -1,10 +1,11 @@
 import fs from "fs";
 import { Feed } from "feed";
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
 import React, { Fragment } from "react";
 import ReactDOMServer from "react-dom/server";
 import MDX, { COMPONENTS } from "../components/MDX";
 import { getAllPosts } from "../lib/posts";
+import { MDXRemote } from "next-mdx-remote";
 
 async function generate() {
   const feed = new Feed({
@@ -30,18 +31,11 @@ async function generate() {
   const entries = await Promise.all(
     posts.slice(0, 10).map(async (post) => {
       const { frontmatter, content } = post;
-      const { renderedOutput } = await renderToString(content, {
-        components: COMPONENTS,
-        provider: { component: MDX },
-        mdxOptions: {
-          remarkPlugins: [],
-          rehypePlugins: [],
-        },
-      });
+      const source = await serialize(content);
 
       return {
         frontmatter,
-        source: renderedOutput,
+        source,
       };
     })
   );
@@ -56,7 +50,7 @@ async function generate() {
       content: ReactDOMServer.renderToStaticMarkup(
         <Fragment>
           <MDX>
-            <section dangerouslySetInnerHTML={{ __html: source }} />
+            <MDXRemote {...source} components={COMPONENTS} />
           </MDX>
           <a
             href={`mailto:ian.mitchell@hey.com?subject=Reply%20to:%20“${frontmatter.title}”`}

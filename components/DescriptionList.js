@@ -1,10 +1,6 @@
 import classnames from "classnames";
 import { Fragment } from "react";
 
-function LinkWrapper(props) {
-  return <a {...props} />;
-}
-
 export function DescriptionList({ children }) {
   return <dl className="description-list">{children}</dl>;
 }

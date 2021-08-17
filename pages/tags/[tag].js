@@ -40,7 +40,9 @@ export default function Tag({ tag, posts }) {
 
 export async function getStaticProps(context) {
   const { tags } = await import("../../content/post-tags.json");
-  const tag = tags.find((tag) => tag.name.toLowerCase() === context.params.tag);
+  const tag = tags.find(
+    (item) => item.name.toLowerCase() === context.params.tag
+  );
 
   const posts = (await getAllPostsByTag(tag.name)).map((post) =>
     getSerializeableFrontmatter(post.frontmatter)

@@ -3,9 +3,10 @@ const withMDX = require("@next/mdx")({
 });
 
 module.exports = withMDX({
-  // future: {
-  //   webpack5: true,
-  // },
+  experimental: {
+    esmExternals: true,
+  },
+  webpack5: true,
   pageExtensions: ["js", "mdx"],
   webpack: (config, { dev, isServer }) => {
     if (!dev && isServer) {
@@ -15,7 +16,7 @@ module.exports = withMDX({
         const entries = { ...(await originalEntry()) };
 
         // These scripts can import components from the app and use ES modules
-        entries["./scripts/generate-rss.js"] = "./scripts/generate-rss.js";
+        entries["scripts/generate-rss.js"] = "./scripts/generate-rss.js";
 
         return entries;
       };

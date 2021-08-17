@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
-import { getSerializeableFrontmatter, getAllPosts } from '../../lib/posts';
-import Page from '../../layouts/Page';
-import Social from '../../components/Social';
-import ExternalLink from '../../components/icons/ExternalLink';
-import humanize from '../../lib/humanize';
+import React, { Fragment } from "react";
+import Link from "next/link";
+import { getSerializeableFrontmatter, getAllPosts } from "../../lib/posts";
+import Page from "../../layouts/Page";
+import Social from "../../components/Social";
+import ExternalLink from "../../components/icons/ExternalLink";
+import humanize from "../../lib/humanize";
 
 function getIcon(post) {
-  const { layout = 'blog' } = post;
+  const { layout = "blog" } = post;
 
   switch (layout.toLowerCase()) {
-    case 'link':
+    case "link":
       return <ExternalLink className="layout-icon" />;
     default:
       return null;
@@ -49,11 +49,11 @@ export default function Blog({ posts }) {
                       </a>
                     </Link>
                     <span>
-                      {humanize(post.tags)} &bull;{' '}
-                      {new Date(post.date).toLocaleString('en-US', {
-                        month: 'numeric',
-                        day: 'numeric',
-                        timeZone: 'UTC',
+                      {humanize(post.tags)} &bull;{" "}
+                      {new Date(post.date).toLocaleString("en-US", {
+                        month: "numeric",
+                        day: "numeric",
+                        timeZone: "UTC",
                       })}
                     </span>
                   </li>
@@ -65,7 +65,7 @@ export default function Blog({ posts }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const entries = {};
 
   const posts = (await getAllPosts()).map((post) =>
@@ -75,7 +75,7 @@ export async function getStaticProps(context) {
   const years = new Set(posts.map((post) => new Date(post.date).getFullYear()));
 
   years.forEach((year) => {
-    entries[year] = new Array();
+    entries[year] = [];
   });
 
   posts.forEach((post) =>
