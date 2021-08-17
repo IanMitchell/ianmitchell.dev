@@ -24,8 +24,9 @@ export default function Post({ frontmatter, source }) {
     >
       <GeneratedSocial
         title={frontmatter.title}
-        // TODO: Improve the description
-        description={frontmatter.excerpt ?? frontmatter.title}
+        description={
+          frontmatter.description ?? frontmatter.excerpt ?? frontmatter.title
+        }
         date={new Date(frontmatter.date).toLocaleString("en-US", {
           month: "long",
           day: "numeric",

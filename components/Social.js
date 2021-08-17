@@ -16,6 +16,8 @@ export default function Social({
 
   return (
     <Head>
+      <meta name="description" content={description} />
+
       {/* Twitter */}
       <meta name="twitter:card" content="summary" key="twitter-card" />
       <meta
