@@ -8,6 +8,17 @@ tags:
 description: I love RSS, and wanted to add it to my static file-based Next.js blog. This tutorial will walk you through how to add it to yours!
 ---
 
+<Alert title="Webpack 5 Update">
+
+Coming here from a failed Webpack 4 to Webpack 5 migration? If you're seeing an error about `webpack-runtime.js` make the following change:
+
+```javascript file=next.config.js
+- entries["./scripts/generate-rss.js"] = "./scripts/generate-rss.js";
++ entries["scripts/generate-rss.js"] = "./scripts/generate-rss.js";
+```
+
+</Alert>
+
 I love RSS, and I wanted to make sure I supported it with this redesign. There are two approaches to adding an RSS feed to a Next.js site - you can generate the RSS server-side and return it for each request, or add a build step that statically generates the file. I'll cover statically generating it here.
 
 ## Generating the File
@@ -69,7 +80,7 @@ Next we'll want to hook this script up to Webpack (this lets us use ESM and impo
         const entries = { ...(await originalEntry()) };
 
         // These scripts can import components from the app and use ES modules
-        entries['./scripts/generate-rss.js'] = './scripts/generate-rss.js';
+        entries['scripts/generate-rss.js'] = './scripts/generate-rss.js';
 
         return entries;
       };
@@ -177,7 +188,7 @@ module.exports = {
 +        const entries = { ...(await originalEntry()) };
 +
 +        // These scripts can import components from the app and use ES modules
-+        entries['./scripts/generate-rss.js'] = './scripts/generate-rss.js';
++        entries['scripts/generate-rss.js'] = './scripts/generate-rss.js';
 +
 +        return entries;
 +      };

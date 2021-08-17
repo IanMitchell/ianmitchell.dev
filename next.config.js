@@ -16,7 +16,7 @@ module.exports = withMDX({
         const entries = { ...(await originalEntry()) };
 
         // These scripts can import components from the app and use ES modules
-        entries["./scripts/generate-rss.js"] = "./scripts/generate-rss.js";
+        entries["scripts/generate-rss.js"] = "./scripts/generate-rss.js";
 
         return entries;
       };
