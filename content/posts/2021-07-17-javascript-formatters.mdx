@@ -20,6 +20,26 @@ console.log(value.toLocaleString());
 // => "1,000,000"
 ```
 
+If you're using numbers with units or currencies, [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat) has you covered.
+
+```javascript file=currency.js
+const base = 165000;
+const amount = 195000;
+
+new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  currencySign: "accounting",
+}).format(base - amount);
+// => "($30,000.00)"
+
+new Intl.NumberFormat("en-US", {
+  style: "percent",
+  signDisplay: "exceptZero",
+}).format(base / amount);
+// => "+85%"
+```
+
 ## Formatting Lists
 
 Want to format a list of options in a readable format? Rails had a great implmentation with `humanize`, and now JavaScript does too! Check out [Intl.ListFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat).
