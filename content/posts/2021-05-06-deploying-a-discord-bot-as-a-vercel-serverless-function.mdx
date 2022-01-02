@@ -26,6 +26,17 @@ We only need to create two files to get up and running - a `package.json` and an
 }
 ```
 
+<Alert title="Raw Body">
+
+Some people have reported that the `raw-body` package does not work for them. If your function times out while trying to verify a Discord interaction, try using the following snippet instead:
+
+```javascript
+- const rawBody = await getRawBody(request);
++ const rawBody = JSON.stringify(req.body);
+```
+
+</Alert>
+
 The only two dependencies here are used to verify incoming Discord requests (an API requirement).
 
 The serverless function looks pretty similar to the <Link href="/blog/creating-a-discord-http-slash-command-bot-with-fastify"><a>server I created with fastify</a></Link>. Vercel requires functions be put into an `api` directory - [you can find additional documentation here](https://vercel.com/docs/serverless-functions/introduction).
