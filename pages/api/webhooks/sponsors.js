@@ -1,8 +1,8 @@
 import { Embed } from "@discordjs/builders";
 
 const COLORS = {
-  ADDED: 0x5763719,
-  CHANGED: 0x16705372,
+  ADDED: 5763719,
+  CHANGED: 16705372,
 };
 
 const formatter = new Intl.NumberFormat("en-US", {
