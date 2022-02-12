@@ -78,5 +78,5 @@ export default async function SponsorsWebhook(request, response) {
     throw new Error(JSON.stringify(json));
   }
 
-  response.status(200);
+  response.status(200).json({ success: true });
 }
