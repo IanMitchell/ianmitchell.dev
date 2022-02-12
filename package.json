@@ -33,7 +33,7 @@
     "rough-notation": "^0.5.1",
     "roughjs": "^4.4.1",
     "sass": "^1.38.0",
-    "superjson": "^1.7.4",
+    "superjson": "^1.8.1",
     "swr": "^0.5.5"
   },
   "devDependencies": {
