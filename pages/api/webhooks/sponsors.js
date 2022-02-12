@@ -20,7 +20,7 @@ export default async function SponsorsWebhook(request, response) {
   const user = payload.sender;
   const isPublic = payload.sponsorship.privacy_level !== "public";
   const { tier } = payload.sponsorship;
-  const username = isPublic ? user.log : "Anonymous";
+  const username = isPublic ? user.login : "Anonymous";
 
   if (payload.sponsorship.privacy_level === "public") {
     embed.setAuthor({
@@ -30,7 +30,7 @@ export default async function SponsorsWebhook(request, response) {
     });
   }
 
-  embed.setTimestamp(payload.sponsorship.created_at);
+  embed.setTimestamp(new Date(payload.sponsorship.created_at));
 
   if (payload.action === "created") {
     embed.setTitle("New Sponsorship");
@@ -40,12 +40,16 @@ export default async function SponsorsWebhook(request, response) {
         tier.monthly_price_in_dollars
       )}**`
     );
-    embed.addField("Tier", payload.sponsorship.tier.name ?? "None", true);
-    embed.addField(
-      "One Time Payment?",
-      tier.one_time_payment ? "Yes" : "No",
-      true
-    );
+    embed.addField({
+      name: "Tier",
+      value: tier.name ?? "None",
+      inline: true,
+    });
+    embed.addField({
+      name: "One Time Payment?",
+      value: tier.one_time_payment ? "Yes" : "No",
+      inline: true,
+    });
   } else {
     embed.setTitle("Sponsorship Tier Change");
     embed.setColor(COLORS.CHANGED);
@@ -54,11 +58,11 @@ export default async function SponsorsWebhook(request, response) {
         payload.changes.tier.from.monthly_price_in_dollars
       )}** from ${formatter.format(tier.monthly_price_in_dollars)}`
     );
-    embed.addField(
-      "One Time Payment?",
-      tier.one_time_payment ? "Yes" : "No",
-      true
-    );
+    embed.addField({
+      name: "One Time Payment?",
+      value: tier.one_time_payment ? "Yes" : "No",
+      inline: true,
+    });
   }
 
   const resp = await fetch(process.env.SPONSOR_WEBHOOK, {
