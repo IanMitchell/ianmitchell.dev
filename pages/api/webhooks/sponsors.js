@@ -18,7 +18,7 @@ export default async function SponsorsWebhook(request, response) {
   const payload = request.body;
   const embed = new Embed();
   const user = payload.sender;
-  const isPublic = payload.sponsorship.privacy_level !== "public";
+  const isPublic = payload.sponsorship.privacy_level === "public";
   const { tier } = payload.sponsorship;
   const username = isPublic ? user.login : "Anonymous";
 
@@ -46,8 +46,8 @@ export default async function SponsorsWebhook(request, response) {
       inline: true,
     });
     embed.addField({
-      name: "One Time Payment?",
-      value: tier.one_time_payment ? "Yes" : "No",
+      name: "Recurring?",
+      value: tier.one_time_payment ? "No" : "Yes",
       inline: true,
     });
   } else {
@@ -59,8 +59,8 @@ export default async function SponsorsWebhook(request, response) {
       )}** from ${formatter.format(tier.monthly_price_in_dollars)}`
     );
     embed.addField({
-      name: "One Time Payment?",
-      value: tier.one_time_payment ? "Yes" : "No",
+      name: "Recurring",
+      value: tier.one_time_payment ? "No" : "Yes",
       inline: true,
     });
   }
@@ -72,9 +72,9 @@ export default async function SponsorsWebhook(request, response) {
     method: "POST",
     body: JSON.stringify({ embeds: [embed.toJSON()] }),
   });
-  const json = await resp.json();
 
   if (!resp.ok) {
+    const json = await resp.json();
     throw new Error(JSON.stringify(json));
   }
 
