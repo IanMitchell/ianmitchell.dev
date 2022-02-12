@@ -1,4 +1,4 @@
-import { MessageEmbed } from "discord.js";
+import { Embed } from "@discordjs/builders";
 
 const COLORS = {
   ADDED: 0x5763719,
@@ -16,7 +16,7 @@ export default async function SponsorsWebhook(request, response) {
   }
 
   const payload = request.body;
-  const embed = new MessageEmbed();
+  const embed = new Embed();
   const user = payload.sender;
   const isPublic = payload.sponsorship.privacy_level !== "public";
   const { tier } = payload.sponsorship;
