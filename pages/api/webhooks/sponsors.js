@@ -66,6 +66,9 @@ export default async function SponsorsWebhook(request, response) {
   }
 
   const resp = await fetch(process.env.SPONSOR_WEBHOOK, {
+    headers: {
+      "Content-Type": "application/json",
+    },
     method: "POST",
     body: JSON.stringify({ embeds: [embed.toJSON()] }),
   });
