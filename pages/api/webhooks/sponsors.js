@@ -59,7 +59,7 @@ export default async function SponsorsWebhook(request, response) {
       embed.setColor(COLORS.REMOVED);
       embed.setDescription(
         `${username} cancelled their **${formatter.format(
-          tier.from.monthly_price_in_dollars
+          tier.monthly_price_in_dollars
         )}** sponsorship`
       );
       break;
