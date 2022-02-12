@@ -3,6 +3,7 @@ import { Embed } from "@discordjs/builders";
 const COLORS = {
   ADDED: 5763719,
   CHANGED: 16705372,
+  REMOVED: 15548997,
 };
 
 const formatter = new Intl.NumberFormat("en-US", {
@@ -32,37 +33,51 @@ export default async function SponsorsWebhook(request, response) {
 
   embed.setTimestamp(new Date(payload.sponsorship.created_at));
 
-  if (payload.action === "created") {
-    embed.setTitle("New Sponsorship");
-    embed.setColor(COLORS.ADDED);
-    embed.setDescription(
-      `${username} just sponsored you for **${formatter.format(
-        tier.monthly_price_in_dollars
-      )}**`
-    );
-    embed.addField({
-      name: "Tier",
-      value: tier.name ?? "None",
-      inline: true,
-    });
-    embed.addField({
-      name: "Recurring?",
-      value: tier.one_time_payment ? "No" : "Yes",
-      inline: true,
-    });
-  } else {
-    embed.setTitle("Sponsorship Tier Change");
-    embed.setColor(COLORS.CHANGED);
-    embed.setDescription(
-      `${username} changed to **${formatter.format(
-        payload.changes.tier.from.monthly_price_in_dollars
-      )}** from ${formatter.format(tier.monthly_price_in_dollars)}`
-    );
-    embed.addField({
-      name: "Recurring",
-      value: tier.one_time_payment ? "No" : "Yes",
-      inline: true,
-    });
+  switch (payload.action) {
+    case "created": {
+      embed.setTitle("New Sponsorship");
+      embed.setColor(COLORS.ADDED);
+      embed.setDescription(
+        `${username} just sponsored you for **${formatter.format(
+          tier.monthly_price_in_dollars
+        )}**`
+      );
+      embed.addField({
+        name: "Tier",
+        value: tier.name ?? "None",
+        inline: true,
+      });
+      embed.addField({
+        name: "Recurring?",
+        value: tier.one_time_payment ? "No" : "Yes",
+        inline: true,
+      });
+      break;
+    }
+    case "pending_cancellation": {
+      embed.setTitle("Sponsorship Cancelled");
+      embed.setColor(COLORS.REMOVED);
+      embed.setDescription(
+        `${username} cancelled their **${formatter.format(
+          tier.from.monthly_price_in_dollars
+        )}** sponsorship`
+      );
+      break;
+    }
+    default: {
+      embed.setTitle("Sponsorship Tier Change");
+      embed.setColor(COLORS.CHANGED);
+      embed.setDescription(
+        `${username} changed to **${formatter.format(
+          payload.changes.tier.from.monthly_price_in_dollars
+        )}** from ${formatter.format(tier.monthly_price_in_dollars)}`
+      );
+      embed.addField({
+        name: "Recurring",
+        value: tier.one_time_payment ? "No" : "Yes",
+        inline: true,
+      });
+    }
   }
 
   const resp = await fetch(process.env.SPONSOR_WEBHOOK, {
