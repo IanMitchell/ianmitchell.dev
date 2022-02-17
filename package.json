@@ -22,7 +22,7 @@
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "install": "^0.13.0",
-    "next": "^11.1.0",
+    "next": "^12.1.0",
     "next-mdx-remote": "^3.0.4",
     "npm": "^8.5.0",
     "parse-numeric-range": "^1.2.0",
