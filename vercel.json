@@ -4,11 +4,11 @@
   "builds": [
     {
       "src": "next.config.js",
-      "use": "@now/next"
+      "use": "@vercel/next"
     },
     {
       "src": "projects/**",
-      "use": "@now/static"
+      "use": "@vercel/static"
     }
   ]
 }
