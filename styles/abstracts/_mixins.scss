@@ -1,3 +1,9 @@
+@mixin media-dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
 @mixin dark-mode {
   // DARK MODE
   // When the user has a system choice set to dark mode, and has not explicitly

@@ -16,8 +16,11 @@
   --prism-attr: #fac863;
   --prism-property: #fff;
 
-  @include dark-mode {
-  }
+  // @include media-dark {
+  //   --light: #1e2235;
+  //   --dark: #f6f8ff;
+  //   --highlight: #00a4c3;
+  // }
 }
 
 /* Display-P3 color, when supported. */
@@ -27,6 +30,14 @@
     --light: color(display-p3 0.96 0.97 1 / 1);
     --highlight: color(display-p3 1 0 0.492 / 1);
   }
+
+  // @include media-dark {
+  //   :root {
+  //     --light: color(display-p3 0.12 0.13 0.21 / 1);
+  //     --dark: color(display-p3 0.96 0.97 1 / 1);
+  //     --highlight: #00a4c3;
+  //   }
+  // }
 }
 
 ::selection {
