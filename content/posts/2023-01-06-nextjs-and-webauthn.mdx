@@ -27,7 +27,7 @@ To make this post more focused, I'm going to make assume familiarity with WebAut
 
 ## Prisma Database Schema
 
-Create a new Next.js application and [setup Prisma with an SQLite database](https://www.prisma.io/docs/getting-started/quickstart). We'll use this to store user accounts and credentials (also known as passkeys).
+Create a new Next.js application and [set up Prisma with an SQLite database](https://www.prisma.io/docs/getting-started/quickstart). We'll use this to store user accounts and credentials (also known as passkeys).
 
 Let's start by defining a User model. For demonstration purposes, we'll define a User as having an email and username (these two fields are not required by WebAuthn).
 
@@ -495,7 +495,7 @@ And we're done! Next up, let's create the `admin` page.
 
 ## Authentication
 
-We can almost test our registration setup! Let's create the `pages/admin/index.tsx` Admin page that requires a logged-in user. There are a few ways to go about this, but the cleanest way is to add `getServerSideProps` and validate the session there. If the `userId` is not set, we redirect the user to the `/login` path.
+We can almost test our registration flow! Let's create the `pages/admin/index.tsx` Admin page that requires a logged-in user. There are a few ways to go about this, but the cleanest way is to add `getServerSideProps` and validate the session there. If the `userId` is not set, we redirect the user to the `/login` path.
 
 ```tsx file=pages/admin/index.tsx
 import { withIronSessionSsr } from "iron-session/next";
