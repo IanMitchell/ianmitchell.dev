@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node ./.next/server/scripts/generate-rss.js",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider next build && NODE_OPTIONS=--openssl-legacy-provider node ./.next/server/scripts/generate-rss.js",
     "start": "next start",
     "lint": "next lint",
     "post": "node --experimental-json-modules --es-module-specifier-resolution=node ./scripts/post.mjs",
