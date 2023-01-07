@@ -8,6 +8,8 @@ import FileIcon from "../icons/File";
 import CopyIcon from "../icons/Copy";
 import CopyButton from "../CopyButton";
 
+require("./prism-prisma");
+
 // Extend base classes
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 require("prismjs/components/prism-docker");
