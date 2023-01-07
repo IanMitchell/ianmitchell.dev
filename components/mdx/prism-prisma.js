@@ -1,10 +1,11 @@
 // See: https://github.com/prisma/docs/blob/main/src/components/shortcodes/prism/prism-prisma.js
 
 import Prism from "prism-react-renderer/prism";
+
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 Prism.languages.prisma = Prism.languages.extend("clike", {
   "keyword": /\b(?:datasource|enum|generator|model|type)\b/,
-  "type-class-name": /(\s+)[A-Z]\w+/, ///(\b)(\s+)[A-Z]\w+/
+  "type-class-name": /(\s+)[A-Z]\w+/, /// (\b)(\s+)[A-Z]\w+/
 });
 
 Prism.languages.javascript["class-name"][0].pattern =
