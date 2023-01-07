@@ -1,13 +1,14 @@
 .alert {
   margin-top: 1em;
   margin-bottom: 1em;
-  padding: 2em;
+  padding: 1em 1em 1em 2em;
 
   border-radius: 8px;
   position: relative;
 
   &_info {
-    background-color: rgba(#00a9ff, 0.3);
+    border: 8px solid rgba(0, 169, 255, 0.3);
+    background-color: rgba(#00a9ff, 0.03);
     color: var(--dark);
 
     svg {
@@ -25,8 +26,8 @@
 
   &_icon {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -16px;
+    left: -4px;
     background: var(--light);
     border-radius: 50%;
     transform: translate(-50%, 60%);
@@ -42,7 +43,7 @@
   h4 {
     font-size: 1.75rem;
     margin-top: 0;
-    margin-left: 0.5em;
+    // margin-left: 0.5em;
   }
 
   &_content {
