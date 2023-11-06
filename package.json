@@ -49,5 +49,8 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "prompts": "^2.4.1"
+  },
+  "volta": {
+    "node": "18.18.2"
   }
 }
