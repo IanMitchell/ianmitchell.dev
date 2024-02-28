@@ -24,9 +24,9 @@ export default function Home({ entries }) {
             <p>
               I'm a web developer from Seattle, Washington. I{" "}
               <Link href="/resume">
-                <a>work at Discord</a>
+                <a>work at Vanta</a>
               </Link>{" "}
-              as a Senior Software Engineer on the Bots and API team. In my free
+              as a Senior Software Engineer on the Self Serve team. In my free
               time I like to play video games, follow politics, and tinker with
               coding projects.
             </p>
