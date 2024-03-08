@@ -33,11 +33,19 @@ export default {
 		return [
 			{
 				source: "/pokemon",
-				destination: "/projects/pokemon/index.html",
+				destination: "https://pokemon-cre3xe0l1-ianmitchell1.vercel.app",
+			},
+			{
+				source: "/bhs",
+				destination: "https://bhs-g15spfgi2-ianmitchell1.vercel.app",
+			},
+			{
+				source: "/projects/bhs",
+				destination: "https://bhs-g15spfgi2-ianmitchell1.vercel.app",
 			},
 			{
 				source: "/resume",
-				destination: "/projects/resume/index.html",
+				destination: "/",
 			},
 		];
 	},

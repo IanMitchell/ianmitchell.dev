@@ -19,7 +19,7 @@ Another significant change was the footer -- instead of just having a copyright,
 
 ### Mockup
 
-[You can view the proposal mockup here](/projects/bhs). It isn't as clean as I'd like, but given the time constraints not everything could be pixel perfect! Areas of improvement include header padding, colors, tab width, and main content / sidebar styling. The actual content portion of the website is rather plain by design since the teachers liked to add their own "flair", but it could still be improved.
+[You can view the proposal mockup here](https://bhs-g15spfgi2-ianmitchell1.vercel.app). It isn't as clean as I'd like, but given the time constraints not everything could be pixel perfect! Areas of improvement include header padding, colors, tab width, and main content / sidebar styling. The actual content portion of the website is rather plain by design since the teachers liked to add their own "flair", but it could still be improved.
 
 ### Old Design
 
