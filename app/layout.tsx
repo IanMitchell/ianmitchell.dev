@@ -1,10 +1,10 @@
 import "@/app/styles.css";
 import { IBM_Plex_Mono, DM_Serif_Display } from "next/font/google";
-import React, { ComponentProps, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import classNames from "@/lib/classnames";
 import Logo from "@/components/Logo";
 import { Analytics } from "@vercel/analytics/react";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
 
@@ -23,7 +23,7 @@ const dmSerif = DM_Serif_Display({
 function NavLink({
 	href,
 	children,
-}: PropsWithChildren<ComponentProps<typeof Link>>) {
+}: PropsWithChildren<{ href: LinkProps["href"] }>) {
 	return (
 		<li>
 			<Link
@@ -60,8 +60,8 @@ export default function RootLayout({
 							<ul className="flex gap-6">
 								<NavLink href="/">Home</NavLink>
 								<NavLink href="/blog">Blog</NavLink>
-								{/* <NavLink href="/uses">Uses</NavLink> */}
-								{/* <NavLink href="/other">Other</NavLink> */}
+								<NavLink href="/bookmarks">Bookmarks</NavLink>
+								<NavLink href="/uses">Uses</NavLink>
 							</ul>
 						</nav>
 					</header>
