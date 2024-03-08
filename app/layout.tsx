@@ -3,7 +3,8 @@ import { IBM_Plex_Mono, DM_Serif_Display } from "next/font/google";
 import React, { ComponentProps, PropsWithChildren } from "react";
 import classNames from "@/lib/classnames";
 import Logo from "@/components/Logo";
-import Link, { LinkProps } from "next/link";
+import { Analytics } from "@vercel/analytics/react";
+import Link from "next/link";
 import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
 
@@ -90,6 +91,8 @@ export default function RootLayout({
 						</ul>
 					</footer>
 				</div>
+
+				<Analytics />
 			</body>
 		</html>
 	);
