@@ -4,4 +4,4 @@ My personal website! This is a work in progress rewrite (this will never not be 
 
 ## Tech
 
-This is a Next.js website written using MDX and deployed to Vercel
+This is a Next.js website written using Markdown and deployed to Vercel

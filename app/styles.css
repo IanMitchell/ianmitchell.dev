@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	/* :root {
+		--color-dark: #1e2235;
+		--color-light: #f6f8ff;
+		--color-highlight: #ff007e;
+		--color-link: oklch(54% 0.25 260);
+	}
+
+	@supports (color: color(display-p3 1 1 1 / 1)) {
+		:root {
+			--color-dark: color(display-p3 0.12 0.13 0.21 / 1);
+			--color-light: color(display-p3 0.96 0.97 1 / 1);
+			--color-highlight: color(display-p3 1 0 0.492 / 1);
+		}
+	} */
+}
+
+html {
+	tab-size: 2;
+}
+
+.site-background {
+	background-image: url("/footer.svg");
+	background-size: 100% 250px;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+.counter-reset {
+	counter-reset: count 0;
+	list-style-type: none;
+}
+
+.counter-increment {
+	counter-increment: count 1;
+}
+
+.counter-content::before {
+	content: "0" counter(count) !important;
+}
+
+.filter-subtle-blur {
+	filter: blur(20px) opacity(0.4);
+}
+
+/**
+ * MDX helpers for GFM
+ */
+
+.footnotes {
+	margin-top: 4rem;
+}
+
+.footnotes::before {
+	display: block;
+	content: "";
+	width: 20%;
+	border-top: 1px solid oklch(66.59% 0.3018840772950374 4.255646284110876);
+	padding-top: 1rem;
+}
+
+.sr-only {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+code {
+	counter-reset: line;
+}
+
+code > [data-line]::before {
+	counter-increment: line;
+	content: counter(line);
+
+	/* Other styling */
+	display: inline-block;
+	width: 1rem;
+	margin-right: 2rem;
+	text-align: right;
+	color: gray;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+	width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+	width: 3rem;
+}
+
+.diff.add {
+	background-color: rgba(68, 187, 119, 0.2);
+}
+
+.diff.add[data-line]::before {
+	color: #4b7;
+	counter-increment: line 1;
+	content: "+";
+}
+
+.diff.remove {
+	background-color: rgba(238, 62, 62, 0.2);
+}
+
+.diff.remove[data-line]::before {
+	color: #ee3e3e;
+	content: "-";
+}
+
+code > [data-highlighted-line] {
+	background-color: rgba(68, 119, 187, 0.2);
+}
