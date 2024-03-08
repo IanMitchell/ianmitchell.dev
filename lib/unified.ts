@@ -7,6 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import { unified } from "unified";
 import "server-only";
+import { VFile } from "vfile";
 
 const highlighterOptions: Options = {
 	getHighlighter: (options) =>
@@ -31,3 +32,11 @@ export const processor = unified()
 	.use(remarkRehype, { allowDangerousHtml: true })
 	.use(rehypeRaw)
 	.use(rehypePrettyCode, highlighterOptions);
+
+export async function convert(value: string) {
+	const file = new VFile();
+	file.value = value;
+
+	const mdastTree = processor.parse(file);
+	return processor.run(mdastTree, file);
+}

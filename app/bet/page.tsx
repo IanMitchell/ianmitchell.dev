@@ -1,8 +1,7 @@
 import { Fragment, PropsWithChildren } from "react";
-import Markdown from "@/components/Markdown";
+import { Markdown } from "@/components/Markdown";
 import fs from "node:fs";
 import path from "node:path";
-
 
 export default function BetPage() {
 	const table = fs.readFileSync(

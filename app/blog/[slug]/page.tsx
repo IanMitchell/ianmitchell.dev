@@ -1,5 +1,5 @@
 import { getAllPosts, getPost, getSlug } from "@/lib/content";
-import Markdown from "@/components/Markdown";
+import { Markdown } from "@/components/Markdown";
 import Page from "@/components/Page";
 import { H1 } from "@/components/md/Heading";
 

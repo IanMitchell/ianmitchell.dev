@@ -1,8 +1,6 @@
-import { processor } from "@/lib/unified";
+import { convert } from "@/lib/unified";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
-// @ts-expect-error: untyped
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import { VFile } from "vfile";
 import { BlockQuote } from "./md/BlockQuote";
 import "server-only";
 import { Anchor } from "./md/Anchor";
@@ -22,27 +20,27 @@ import {
 	TableRow,
 } from "./md/Table";
 import Preformatted from "./md/Preformatted";
+import type { Nodes } from "hast";
 
 interface MarkdownProps {
 	className?: string;
 	children: string | null | undefined;
 }
 
-export default async function Markdown({ className, children }: MarkdownProps) {
+export function StaticMarkdown({
+	tree,
+	className,
+	children,
+}: MarkdownProps & { tree: Nodes }) {
 	if (children == null) {
-		return;
+		return null;
 	}
 
-	const file = new VFile();
-	file.value = children;
-
-	const mdastTree = processor.parse(file);
-	let hastTree = await processor.run(mdastTree, file);
+	let hastTree = tree;
 
 	// Wrap in `div` if there’s a class name.
 	if (className) {
 		hastTree = {
-			// @ts-expect-error ???
 			type: "element",
 			tagName: "div",
 			properties: { className },
@@ -83,11 +81,23 @@ export default async function Markdown({ className, children }: MarkdownProps) {
 					pre: Preformatted,
 				},
 				ignoreInvalidStyle: true,
+				// @ts-expect-error ???
 				jsx,
+				// @ts-expect-error ???
 				jsxs,
 				passKeys: true,
 				passNode: true,
 			})}
 		</Fragment>
 	);
+}
+
+export async function Markdown({ className, children }: MarkdownProps) {
+	if (children == null) {
+		return;
+	}
+
+	const hastTree = await convert(children);
+
+	return <StaticMarkdown tree={hastTree}>{children}</StaticMarkdown>;
 }
