@@ -6,21 +6,16 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import { unified } from "unified";
-import "server-only";
 import { VFile } from "vfile";
+import prismaLanguage from "@/lib/languages/prisma.json";
+import "server-only";
 
 const highlighterOptions: Options = {
 	getHighlighter: (options) =>
 		getHighlighter({
 			...options,
-			langs: [
-				...Object.keys(bundledLanguages),
-				{
-					id: "prisma",
-					scopeName: "source.prisma",
-					path: "./lib/languages/prisma.json",
-				},
-			],
+			// @ts-expect-error ???
+			langs: [...Object.keys(bundledLanguages), prismaLanguage],
 		}),
 	theme: "github-light",
 	transformers: [transformerNotationDiff()],
