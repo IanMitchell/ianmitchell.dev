@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Link, { LinkProps } from "next/link";
 import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const ibm = IBM_Plex_Mono({
 	subsets: ["latin"],
@@ -93,6 +94,7 @@ export default function RootLayout({
 				</div>
 
 				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	);
