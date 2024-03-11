@@ -1,7 +1,14 @@
-import { Fragment, PropsWithChildren } from "react";
+import { Fragment } from "react";
 import { Markdown } from "@/components/Markdown";
 import fs from "node:fs";
 import path from "node:path";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Ian Mitchell | Bet",
+	description:
+		"I made a dumb sports bet with my friend Staffan, and track the yearly result.",
+};
 
 export default function BetPage() {
 	const table = fs.readFileSync(

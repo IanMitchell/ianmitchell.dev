@@ -2,8 +2,22 @@ import { getAllPosts, getPost, getSlug } from "@/lib/content";
 import { Markdown } from "@/components/Markdown";
 import Page from "@/components/Page";
 import { H1 } from "@/components/md/Heading";
+import { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string };
+}): Promise<Metadata> {
+	const { frontmatter } = await getPost(params.slug);
+
+	return {
+		title: frontmatter.title,
+		description: frontmatter.description ?? "",
+	};
+}
 
 export async function generateStaticParams() {
 	const files = await getAllPosts();

@@ -2,7 +2,14 @@ import Page from "@/components/Page";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
 import { getAllPosts, getPost, getSlug } from "@/lib/content";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "Ian Mitchell | Blog",
+	description:
+		"I sometimes write blog posts. Not quite as often as I want to, but I try!",
+};
 
 export default async function BlogIndexPage() {
 	const posts = await getAllPosts();
