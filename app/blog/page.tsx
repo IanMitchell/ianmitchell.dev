@@ -1,4 +1,7 @@
 import Page from "@/components/Page";
+import { Anchor } from "@/components/md/Anchor";
+import { H1 } from "@/components/md/Heading";
+import { Paragraph } from "@/components/md/Paragraph";
 import { getAllPosts, getPost, getSlug } from "@/lib/content";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -26,7 +29,16 @@ export default async function BlogIndexPage() {
 	}
 
 	return (
-		<Page title="Blog Posts">
+		<Page
+			header={
+				<header className="mt-8 mb-12 flex items-center justify-between">
+					<H1 className="mt-0">Blog Posts</H1>
+					<Anchor href="/feed" className="text-sm">
+						RSS Feed
+					</Anchor>
+				</header>
+			}
+		>
 			{Object.entries(years)
 				.reverse()
 				.map(([year, posts]) => (
