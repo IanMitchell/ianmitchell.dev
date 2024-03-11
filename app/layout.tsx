@@ -9,6 +9,10 @@ import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+export const metadata = {
+	metadataBase: new URL("https://ianmitchell.dev"),
+};
+
 const ibm = IBM_Plex_Mono({
 	subsets: ["latin"],
 	weight: ["500", "700"],

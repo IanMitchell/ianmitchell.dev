@@ -1,10 +1,8 @@
 import Page from "@/components/Page";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
-import { Paragraph } from "@/components/md/Paragraph";
 import { getAllPosts, getPost, getSlug } from "@/lib/content";
 import Link from "next/link";
-import { Fragment } from "react";
 
 export default async function BlogIndexPage() {
 	const posts = await getAllPosts();
