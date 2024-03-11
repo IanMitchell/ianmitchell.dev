@@ -1,7 +1,15 @@
-import { getPost } from "@/lib/content";
+import { getAllPosts, getPost, getSlug } from "@/lib/content";
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+	const files = await getAllPosts();
+
+	return files.map((file) => ({
+		slug: getSlug(file),
+	}));
+}
 
 // Image metadata
 export const size = {
