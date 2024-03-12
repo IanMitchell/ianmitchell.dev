@@ -34,6 +34,11 @@ export default async function Image({ params }: { params: { slug: string } }) {
 	}
 
 	const { title, date } = data[params.slug];
+	const formattedDate = new Date(date).toLocaleString("en-us", {
+		month: "long",
+		year: "numeric",
+		day: "numeric",
+	});
 
 	return new ImageResponse(
 		(
@@ -84,11 +89,11 @@ export default async function Image({ params }: { params: { slug: string } }) {
 						</p>
 					</div>
 					<p tw="ml-auto mr-8 text-sm" style={{ fontFamily: "Inter" }}>
-						{date}
+						{formattedDate}
 					</p>
 				</div>
 
-				<img tw="w-full h-24" src="/footer.svg" />
+				<img tw="w-full h-24" src="https://ianmitchell.dev/footer.svg" />
 			</div>
 		),
 		{
