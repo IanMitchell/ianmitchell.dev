@@ -1,20 +1,26 @@
 import Page from "@/components/Page";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
-import { Paragraph } from "@/components/md/Paragraph";
-import { getAllPosts, getPost, getSlug } from "@/lib/content";
+import { getCachedPost, getCachedPostList } from "@/lib/content";
+import { getSlug } from "@/lib/slug";
+import { Metadata } from "next";
 import Link from "next/link";
-import { Fragment } from "react";
+
+export const metadata: Metadata = {
+	title: "Blog",
+	description:
+		"I sometimes write blog posts. Not quite as often as I want to, but I try!",
+};
 
 export default async function BlogIndexPage() {
-	const posts = await getAllPosts();
+	const posts = await getCachedPostList();
 	const years: Record<
 		number,
 		Array<{ date: string; title: string; post: string }>
 	> = {};
 
 	for (const post of posts) {
-		const { frontmatter } = await getPost(getSlug(post));
+		const { frontmatter } = getCachedPost(getSlug(post));
 		const year = new Date(frontmatter.date).getFullYear();
 
 		if (!(year in years)) {

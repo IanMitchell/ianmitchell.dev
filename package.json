@@ -1,49 +1,51 @@
 {
-  "private": true,
-  "scripts": {
-    "turbo": "next dev --turbo",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "prettier": {
-    "quoteProps": "consistent",
-    "useTabs": true
-  },
-  "dependencies": {
-    "@csstools/postcss-oklab-function": "^3.0.10",
-    "@vercel/analytics": "^1.2.2",
-    "@vercel/speed-insights": "^1.0.10",
-    "clsx": "2.0.0",
-    "feed": "^4.2.2",
-    "gray-matter": "^4.0.3",
-    "next": "^14.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^9.0.1",
-    "rehype-pretty-code": "^0.12.1",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
-    "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.0",
-    "server-only": "^0.0.1",
-    "shikiji": "^0.7.6",
-    "shikiji-transformers": "^0.7.6",
-    "tailwind-merge": "^2.1.0",
-    "vfile": "^6.0.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.10.4",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
-    "eslint-config-next": "^14.0.4",
-    "postcss": "^8.4.32",
-    "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.3"
-  }
+	"private": true,
+	"scripts": {
+		"turbo": "next dev --turbo",
+		"dev": "next dev",
+		"build:ogdata": "tsx ./scripts/og-posts.ts",
+		"build": "npm run build:ogdata && next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"prettier": {
+		"quoteProps": "consistent",
+		"useTabs": true
+	},
+	"dependencies": {
+		"@csstools/postcss-oklab-function": "^3.0.10",
+		"@vercel/analytics": "^1.2.2",
+		"@vercel/speed-insights": "^1.0.10",
+		"clsx": "2.0.0",
+		"feed": "^4.2.2",
+		"gray-matter": "^4.0.3",
+		"next": "^14.0.4",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-markdown": "^9.0.1",
+		"rehype-pretty-code": "^0.12.1",
+		"rehype-raw": "^7.0.0",
+		"remark-gfm": "^4.0.0",
+		"remark-parse": "^11.0.0",
+		"remark-rehype": "^11.1.0",
+		"server-only": "^0.0.1",
+		"shikiji": "^0.7.6",
+		"shikiji-transformers": "^0.7.6",
+		"tailwind-merge": "^2.1.0",
+		"tsx": "^4.7.1",
+		"vfile": "^6.0.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.10.4",
+		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.17",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.55.0",
+		"eslint-config-next": "^14.0.4",
+		"postcss": "^8.4.32",
+		"prettier": "^3.1.1",
+		"prettier-plugin-tailwindcss": "^0.5.9",
+		"tailwindcss": "^3.3.6",
+		"typescript": "^5.3.3"
+	}
 }

@@ -1,13 +1,14 @@
-import { getAllPosts, getPost, getSlug } from "@/lib/content";
+import { getCachedPost, getCachedPostList } from "@/lib/content";
 import { Feed } from "feed";
 import { Fragment } from "react";
 import { StaticMarkdown } from "@/components/Markdown";
 import { convert } from "@/lib/unified";
+import { getSlug } from "@/lib/slug";
 
 export async function GET() {
 	const { renderToStaticMarkup } = await import("react-dom/server");
 
-	const posts = await getAllPosts();
+	const posts = getCachedPostList();
 
 	const feed = new Feed({
 		title: "Ian Mitchell's Blog",
@@ -33,7 +34,7 @@ export async function GET() {
 
 	for (const post of posts) {
 		const slug = getSlug(post);
-		const { frontmatter, content } = await getPost(slug);
+		const { frontmatter, content } = await getCachedPost(slug);
 		const publishDate = new Date(frontmatter.date);
 
 		if (lastUpdated == null || lastUpdated < publishDate) {

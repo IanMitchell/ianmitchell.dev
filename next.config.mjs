@@ -47,6 +47,10 @@ export default {
 				source: "/resume",
 				destination: "/",
 			},
+			{
+				source: "/feed.xml",
+				destination: "/feed",
+			},
 		];
 	},
 };

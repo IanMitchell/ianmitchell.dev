@@ -8,6 +8,16 @@ import Link from "next/link";
 import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	metadataBase: new URL("https://ianmitchell.dev"),
+	title: {
+		template: "Ian Mitchell | %s",
+		default: "Ian Mitchell",
+	},
+	description: "My corner of the internet.",
+};
 
 const ibm = IBM_Plex_Mono({
 	subsets: ["latin"],
