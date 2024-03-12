@@ -2,7 +2,7 @@ import Page from "@/components/Page";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Ian Mitchell | Bookmarks",
+	title: "Bookmarks",
 	description: "lol",
 };
 

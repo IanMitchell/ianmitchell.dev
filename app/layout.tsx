@@ -12,7 +12,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://ianmitchell.dev"),
-	title: "Ian Mitchell",
+	title: {
+		template: "Ian Mitchell | %s",
+		default: "Ian Mitchell",
+	},
 	description: "My corner of the internet.",
 };
 
