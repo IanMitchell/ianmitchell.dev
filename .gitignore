@@ -30,4 +30,4 @@ yarn-error.log*
 .env.production.local
 
 # Build Files
-/app/blog/[slug]/(data)/posts.json
+/app/blog/\[slug\]/\(data\)/posts.json
