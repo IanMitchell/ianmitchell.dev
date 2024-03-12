@@ -1,15 +1,12 @@
-import { getAllPosts, getPost, getSlug } from "@/lib/content";
 import { ImageResponse } from "next/og";
+import { getCachedPost } from "@/lib/content";
+import data from "./(data)/posts.json";
+
+function isValidSlug(slug: string): slug is keyof typeof data {
+	return slug in data;
+}
 
 export const runtime = "edge";
-
-export async function generateStaticParams() {
-	const files = await getAllPosts();
-
-	return files.map((file) => ({
-		slug: getSlug(file),
-	}));
-}
 
 // Image metadata
 export const size = {
@@ -32,7 +29,11 @@ export default async function Image({ params }: { params: { slug: string } }) {
 		(res) => res.arrayBuffer(),
 	);
 
-	const { frontmatter } = await getPost(params.slug);
+	if (!isValidSlug(params.slug)) {
+		throw new Error("Unknown Post");
+	}
+
+	const { title, date } = data[params.slug];
 
 	return new ImageResponse(
 		(
@@ -65,27 +66,29 @@ export default async function Image({ params }: { params: { slug: string } }) {
 						fontFamily: "DM Serif Display",
 					}}
 				>
-					{frontmatter.title}
+					{title}
 				</h1>
 
-				<div tw="flex flex-row items-center mt-auto ml-8 mb-8">
+				<div tw="flex flex-row items-center mt-auto ml-8">
 					<img
 						src="https://pbs.twimg.com/profile_images/1706472056458797056/cb63cZ9Z_400x400.jpg"
-						tw="rounded-full w-12 h-12 mr-4"
+						tw="rounded-full w-10 h-10 mr-4"
 					/>
 
 					<div tw="flex flex-col">
-						<h2 tw="m-0" style={{ fontFamily: "Inter" }}>
+						<h2 tw="m-0 text-base" style={{ fontFamily: "Inter" }}>
 							Ian Mitchell
 						</h2>
-						<p tw="m-0" style={{ color: "#777", fontFamily: "IBM" }}>
+						<p tw="m-0 text-xs" style={{ color: "#777", fontFamily: "IBM" }}>
 							@IanMitchel1
 						</p>
 					</div>
-					<p tw="ml-auto mr-8" style={{ fontFamily: "Inter" }}>
-						{frontmatter.date}
+					<p tw="ml-auto mr-8 text-sm" style={{ fontFamily: "Inter" }}>
+						{date}
 					</p>
 				</div>
+
+				<img tw="w-full h-24" src="/footer.svg" />
 			</div>
 		),
 		{

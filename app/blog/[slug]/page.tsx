@@ -1,7 +1,8 @@
-import { getAllPosts, getPost, getSlug } from "@/lib/content";
 import { Markdown } from "@/components/Markdown";
 import Page from "@/components/Page";
 import { H1 } from "@/components/md/Heading";
+import { getCachedPost, getCachedPostList } from "@/lib/content";
+import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
 
 export const dynamic = "force-static";
@@ -11,7 +12,7 @@ export async function generateMetadata({
 }: {
 	params: { slug: string };
 }): Promise<Metadata> {
-	const { frontmatter } = await getPost(params.slug);
+	const { frontmatter } = await getCachedPost(params.slug);
 
 	return {
 		title: frontmatter.title,
@@ -20,7 +21,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-	const files = await getAllPosts();
+	const files = getCachedPostList();
 
 	return files.map((file) => ({
 		slug: getSlug(file),
@@ -32,7 +33,7 @@ export default async function BlogPost({
 }: {
 	params: { slug: string };
 }) {
-	const { content, frontmatter } = await getPost(params.slug);
+	const { content, frontmatter } = await getCachedPost(params.slug);
 
 	return (
 		<Page>
