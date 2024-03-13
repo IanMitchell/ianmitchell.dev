@@ -80,7 +80,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 				<div tw="flex flex-row items-center mt-auto ml-8">
 					<img
 						src="https://pbs.twimg.com/profile_images/1706472056458797056/cb63cZ9Z_400x400.jpg"
-						tw="rounded-full w-20 h-20 mr-4"
+						tw="rounded-full w-20 h-20 mr-8"
 					/>
 
 					<div tw="flex flex-col">
