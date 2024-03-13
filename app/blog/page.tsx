@@ -1,4 +1,5 @@
 import Page from "@/components/Page";
+import ExternalLink from "@/components/icons/ExternalLink";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
 import { getCachedPost, getCachedPostList } from "@/lib/content";
@@ -16,7 +17,7 @@ export default async function BlogIndexPage() {
 	const posts = await getCachedPostList();
 	const years: Record<
 		number,
-		Array<{ date: string; title: string; post: string }>
+		Array<{ date: string; title: string; post: string; external: boolean }>
 	> = {};
 
 	for (const post of posts) {
@@ -31,6 +32,7 @@ export default async function BlogIndexPage() {
 			post,
 			title: frontmatter.title as string,
 			date: frontmatter.date as string,
+			external: frontmatter.link != null,
 		});
 	}
 
@@ -58,8 +60,9 @@ export default async function BlogIndexPage() {
 								>
 									<Link
 										href={`/blog/${getSlug(post.title)}`}
-										className="border-highlight/30 border-b-2 border-solid text-highlight hover:border-highlight"
+										className="border-highlight/30 border-b-2 border-solid text-highlight hover:border-highlight flex items-center gap-2"
 									>
+										{post.external ? <ExternalLink className="size-4" /> : null}
 										{post.title}
 									</Link>
 									<span className="hidden text-xs opacity-80 sm:inline">
