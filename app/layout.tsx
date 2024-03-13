@@ -9,6 +9,7 @@ import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
+import GitHub from "@/components/icons/GitHub";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://ianmitchell.dev"),
@@ -97,6 +98,11 @@ export default function RootLayout({
 							<li>
 								<a href="https://discord.gg/ian">
 									<Discord className="w-4 h-4 text-[#5865F2] opacity-70 hover:opacity-100 transition-opacity" />
+								</a>
+							</li>
+							<li>
+								<a href="https://github.com/ianmitchell">
+									<GitHub className="w-4 h-4 text-[#333] opacity-70 hover:opacity-100 transition-opacity" />
 								</a>
 							</li>
 						</ul>

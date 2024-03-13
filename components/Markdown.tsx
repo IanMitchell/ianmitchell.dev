@@ -21,6 +21,7 @@ import {
 } from "./md/Table";
 import Preformatted from "./md/Preformatted";
 import type { Nodes } from "hast";
+import FigureCaption from "./md/FigureCaption";
 
 interface MarkdownProps {
 	className?: string;
@@ -79,6 +80,7 @@ export function StaticMarkdown({
 					td: TableCell,
 					tfoot: TableFooter,
 					pre: Preformatted,
+					figcaption: FigureCaption,
 				},
 				ignoreInvalidStyle: true,
 				// @ts-expect-error ???
@@ -86,7 +88,7 @@ export function StaticMarkdown({
 				// @ts-expect-error ???
 				jsxs,
 				passKeys: true,
-				passNode: true,
+				passNode: false,
 			})}
 		</Fragment>
 	);

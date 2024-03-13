@@ -11,6 +11,7 @@ import prismaLanguage from "@/lib/languages/prisma.json";
 import "server-only";
 
 const highlighterOptions: Options = {
+	// @ts-expect-error ???
 	getHighlighter: (options) =>
 		getHighlighter({
 			...options,
@@ -25,8 +26,8 @@ export const processor = unified()
 	.use(remarkParse)
 	.use(remarkGfm, { singleTilde: false })
 	.use(remarkRehype, { allowDangerousHtml: true })
-	.use(rehypeRaw)
-	.use(rehypePrettyCode, highlighterOptions);
+	.use(rehypePrettyCode, highlighterOptions)
+	.use(rehypeRaw);
 
 export async function convert(value: string) {
 	const file = new VFile();
