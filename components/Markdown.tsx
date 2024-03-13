@@ -1,5 +1,5 @@
 import { convert } from "@/lib/unified";
-import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { toJsxRuntime, type Components } from "hast-util-to-jsx-runtime";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { BlockQuote } from "./md/BlockQuote";
 import "server-only";
@@ -26,11 +26,13 @@ import FigureCaption from "./md/FigureCaption";
 interface MarkdownProps {
 	className?: string;
 	children: string | null | undefined;
+	components?: Partial<Components>;
 }
 
 export function StaticMarkdown({
 	tree,
 	className,
+	components,
 	children,
 }: MarkdownProps & { tree: Nodes }) {
 	if (children == null) {
@@ -80,7 +82,7 @@ export function StaticMarkdown({
 					td: TableCell,
 					tfoot: TableFooter,
 					pre: Preformatted,
-					figcaption: FigureCaption,
+					...components,
 				},
 				ignoreInvalidStyle: true,
 				// @ts-expect-error ???
@@ -101,5 +103,9 @@ export async function Markdown({ className, children }: MarkdownProps) {
 
 	const hastTree = await convert(children);
 
-	return <StaticMarkdown tree={hastTree}>{children}</StaticMarkdown>;
+	return (
+		<StaticMarkdown tree={hastTree} components={{ figcaption: FigureCaption }}>
+			{children}
+		</StaticMarkdown>
+	);
 }
