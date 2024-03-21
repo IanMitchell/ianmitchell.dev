@@ -81,9 +81,7 @@ export default function RootLayout({
 					{children}
 
 					<footer className="mt-16 flex justify-between items-center font-mono text-xs">
-						<span className="opacity-60">
-							Copyright {new Date().getFullYear()} Ian Mitchell
-						</span>
+						<span className="opacity-60">Thanks for visiting!</span>
 						<ul className="flex gap-4">
 							<li>
 								<span className="font-mono text-xs opacity-60">

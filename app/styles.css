@@ -21,6 +21,7 @@
 
 html {
 	tab-size: 2;
+	hanging-punctuation: first last;
 }
 
 .site-background {
