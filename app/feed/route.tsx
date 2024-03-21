@@ -49,6 +49,12 @@ export async function GET() {
 			link: `https://ianmitchell.dev/blog/${slug}`,
 			content: renderToStaticMarkup(
 				<Fragment>
+					{frontmatter.layout === "link" ? (
+						<p>
+							<strong>Read: </strong>
+							<a href={frontmatter.href}>{frontmatter.link}</a>
+						</p>
+					) : null}
 					<StaticMarkdown tree={tree}>{content}</StaticMarkdown>
 					<a
 						href={`mailto:ian.mitchell@hey.com?subject=Reply%20to:%20“${frontmatter.title}”`}
