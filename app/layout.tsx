@@ -89,17 +89,23 @@ export default function RootLayout({
 								</span>
 							</li>
 							<li>
-								<a href="https://twitter.com/ianmitchel1">
+								<a
+									href="https://twitter.com/ianmitchel1"
+									aria-label="My Twitter profile"
+								>
 									<Twitter className="w-4 h-4 text-[#1DA1F2] opacity-70 hover:opacity-100 transition-opacity" />
 								</a>
 							</li>
 							<li>
-								<a href="https://discord.gg/ian">
+								<a href="https://discord.gg/ian" aria-label="My Discord server">
 									<Discord className="w-4 h-4 text-[#5865F2] opacity-70 hover:opacity-100 transition-opacity" />
 								</a>
 							</li>
 							<li>
-								<a href="https://github.com/ianmitchell">
+								<a
+									href="https://github.com/ianmitchell"
+									aria-label="My GitHub profile"
+								>
 									<GitHub className="w-4 h-4 text-[#333] opacity-70 hover:opacity-100 transition-opacity" />
 								</a>
 							</li>
