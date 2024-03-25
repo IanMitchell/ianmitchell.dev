@@ -36,6 +36,50 @@ new Intl.NumberFormat("en-US", {
 // => "+85%"
 ```
 
+If you want to get the ordinals, you can use NumberFormat with [PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)
+
+```typescript title="ordinals.js"
+const rules = new Intl.PluralRules("en-us", { type: "ordinal" });
+const formatter = new Intl.NumberFormat("en-us");
+
+function format(num: number) {
+	const rule = rules.select(num);
+	let suffix;
+
+	switch (rule) {
+		case "zero":
+			break;
+		case "one":
+			suffix = "st";
+			break;
+		case "two":
+			suffix = "nd";
+			break;
+		case "few":
+			suffix = "rd";
+			break;
+		case "many":
+		case "other":
+		default:
+			suffix = "th";
+			break;
+	}
+
+	return `${formatter.format(num)}${suffix}`;
+}
+
+format(1);
+// "1st"
+format(2);
+// "2nd"
+format(3);
+// "3rd"
+format(10);
+// "10th"
+format(100124);
+// "100,134th"
+```
+
 ## Formatting Lists
 
 Want to format a list of options in a readable format? Rails had a great implmentation with `humanize`, and now JavaScript does too! Check out [Intl.ListFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat).
@@ -47,7 +91,7 @@ const formatter = new Intl.ListFormat("en", {
 });
 
 console.log(
-	formatter.format(["Soccer", "Politics", "Video Games", "Programming"])
+	formatter.format(["Soccer", "Politics", "Video Games", "Programming"]),
 );
 // => "Soccer, Politics, Video Games, and Programming"
 ```
