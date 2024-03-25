@@ -24,6 +24,11 @@ html {
 	hanging-punctuation: first last;
 }
 
+li > ol,
+li > ul {
+	margin-left: 2rem;
+}
+
 .site-background {
 	background-image: url("/footer.svg");
 	background-size: 100% 250px;
