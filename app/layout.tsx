@@ -56,7 +56,11 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={classNames("h-full bg-light", ibm.variable, dmSerif.variable)}
+			className={classNames(
+				"h-full bg-light leading-[1.4]",
+				ibm.variable,
+				dmSerif.variable,
+			)}
 		>
 			<head>
 				<title>Ian Mitchell</title>

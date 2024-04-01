@@ -1,7 +1,7 @@
 import classNames from "@/lib/classnames";
 import { ComponentProps } from "react";
 
-const headingClasses = "mt-8 mb-2 font-display leading-normal";
+const headingClasses = "mt-8 mb-2 font-display";
 
 export function H1({ className, ...props }: ComponentProps<"h1">) {
 	return (
