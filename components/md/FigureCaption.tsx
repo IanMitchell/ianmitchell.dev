@@ -19,7 +19,7 @@ export default function FigureCaption(props: ComponentProps<"figcaption">) {
 		<figcaption
 			{...rest}
 			className={classNames(
-				"flex font-mono justify-between font-bold items-center pb-2",
+				"flex font-mono justify-between font-bold items-center pb-2 text-xs sm:text-base",
 				className,
 			)}
 		>
@@ -27,7 +27,7 @@ export default function FigureCaption(props: ComponentProps<"figcaption">) {
 				<CodeFile className="size-4" />
 				{children}
 			</div>
-			<span>{language}</span>
+			<span className="ml-4">{language}</span>
 		</figcaption>
 	);
 }

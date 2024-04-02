@@ -29,6 +29,11 @@ li > ul {
 	margin-left: 2rem;
 }
 
+p > code {
+	text-wrap: wrap;
+	word-break: break-all;
+}
+
 .site-background {
 	background-image: url("/footer.svg");
 	background-size: 100% 250px;

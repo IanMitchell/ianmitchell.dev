@@ -67,7 +67,7 @@ export default function RootLayout({
 			</head>
 			<body className="min-h-full pb-64 site-background text-dark selection:bg-dark selection:text-light">
 				<div className="mt-12 mx-auto max-w-2xl p-4">
-					<header className="flex justify-between items-end mb-12">
+					<header className="flex flex-col sm:flex-row gap-4 justify-between sm:items-end mb-12">
 						<a href="/">
 							<Logo />
 						</a>
@@ -84,7 +84,7 @@ export default function RootLayout({
 
 					{children}
 
-					<footer className="mt-16 flex justify-between items-center font-mono text-xs">
+					<footer className="mt-16 flex flex-col sm:flex-row  gap-4 justify-between items-center font-mono text-xs">
 						<span className="opacity-60">Thanks for visiting!</span>
 						<ul className="flex gap-4">
 							<li>
