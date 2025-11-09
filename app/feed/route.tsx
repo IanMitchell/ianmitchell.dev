@@ -46,13 +46,13 @@ async function getRSS() {
 
 		feed.addItem({
 			title: frontmatter.title,
+			// image: post.image,
 			id: `https://ianmitchell.dev/blog/${slug}`,
 			link: `https://ianmitchell.dev/blog/${slug}`,
 			content: renderToStaticMarkup(
 				<Entry frontmatter={frontmatter} content={content} tree={tree} />,
 			),
 			date: publishDate,
-			// image: post.image,
 		});
 	}
 
