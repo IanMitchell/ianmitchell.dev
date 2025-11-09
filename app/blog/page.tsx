@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogIndexPage() {
-	const posts = await getCachedPostList();
+	const posts = getCachedPostList();
 	const years: Record<
 		number,
 		Array<{ date: string; title: string; post: string; external: boolean }>

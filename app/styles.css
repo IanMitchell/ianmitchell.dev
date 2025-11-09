@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
 	/* :root {
@@ -17,6 +15,16 @@
 			--color-highlight: color(display-p3 1 0 0.492 / 1);
 		}
 	} */
+}
+
+@theme {
+	--color-dark: oklch(26% 0.04 277);
+	--color-light: oklch(98% 0.01 269);
+	--color-highlight: oklch(66.59% 0.3018840772950374 4.255646284110876);
+	--color-link: oklch(54% 0.25 260);
+
+	--font-mono: var(--font-ibm);
+	--font-display: var(--font-dm-serif);
 }
 
 html {

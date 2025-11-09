@@ -1,21 +1,20 @@
-import remarkGfm from "remark-gfm";
+import prismaLanguage from "@/lib/languages/prisma.json";
+import { transformerNotationDiff } from "@shikijs/transformers";
 import rehypePrettyCode, { Options } from "rehype-pretty-code";
-import { getHighlighter, bundledLanguages } from "shikiji";
-import { transformerNotationDiff } from "shikiji-transformers";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypeRaw from "rehype-raw";
+import "server-only";
+import { bundledLanguages, createHighlighter } from "shiki";
 import { unified } from "unified";
 import { VFile } from "vfile";
-import prismaLanguage from "@/lib/languages/prisma.json";
-import "server-only";
 
 const highlighterOptions: Options = {
 	// @ts-expect-error ???
-	getHighlighter: (options) =>
-		getHighlighter({
+	createHighlighter: (options) =>
+		createHighlighter({
 			...options,
-			// @ts-expect-error ???
 			langs: [...Object.keys(bundledLanguages), prismaLanguage],
 		}),
 	theme: "github-light",

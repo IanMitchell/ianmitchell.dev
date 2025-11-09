@@ -1,12 +1,12 @@
-import fs from "node:fs";
-import * as matter from "gray-matter";
 import { getAllPosts, getPostFilePath } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
+import * as matter from "gray-matter";
+import fs from "node:fs";
 import path from "node:path";
 
 async function generateOGAllowlist() {
 	const json: Record<string, { title: string; date: Date }> = {};
-	const posts = await getAllPosts();
+	const posts = getAllPosts();
 
 	for (const post of posts) {
 		const path = getPostFilePath(post);
