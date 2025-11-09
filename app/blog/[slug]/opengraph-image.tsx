@@ -1,12 +1,5 @@
+import { getPost } from "@/lib/blog-posts";
 import { ImageResponse } from "next/og";
-import { getCachedPost } from "@/lib/content";
-import data from "./(data)/posts.json";
-
-function isValidSlug(slug: string): slug is keyof typeof data {
-	return slug in data;
-}
-
-export const runtime = "edge";
 
 // Image metadata
 export const size = {
@@ -15,8 +8,10 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: { slug: string } }) {
-	// Font
+export default async function Image({ params }: PageProps<"/blog/[slug]">) {
+	const { slug } = await params;
+
+	// Load Fonts
 	const dmSerifyDisplay = fetch(
 		new URL("./DMSerifDisplay-Regular.ttf", import.meta.url),
 	).then((response) => response.arrayBuffer());
@@ -29,16 +24,22 @@ export default async function Image({ params }: { params: { slug: string } }) {
 		(res) => res.arrayBuffer(),
 	);
 
-	if (!isValidSlug(params.slug)) {
-		throw new Error("Unknown Post");
+	// Configure data
+	let post;
+	try {
+		post = await getPost(slug);
+	} catch {
+		return null;
 	}
 
-	const { title, date } = data[params.slug];
-	const formattedDate = new Date(date).toLocaleString("en-us", {
-		month: "long",
-		year: "numeric",
-		day: "numeric",
-	});
+	const formattedDate = new Date(post.frontmatter.date).toLocaleString(
+		"en-us",
+		{
+			month: "long",
+			year: "numeric",
+			day: "numeric",
+		},
+	);
 
 	return new ImageResponse(
 		(
@@ -74,7 +75,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
 						fontFamily: "DM Serif Display",
 					}}
 				>
-					{title}
+					{post.frontmatter.title}
 				</h1>
 
 				<div tw="flex flex-row items-center mt-auto ml-8">

@@ -2,7 +2,7 @@ import Page from "@/components/Page";
 import ExternalLink from "@/components/icons/ExternalLink";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
-import { getCachedPost, getCachedPostList } from "@/lib/content";
+import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -14,14 +14,16 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogIndexPage() {
-	const posts = getCachedPostList();
+	"use cache";
+
+	const posts = await getAllPosts();
 	const years: Record<
 		number,
-		Array<{ date: string; title: string; post: string; external: boolean }>
+		Array<{ date: Date; title: string; post: string; external: boolean }>
 	> = {};
 
 	for (const post of posts) {
-		const { frontmatter } = getCachedPost(getSlug(post));
+		const { frontmatter } = await getPost(getSlug(post));
 		const year = new Date(frontmatter.date).getFullYear();
 
 		if (!(year in years)) {
@@ -30,8 +32,8 @@ export default async function BlogIndexPage() {
 
 		years[year].push({
 			post,
-			title: frontmatter.title as string,
-			date: frontmatter.date as string,
+			title: frontmatter.title,
+			date: frontmatter.date,
 			external: frontmatter.link != null,
 		});
 	}

@@ -39,7 +39,6 @@ li > ul {
 
 p > code {
 	text-wrap: wrap;
-	word-break: break-all;
 }
 
 .site-background {

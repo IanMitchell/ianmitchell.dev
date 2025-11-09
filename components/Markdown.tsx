@@ -1,15 +1,18 @@
 import { convert } from "@/lib/unified";
+import type { Nodes } from "hast";
 import { toJsxRuntime, type Components } from "hast-util-to-jsx-runtime";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import { BlockQuote } from "./md/BlockQuote";
 import "server-only";
 import { Anchor } from "./md/Anchor";
+import { BlockQuote } from "./md/BlockQuote";
 import { Emphasis } from "./md/Emphasis";
+import FigureCaption from "./md/FigureCaption";
 import { H1, H2, H3, H4, H5, H6 } from "./md/Heading";
 import { HorizontalRule } from "./md/HorizontalRule";
 import { Image } from "./md/Image";
 import { ListItem, OrderedList, UnorderedList } from "./md/Lists";
 import { Paragraph } from "./md/Paragraph";
+import Preformatted from "./md/Preformatted";
 import { Strong } from "./md/Strong";
 import {
 	Table,
@@ -19,9 +22,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "./md/Table";
-import Preformatted from "./md/Preformatted";
-import type { Nodes } from "hast";
-import FigureCaption from "./md/FigureCaption";
 
 interface MarkdownProps {
 	className?: string;
@@ -85,9 +85,7 @@ export function StaticMarkdown({
 					...components,
 				},
 				ignoreInvalidStyle: true,
-				// @ts-expect-error ???
 				jsx,
-				// @ts-expect-error ???
 				jsxs,
 				passKeys: true,
 				passNode: false,

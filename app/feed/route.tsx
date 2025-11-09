@@ -1,14 +1,15 @@
-import { getCachedPost, getCachedPostList } from "@/lib/content";
-import { Feed } from "feed";
-import { Fragment } from "react";
-import { StaticMarkdown } from "@/components/Markdown";
-import { convert } from "@/lib/unified";
+import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
+import { convert } from "@/lib/unified";
+import { Feed } from "feed";
+import { Entry } from "./Entry";
 
-export async function GET() {
+async function getRSS() {
+	"use cache";
+
 	const { renderToStaticMarkup } = await import("react-dom/server");
 
-	const posts = getCachedPostList();
+	const posts = await getAllPosts();
 
 	const feed = new Feed({
 		title: "Ian Mitchell's Blog",
@@ -34,7 +35,7 @@ export async function GET() {
 
 	for (const post of posts) {
 		const slug = getSlug(post);
-		const { frontmatter, content } = await getCachedPost(slug);
+		const { frontmatter, content } = await getPost(slug);
 		const publishDate = new Date(frontmatter.date);
 
 		if (lastUpdated == null || lastUpdated < publishDate) {
@@ -48,20 +49,7 @@ export async function GET() {
 			id: `https://ianmitchell.dev/blog/${slug}`,
 			link: `https://ianmitchell.dev/blog/${slug}`,
 			content: renderToStaticMarkup(
-				<Fragment>
-					{frontmatter.layout === "link" ? (
-						<p>
-							<strong>Read: </strong>
-							<a href={frontmatter.href}>{frontmatter.link}</a>
-						</p>
-					) : null}
-					<StaticMarkdown tree={tree}>{content}</StaticMarkdown>
-					<a
-						href={`mailto:ian.mitchell@hey.com?subject=Reply%20to:%20“${frontmatter.title}”`}
-					>
-						Reply via e-mail
-					</a>
-				</Fragment>,
+				<Entry frontmatter={frontmatter} content={content} tree={tree} />,
 			),
 			date: publishDate,
 			// image: post.image,
@@ -70,7 +58,11 @@ export async function GET() {
 
 	feed.options.updated = lastUpdated;
 
-	const rss = feed.rss2();
+	return feed.rss2();
+}
+
+export async function GET() {
+	const rss = await getRSS();
 
 	return new Response(rss, {
 		headers: {

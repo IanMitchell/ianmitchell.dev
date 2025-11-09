@@ -1,17 +1,7 @@
 import classNames from "@/lib/classnames";
-import Link from "next/link";
 import { ComponentProps } from "react";
 
 export function Anchor({ className, ...props }: ComponentProps<"a">) {
-	// if (props.href?.startsWith("/")) {
-	// 	return (
-	// 		<Link
-	// 			{...props}
-	// 			className="text-highlight hover:underline-offset-2 hover:decoration-2 hover:underline"
-	// 		/>
-	// 	);
-	// }
-
 	return (
 		<a
 			{...props}
