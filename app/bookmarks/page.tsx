@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 	description: "lol",
 };
 
-export default function BookmarksPage() {
+export default async function BookmarksPage() {
+	"use cache";
+
 	return <Page title="Bookmarks">todo</Page>;
 }

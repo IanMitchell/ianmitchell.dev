@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
 	/* :root {
@@ -19,6 +17,16 @@
 	} */
 }
 
+@theme {
+	--color-dark: oklch(26% 0.04 277);
+	--color-light: oklch(98% 0.01 269);
+	--color-highlight: oklch(66.59% 0.3018840772950374 4.255646284110876);
+	--color-link: oklch(54% 0.25 260);
+
+	--font-mono: var(--font-ibm);
+	--font-display: var(--font-dm-serif);
+}
+
 html {
 	tab-size: 2;
 	hanging-punctuation: first last;
@@ -31,7 +39,6 @@ li > ul {
 
 p > code {
 	text-wrap: wrap;
-	word-break: break-all;
 }
 
 .site-background {

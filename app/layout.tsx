@@ -1,15 +1,15 @@
 import "@/app/styles.css";
-import { IBM_Plex_Mono, DM_Serif_Display } from "next/font/google";
-import { ComponentProps, PropsWithChildren } from "react";
-import classNames from "@/lib/classnames";
-import Logo from "@/components/Logo";
-import { Analytics } from "@vercel/analytics/react";
-import Link from "next/link";
-import Twitter from "@/components/icons/Twitter";
 import Discord from "@/components/icons/Discord";
+import GitHub from "@/components/icons/GitHub";
+import Twitter from "@/components/icons/Twitter";
+import Logo from "@/components/Logo";
+import classNames from "@/lib/classnames";
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
-import GitHub from "@/components/icons/GitHub";
+import { DM_Serif_Display, IBM_Plex_Mono } from "next/font/google";
+import Link from "next/link";
+import { Suspense, type ComponentProps, type PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://ianmitchell.dev"),
@@ -48,11 +48,9 @@ function NavLink({
 	);
 }
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+	"use cache";
+
 	return (
 		<html
 			lang="en"
@@ -82,7 +80,7 @@ export default function RootLayout({
 						</nav>
 					</header>
 
-					{children}
+					<Suspense>{children}</Suspense>
 
 					<footer className="mt-16 flex flex-col sm:flex-row  gap-4 justify-between items-center font-mono text-xs">
 						<span className="opacity-60">Thanks for visiting!</span>

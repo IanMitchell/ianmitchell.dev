@@ -1,12 +1,11 @@
-import { Fragment } from "react";
 import { Markdown } from "@/components/Markdown";
-import fs from "node:fs";
-import path from "node:path";
-import { Metadata } from "next";
-import { H1 } from "@/components/md/Heading";
-import { Paragraph } from "@/components/md/Paragraph";
 import { Anchor } from "@/components/md/Anchor";
 import { Emphasis } from "@/components/md/Emphasis";
+import { H1 } from "@/components/md/Heading";
+import { Paragraph } from "@/components/md/Paragraph";
+import { Metadata } from "next";
+import path from "node:path";
+import { Fragment } from "react";
 
 export const metadata: Metadata = {
 	title: "Ian Mitchell | Bet",
@@ -14,11 +13,11 @@ export const metadata: Metadata = {
 		"I made a dumb sports bet with my friend Staffan, and track the yearly result.",
 };
 
-export default function BetPage() {
-	const table = fs.readFileSync(
-		path.join(process.cwd(), "./app/bet/content.md"),
-		"utf8",
-	);
+export default async function BetPage() {
+	"use cache";
+
+	const file = Bun.file(path.join(process.cwd(), "app/bet/content.md"));
+	const table = await file.text();
 
 	return (
 		<Fragment>

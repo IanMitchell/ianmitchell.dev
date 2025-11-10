@@ -1,52 +1,56 @@
-import fs from "node:fs";
-import path from "node:path";
-import { getSlug } from "./slug";
+import { Glob } from "bun";
 import * as matter from "gray-matter";
+import path from "node:path";
+import { cache } from "react";
+import {
+	date,
+	InferOutput,
+	object,
+	optional,
+	safeParse,
+	string,
+} from "valibot";
+import { getSlug } from "./slug";
 
-const CONTENT_DIRECTORY = "/content/blog";
+const CONTENT_DIRECTORY = path.join(process.cwd(), "/content/blog");
 
-export function getPostFilePath(name: string) {
-	return path.join(process.cwd(), CONTENT_DIRECTORY, name);
-}
+const frontmatterSchema = object({
+	title: string(),
+	date: date(),
+	layout: optional(string()),
+	link: optional(string()),
+	href: optional(string()),
+	excerpt: optional(string()),
+});
 
-export function getAllPosts() {
-	const targets = fs.readdirSync(path.join(process.cwd(), CONTENT_DIRECTORY), {
-		recursive: true,
-	});
+export type Frontmatter = InferOutput<typeof frontmatterSchema>;
 
-	const files = [];
+export const getAllPosts = cache(async () => {
+	const glob = new Glob("**/*.md");
+	return Array.fromAsync(glob.scan(CONTENT_DIRECTORY));
+});
 
-	for (const target of targets) {
-		if (
-			fs.lstatSync(getPostFilePath(target.toString())).isDirectory() ||
-			!target.toString().endsWith(".md")
-		) {
-			continue;
-		}
-
-		files.push(target.toString());
-	}
-
-	return files;
-}
-
-export function getPost(slug: string) {
-	const posts = getAllPosts();
+export const getPost = cache(async (slug: string) => {
+	const posts = await getAllPosts();
 	const post = posts.find((post) => getSlug(post) === slug);
 
 	if (!post) {
 		throw new Error(`Unknown Post ${slug}`);
 	}
 
-	const source = fs.readFileSync(
-		path.join(process.cwd(), CONTENT_DIRECTORY, post),
-		"utf8",
-	);
+	const file = Bun.file(path.join(CONTENT_DIRECTORY, post));
+	const source = await file.text();
 
 	const { data, content } = matter.default(source);
 
+	const result = safeParse(frontmatterSchema, data);
+
+	if (!result.success) {
+		throw new Error(`Frontmatter incorrect: ${JSON.stringify(result.issues)}`);
+	}
+
 	return {
-		frontmatter: data,
+		frontmatter: result.output,
 		content,
 	};
-}
+});

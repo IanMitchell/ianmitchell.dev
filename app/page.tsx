@@ -2,7 +2,9 @@ import { H1 } from "@/components/md/Heading";
 import { Paragraph } from "@/components/md/Paragraph";
 import { Fragment } from "react";
 
-export default function IndexPage() {
+export default async function IndexPage() {
+	"use cache";
+
 	return (
 		<Fragment>
 			<H1 className="mb-4">Hi! My name is Ian.</H1>

@@ -6,6 +6,8 @@ export const metadata: Metadata = {
 	description: "lol",
 };
 
-export default function ToolsPage() {
+export default async function ToolsPage() {
+	"use cache";
+
 	return <Page title="My Tools">todo</Page>;
 }

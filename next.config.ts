@@ -1,9 +1,14 @@
-/** @type {import('next').NextConfig} */
-export default {
+import type { NextConfig } from "next";
+
+const config: NextConfig = {
 	reactStrictMode: true,
+	typedRoutes: true,
+	cacheComponents: true,
 	experimental: {
-		// mdxRs: true,
-		typedRoutes: true,
+		browserDebugInfoInTerminal: true,
+		clientSegmentCache: true,
+		globalNotFound: true,
+		turbopackFileSystemCacheForDev: true,
 	},
 	async redirects() {
 		return [
@@ -54,3 +59,5 @@ export default {
 		];
 	},
 };
+
+export default config;
