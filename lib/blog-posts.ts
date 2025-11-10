@@ -12,9 +12,11 @@ import {
 } from "valibot";
 import { getSlug } from "./slug";
 
-const CONTENT_DIRECTORY = path
-	.join(path.dirname(new URL(import.meta.url).pathname), "..", "/content/blog")
-	.trim();
+const CONTENT_DIRECTORY = path.join(
+	path.dirname(new URL(import.meta.url).pathname),
+	"..",
+	"/content/blog/",
+);
 
 const frontmatterSchema = object({
 	title: string(),
