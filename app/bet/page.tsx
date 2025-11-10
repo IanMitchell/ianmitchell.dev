@@ -16,9 +16,7 @@ export const metadata: Metadata = {
 export default async function BetPage() {
 	"use cache";
 
-	const file = Bun.file(
-		path.join(path.dirname(new URL(import.meta.url).pathname), "./content.md"),
-	);
+	const file = Bun.file(path.join(process.cwd(), "app/bet/content.md"));
 	const table = await file.text();
 
 	return (
