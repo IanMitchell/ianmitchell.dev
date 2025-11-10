@@ -15,7 +15,7 @@ import { getSlug } from "./slug";
 const CONTENT_DIRECTORY = path.join(
 	path.dirname(new URL(import.meta.url).pathname),
 	"..",
-	"/content/blog/",
+	"content/blog",
 );
 
 const frontmatterSchema = object({
