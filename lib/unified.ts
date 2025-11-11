@@ -18,7 +18,7 @@ const highlighterOptions: Options = {
 			langs: [...Object.keys(bundledLanguages), prismaLanguage],
 		}),
 	theme: "github-light",
-	transformers: [transformerNotationDiff()],
+	transformers: [transformerNotationDiff({ matchAlgorithm: "v3" })],
 };
 
 export const processor = unified()

@@ -32,13 +32,13 @@ The last design iteration was very dark. I like having a dark mode, but I don't 
 
 I mentioned liking my old color palette earlier, and making the swap from a darker design to the current light one was pretty easy in practice - I ended up only needing to swap several instances of CSS variable usage.
 
-```css lines
-// 🌚 // [!code --]
-background-color: var(--dark); // [!code --]
-color: var(--light); // [!code --]
-// 🌝 // [!code ++]
-background-color: var(--light); // [!code ++]
-color: var(--dark); // [!code ++]
+```css showLineNumbers
+/* 🌚 */ /* [!code --] */
+background-color: var(--dark); /* [!code --] */
+color: var(--light); /* [!code --] */
+/* 🌝 */ /* [!code ++] */
+background-color: var(--light); /* [!code ++] */
+color: var(--dark); /* [!code ++] */
 ```
 
 ## Readability / Typography
