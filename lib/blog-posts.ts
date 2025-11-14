@@ -1,4 +1,5 @@
 import { Glob } from "bun";
+import type { Element } from "hast";
 import path from "node:path";
 import { cache } from "react";
 import { getSlug } from "./slug";
@@ -12,24 +13,29 @@ export const getAllPosts = cache(async () => {
 });
 
 export const getPost = cache(async (slug: string) => {
-	const posts = await getAllPosts();
-	const post = posts.find((post) => getSlug(post) === slug);
+	try {
+		const posts = await getAllPosts();
+		const post = posts.find((post) => getSlug(post) === slug);
 
-	if (!post) {
-		throw new Error(`Unknown Post ${slug}`);
+		if (!post) {
+			throw new Error(`Unknown Post ${slug}`);
+		}
+
+		const file = Bun.file(path.join(CONTENT_DIRECTORY, post));
+		const content = await file.text();
+
+		const title = await getPostTitle(content);
+		const date = getPostDate(post);
+
+		return {
+			title,
+			date,
+			content,
+		};
+	} catch (err) {
+		console.error(`There was an error parsing post ${slug}`, err);
+		throw err;
 	}
-
-	const file = Bun.file(path.join(CONTENT_DIRECTORY, post));
-	const content = await file.text();
-
-	const title = await getPostTitle(content);
-	const date = getPostDate(post);
-
-	return {
-		title,
-		date,
-		content,
-	};
 });
 
 export const getPostDate = cache((path: string) => {
@@ -42,17 +48,50 @@ export const getPostDate = cache((path: string) => {
 	return new Date();
 });
 
+function getChildElement(tree: Element, tagName: string): Element | undefined {
+	return tree.children.find(
+		(child): child is Element =>
+			child.type === "element" && child.tagName === tagName,
+	);
+}
+
+function getElementText(node: Element): string | undefined {
+	const textNode = node.children.find((child) => child.type === "text");
+	return textNode?.value;
+}
+
 export const getPostTitle = cache(async (content: string) => {
 	const hastTree = await convert(content);
 
+	// The `Root` typing is slightly different, so we can't use `getChildElement`
 	const titleNode = hastTree.children.find(
-		(child) => child.type === "element" && child.tagName === "h1",
+		(child): child is Element =>
+			child.type === "element" && child.tagName === "h1",
 	);
 
 	if (titleNode == null) {
 		throw new Error("No title found for Markdown post");
 	}
 
-	const titleText = titleNode.children.find((child) => child.type === "text");
-	return titleText.value;
+	// Handle text posts
+	let titleText = getElementText(titleNode);
+
+	if (titleText != null) {
+		return titleText;
+	}
+
+	// Handle link posts
+	const anchorNode = getChildElement(titleNode, "a");
+
+	if (anchorNode == null) {
+		throw new Error("No anchor or text found in title");
+	}
+
+	titleText = getElementText(anchorNode);
+
+	if (titleText != null) {
+		return titleText;
+	}
+
+	throw new Error("No text content found in title");
 });

@@ -23,7 +23,7 @@ export default async function BlogIndexPage() {
 
 	for (const post of posts) {
 		const { title, date } = await getPost(getSlug(post));
-		const year = new Date(date).getFullYear();
+		const year = date.getFullYear();
 
 		if (!(year in years)) {
 			years[year] = [];
@@ -53,27 +53,29 @@ export default async function BlogIndexPage() {
 					<div className="mt-4" key={year}>
 						<h2 className="mb-5">{year}</h2>
 						<ul className="mb-16">
-							{posts.reverse().map((post) => (
-								<li
-									key={post.title}
-									className="my-4 flex flex-row items-center"
-								>
-									<Link
-										href={`/blog/${getSlug(post.title)}`}
-										className="border-highlight/30 border-b-2 border-solid text-highlight hover:border-highlight flex items-center gap-2"
+							{posts
+								.sort((a, b) => b.date.getTime() - a.date.getTime())
+								.map((post) => (
+									<li
+										key={post.title}
+										className="my-4 flex flex-row items-center"
 									>
-										{post.title}
-									</Link>
-									<span className="hidden text-xs opacity-80 sm:inline">
-										<span className="mx-2">&bull;</span>
-										{new Date(post.date).toLocaleString("en-US", {
-											month: "numeric",
-											day: "numeric",
-											timeZone: "UTC",
-										})}
-									</span>
-								</li>
-							))}
+										<Link
+											href={`/blog/${getSlug(post.title)}`}
+											className="border-highlight/30 border-b-2 border-solid text-highlight hover:border-highlight flex items-center gap-2"
+										>
+											{post.title}
+										</Link>
+										<span className="hidden text-xs opacity-80 sm:inline">
+											<span className="mx-2">&bull;</span>
+											{new Date(post.date).toLocaleString("en-US", {
+												month: "numeric",
+												day: "numeric",
+												timeZone: "UTC",
+											})}
+										</span>
+									</li>
+								))}
 						</ul>
 					</div>
 				))}
