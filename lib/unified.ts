@@ -30,6 +30,8 @@ export const processor = unified()
 	.use(rehypeRaw);
 
 export async function convert(value: string) {
+	"use cache";
+
 	const file = new VFile();
 	file.value = value;
 
