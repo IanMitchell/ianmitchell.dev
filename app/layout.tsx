@@ -60,8 +60,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 			<head>
 				<title>Ian Mitchell</title>
 			</head>
-			<body className="min-h-full pb-64 site-background text-dark selection:bg-dark selection:text-light">
-				<div className="mt-12 mx-auto max-w-2xl p-4">
+			<body className="min-h-full pb-64 text-dark selection:bg-dark selection:text-light">
+				<div className="mt-12 mx-auto max-w-3xl p-4">
 					<header className="flex flex-col sm:flex-row gap-4 justify-between sm:items-end mb-12">
 						<a href="/">
 							<Logo />
@@ -79,7 +79,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 
 					<Suspense>{children}</Suspense>
 
-					<footer className="mt-16 flex flex-col sm:flex-row  gap-4 justify-between items-center font-mono text-xs">
+					<footer className="mt-8 flex flex-col sm:flex-row  gap-4 justify-between items-center font-mono text-xs">
 						<p className="text-gray-600">Hello from Seattle ☕</p>
 						<ul className="flex gap-4">
 							<li>

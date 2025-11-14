@@ -35,7 +35,7 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 
 	return (
 		<Page>
-			<article className="mt-8">
+			<article className="mt-8 p-12 bg-white">
 				<Markdown>{post.content}</Markdown>
 			</article>
 		</Page>

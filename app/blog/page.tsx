@@ -59,7 +59,7 @@ export default async function BlogIndexPage() {
 										key={post.title}
 										className="gap-4 flex flex-row items-center -ml-13"
 									>
-										<span className="hidden text-xs opacity-80 sm:inline">
+										<span className="hidden opacity-80 sm:inline">
 											{new Date(post.date).toLocaleString("en-US", {
 												month: "2-digit",
 												day: "2-digit",
@@ -67,10 +67,7 @@ export default async function BlogIndexPage() {
 											})}
 										</span>
 
-										<Anchor
-											href={`/blog/${getSlug(post.title)}`}
-											className="text-sm"
-										>
+										<Anchor href={`/blog/${getSlug(post.title)}`}>
 											{post.title}
 										</Anchor>
 									</li>
