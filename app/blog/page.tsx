@@ -1,5 +1,4 @@
 import Page from "@/components/Page";
-import ExternalLink from "@/components/icons/ExternalLink";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
@@ -19,12 +18,12 @@ export default async function BlogIndexPage() {
 	const posts = await getAllPosts();
 	const years: Record<
 		number,
-		Array<{ date: Date; title: string; post: string; external: boolean }>
+		Array<{ date: Date; title: string; post: string }>
 	> = {};
 
 	for (const post of posts) {
-		const { frontmatter } = await getPost(getSlug(post));
-		const year = new Date(frontmatter.date).getFullYear();
+		const { title, date } = await getPost(getSlug(post));
+		const year = new Date(date).getFullYear();
 
 		if (!(year in years)) {
 			years[year] = [];
@@ -32,9 +31,8 @@ export default async function BlogIndexPage() {
 
 		years[year].push({
 			post,
-			title: frontmatter.title,
-			date: frontmatter.date,
-			external: frontmatter.link != null,
+			title,
+			date,
 		});
 	}
 
@@ -64,7 +62,6 @@ export default async function BlogIndexPage() {
 										href={`/blog/${getSlug(post.title)}`}
 										className="border-highlight/30 border-b-2 border-solid text-highlight hover:border-highlight flex items-center gap-2"
 									>
-										{post.external ? <ExternalLink className="size-4" /> : null}
 										{post.title}
 									</Link>
 									<span className="hidden text-xs opacity-80 sm:inline">

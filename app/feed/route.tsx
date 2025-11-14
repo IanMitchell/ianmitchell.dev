@@ -35,24 +35,23 @@ async function getRSS() {
 
 	for (const post of posts) {
 		const slug = getSlug(post);
-		const { frontmatter, content } = await getPost(slug);
-		const publishDate = new Date(frontmatter.date);
+		const { title, date, content } = await getPost(slug);
 
-		if (lastUpdated == null || lastUpdated < publishDate) {
-			lastUpdated = publishDate;
+		if (lastUpdated == null || lastUpdated < date) {
+			lastUpdated = date;
 		}
 
 		const tree = await convert(content);
 
 		feed.addItem({
-			title: frontmatter.title,
+			title,
+			date,
 			// image: post.image,
 			id: `https://ianmitchell.dev/blog/${slug}`,
 			link: `https://ianmitchell.dev/blog/${slug}`,
 			content: renderToStaticMarkup(
-				<Entry frontmatter={frontmatter} content={content} tree={tree} />,
+				<Entry title={title} content={content} tree={tree} />,
 			),
-			date: publishDate,
 		});
 	}
 
