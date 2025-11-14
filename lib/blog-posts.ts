@@ -3,7 +3,7 @@ import type { Element } from "hast";
 import path from "node:path";
 import { cache } from "react";
 import { getSlug } from "./slug";
-import { convert } from "./unified";
+import { convert, getChildElement, getElementText } from "./unified";
 
 const CONTENT_DIRECTORY = path.join(process.cwd(), "/content/blog");
 
@@ -48,17 +48,31 @@ export const getPostDate = cache((path: string) => {
 	return new Date();
 });
 
-function getChildElement(tree: Element, tagName: string): Element | undefined {
-	return tree.children.find(
-		(child): child is Element =>
-			child.type === "element" && child.tagName === tagName,
-	);
-}
+// TODO: Verify this
+export const getPostContentWithoutTitle = cache(async (content: string) => {
+	const hastTree = await convert(content);
 
-function getElementText(node: Element): string | undefined {
-	const textNode = node.children.find((child) => child.type === "text");
-	return textNode?.value;
-}
+	// The `Root` typing is slightly different, so we can't use `getChildElement`
+	const titleNode = hastTree.children.find(
+		(child): child is Element =>
+			child.type === "element" && child.tagName === "h1",
+	);
+
+	if (titleNode == null) {
+		throw new Error("No title found for Markdown post");
+	}
+
+	// Handle text posts
+	let contentWithoutTitle = hastTree.children.filter(
+		(child) => child !== titleNode,
+	);
+
+	if (contentWithoutTitle.length === 0) {
+		throw new Error("No content found for Markdown post");
+	}
+
+	return contentWithoutTitle;
+});
 
 export const getPostTitle = cache(async (content: string) => {
 	const hastTree = await convert(content);

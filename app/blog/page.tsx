@@ -38,7 +38,7 @@ export default async function BlogIndexPage() {
 	return (
 		<Page
 			header={
-				<header className="mt-8 mb-12 flex items-center justify-between">
+				<header className="my-8 flex items-center justify-between">
 					<H1 className="mt-0 w-fit">Blog Posts</H1>
 					<Anchor href="/feed" className="text-sm">
 						RSS Feed

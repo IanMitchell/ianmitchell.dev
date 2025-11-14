@@ -155,6 +155,10 @@ article {
 	counter-reset: section;
 }
 
+article > h1 {
+	@apply mt-4 mb-12 w-full text-center text-xl uppercase;
+}
+
 article > h2 {
 	counter-increment: section;
 	counter-reset: subsection;

@@ -1,5 +1,6 @@
 import prismaLanguage from "@/lib/languages/prisma.json";
 import { transformerNotationDiff } from "@shikijs/transformers";
+import type { Element } from "hast";
 import rehypePrettyCode, { Options } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -34,4 +35,19 @@ export async function convert(value: string) {
 
 	const mdastTree = processor.parse(file);
 	return processor.run(mdastTree, file);
+}
+
+export function getChildElement(
+	tree: Element,
+	tagName: string,
+): Element | undefined {
+	return tree.children.find(
+		(child): child is Element =>
+			child.type === "element" && child.tagName === tagName,
+	);
+}
+
+export function getElementText(node: Element): string | undefined {
+	const textNode = node.children.find((child) => child.type === "text");
+	return textNode?.value;
 }

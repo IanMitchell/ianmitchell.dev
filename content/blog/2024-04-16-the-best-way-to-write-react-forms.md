@@ -2,13 +2,13 @@
 
 I got involved in a [Twitter conversation](https://twitter.com/devongovett/status/1780034498249511410) about the ideal way of writing React forms over the weekend, and I wanted to write a longer form post about what I view as the current best way of creating them.
 
-# Submission (Server Actions)
+## Submission (Server Actions)
 
 If you’re using Next.js and the App Router, [server actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#forms) are a great way of writing form submit handlers. I always put actions in a different folder (usually `/actions`) instead of writing them inline to avoid some tricky security edge cases.
 
 This submission style circumvents relying on controlled inputs, form submission interceptors, custom front-end API requests, and more. Clean and easy!
 
-# Validation (Valibot)
+## Validation (Valibot)
 
 Once the data hits the backend, you’ll need to verify it. You can use Valibot or Zod to parse the `formData` input into a typed and validated structure.
 
@@ -35,7 +35,7 @@ You can even write custom error messages here for different failure states. For 
 
 _I see Zod recommended a lot, but I prefer Valibot’s API and slimmer package size. The lack of documentation can be really difficult sometimes, but it hasn’t become a deal breaker yet._
 
-# Interactivity (React Aria Components)
+## Interactivity (React Aria Components)
 
 The only tricky part of having per-field error messages from Valibot or Zod is then mapping these error messages to the appropriate form input. This can take a lot of boilerplate to do well. Luckily, [React Aria Components](https://react-spectrum.adobe.com/react-aria/forms.html) handles this for us!
 
@@ -63,7 +63,7 @@ export function EditUsernameForm() {
 }
 ```
 
-# Tying it Together
+## Tying it Together
 
 While it isn’t necessary, I think adding a few helper functions provides a lot of benefits. I appreciate Rust’s `Result` pattern a lot - by taking inspiration from it, we can add some ergonomics to the API.
 
