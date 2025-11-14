@@ -1,7 +1,4 @@
----
-title: The Best Way to Write React Forms
-date: 2024-04-16
----
+# The Best Way to Write React Forms
 
 I got involved in a [Twitter conversation](https://twitter.com/devongovett/status/1780034498249511410) about the ideal way of writing React forms over the weekend, and I wanted to write a longer form post about what I view as the current best way of creating them.
 

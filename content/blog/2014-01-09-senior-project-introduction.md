@@ -1,7 +1,4 @@
----
-title: Senior Project Introduction
-date: 2014-01-09
----
+# Senior Project Introduction
 
 For my Senior Project, I've teamed together with James Aldag, Andy Tsao, Anthony Valdez, and Zach Behnke in order to create an analytics tool for the game [League of Legends](http://na.leagueoflegends.com/). We're extremely excited to begin work on this project!
 

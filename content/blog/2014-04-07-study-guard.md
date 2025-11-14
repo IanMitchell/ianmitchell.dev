@@ -1,7 +1,4 @@
----
-title: Study Guard
-date: 2014-04-07
----
+# Study Guard
 
 This past weekend, I participated at Startup Weekend Santa Maria with several Cal Poly colleagues. We decided to make Study Guard, a website that would attempt to curb freeloading in online study groups. We drew inspiration from websites such as StackOverflow, Reddit, and Chegg. We wanted a website in which classmates had to contribute to a study guide in order to view submitted answers to other questions. Users could also vote on submitted answers, in order to rank multiple solutions.
 

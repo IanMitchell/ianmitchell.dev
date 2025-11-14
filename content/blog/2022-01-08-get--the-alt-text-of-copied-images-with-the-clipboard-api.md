@@ -1,7 +1,4 @@
----
-title: Get the Alt Text of Copied Images with the Clipboard API
-date: 2022-01-08
----
+# Get the Alt Text of Copied Images with the Clipboard API
 
 I was doomscrolling on Twitter the other night and saw this tweet from [@FakeUnicode](https://twitter.com/FakeUnicode):
 

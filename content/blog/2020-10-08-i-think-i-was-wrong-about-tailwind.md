@@ -1,8 +1,4 @@
----
-title: I think I was wrong about Tailwind
-date: 2020-10-08
-excerpt: I recently said I didn't like Tailwind and probably wouldn't use it again. I think I was wrong.
----
+# I think I was wrong about Tailwind
 
 Back in June I wrote my [first Tailwind CSS project](/blog/tracking-unpopular-senate-votes) and said on Twitter I probably wouldn't use it again, and that I didn't like certain aspects of it.
 

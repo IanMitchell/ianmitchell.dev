@@ -1,8 +1,4 @@
----
-title: Forwarding Sentry Event Notifications to Discord
-date: 2021-03-17
-excerpt: A simple serverless function I wrote for Aquarius got popular, so I made it into a service
----
+# Forwarding Sentry Event Notifications to Discord
 
 Back when I was first working on my Discord bot Aquarius, I added an integration with Sentry to track exceptions and errors. I wanted to receive notifications about these errors when they happened, but unfortunately Sentry doesn't have a Discord integration. I ended up writing a [simple serverless function](https://github.com/ianmitchell/sentry-discord) to take in a Sentry Webhook event and transform it into a Discord embed, and threw it on GitHub. I'm pretty sure this throwaway function is more popular than any other open source project I've done (including Aquarius!) but over the years it's gotten a little stale.
 

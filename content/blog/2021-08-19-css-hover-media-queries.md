@@ -1,7 +1,4 @@
----
-title: CSS Hover Media Queries
-date: 2021-08-19
----
+# CSS Hover Media Queries
 
 Recently I've been working on a project to fix "stuck hover-state" bugs on mobile devices. You frequently see these bugs when you click a button on mobile web, and the active state persists after event completion.
 

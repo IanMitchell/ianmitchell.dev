@@ -1,7 +1,4 @@
----
-title: Mindbody Hackathon
-date: 2014-02-05
----
+# Mindbody Hackathon
 
 In November 2013, I participated in a hackathon sponsored by [Mindbody](https://www.mindbodyonline.com), a company that specializes in fitness software. My partner and I were given 20 hours to create an application that fit one of three themes - Health, Local, or User Experience (UX).
 

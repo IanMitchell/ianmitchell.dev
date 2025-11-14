@@ -1,7 +1,4 @@
----
-title: Forward PlanetScale Webhooks to Discord with Next.js
-date: 2024-05-23
----
+# Forward PlanetScale Webhooks to Discord with Next.js
 
 I wish more services offered built-in Discord integrations like they do for Slack. [Pierre](https://pierre.co) does this wonderfully. For the services that don’t, luckily forwarding webhooks is straightforward enough. I’ve written a lot of these forwarders in the past, and [even created free services](https://sentrydiscord.dev) for a couple of them. Here’s how we’re forwarding PlanetScale webhooks for 0x57!
 

@@ -1,7 +1,4 @@
----
-title: "Rendering Nested MDX Content with Next.js"
-date: 2024-04-02
----
+# Rendering Nested MDX Content with Next.js
 
 _If you just want the code, scroll to the bottom!_
 

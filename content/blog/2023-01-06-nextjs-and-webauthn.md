@@ -1,8 +1,4 @@
----
-title: Next.js and WebAuthn
-date: 2023-01-06
-excerpt: A guide on adding WebAuthn Passkeys to a Next.js website
----
+# Next.js and WebAuthn
 
 Only writing two posts in 2022 was lame, I'm sorry. Let's kick off 2023 with a long post on a topic that I think a lot of people are interested in: WebAuthn. Specifically, let's add passkey authentication to a Next.js website!
 

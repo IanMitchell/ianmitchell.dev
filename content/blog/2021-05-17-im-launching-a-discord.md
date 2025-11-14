@@ -1,8 +1,4 @@
----
-title: I'm Launching a Discord!
-date: 2021-05-17
-excerpt: Come join me at https://discord.gg/ian
----
+# I'm Launching a Discord!
 
 Over the past few weeks I've slowly been colocating all of my notifications and project channels into a new Discord server - I realized it would be the perfect place to open up for collaboration, bug reports, or feature requests.
 

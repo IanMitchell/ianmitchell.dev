@@ -1,7 +1,4 @@
----
-title: On MVPs and Hackathons
-date: 2015-01-18
----
+# On MVPs and Hackathons
 
 I recently read a tweet from [Milktea](https://twitter.com/_lilchen/status/565594310461382659) that expressed uncertainty on how to scale Minimal Viable Products (MVPs) past the proof of concept stage. It made me think about how I had developed applications in the past, and reflect on common patterns I had employed. Given her occupation I suspect she was talking about the design of a product, but seeing as I'm a programmer this post will lean more towards the code side of things.
 
