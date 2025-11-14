@@ -1,23 +1,18 @@
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 
 export function OrderedList(props: ComponentProps<"ol">) {
 	return (
 		<ol
 			{...props}
-			className="ml-4 sm:ml-0 my-4 list-[decimal-leading-zero] text-xl flex flex-col gap-2"
+			className="my-4 ml-18 flex list-[decimal-leading-zero] flex-col"
 		/>
 	);
 }
 
 export function UnorderedList(props: ComponentProps<"ul">) {
-	return (
-		<ul
-			{...props}
-			className="ml-4 sm:ml-0 my-4 list-disc text-xl flex flex-col gap-2"
-		/>
-	);
+	return <ul {...props} className="list-['*'] my-4 ml-[3ch] flex flex-col" />;
 }
 
 export function ListItem(props: ComponentProps<"li">) {
-	return <li {...props} />;
+	return <li {...props} className="pl-[2ch]" />;
 }
