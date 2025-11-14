@@ -4,7 +4,7 @@ I kept meaning to write up a blog post about my Smashing Conf reflections, but s
 
 Smashing Conf was a lot of fun, and San Francisco is a wonderful city to visit. I'm looking forward to attending again this year!
 
-# Smashing Conf SF 2016
+## Smashing Conf SF 2016
 
 ### Workshop Notes
 
