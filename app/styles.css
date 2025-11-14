@@ -18,12 +18,20 @@
 }
 
 @theme {
+	--font-mono:
+		var(--font-berkeley), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+
 	--color-dark: oklch(26% 0.04 277);
 	--color-light: oklch(98% 0.01 269);
 	--color-highlight: oklch(66.59% 0.3018840772950374 4.255646284110876);
 	--color-link: oklch(54% 0.25 260);
 
-	--font-mono: var(--font-ibm);
+	--color-brand-blue: rgb(0, 100, 230);
+	--color-brand-light: oklch(78.69% 0.219 35.88);
+	--color-brand: oklch(68.69% 0.219 35.88);
+	--color-brand-dark: oklch(58.69% 0.219 35.88);
+
 	--font-display: var(--font-dm-serif);
 }
 
@@ -143,14 +151,27 @@ code > [data-highlighted-chars] {
 	background-color: rgba(68, 119, 187, 0.2);
 }
 
-code > [data-chars-id="red"] {
+article {
+	counter-reset: section;
 }
 
-code > [data-chars-id="blue"] {
+article > h2 {
+	counter-increment: section;
+	counter-reset: subsection;
 }
 
-code > [data-chars-id="green"] {
+article > h2::before {
+	content: counters(section, "") ". ";
 }
 
-code > [data-chars-id="purple"] {
+article > :not(h1, h2, h3) {
+	margin-left: 2ch;
+}
+
+article > h3 {
+	counter-increment: subsection;
+}
+
+article > h3::before {
+	content: counters(section, "") "." counters(subsection, "") ". ";
 }

@@ -1,14 +1,14 @@
 import classNames from "@/lib/classnames";
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 
 export function Anchor({ className, ...props }: ComponentProps<"a">) {
 	return (
 		<a
-			{...props}
 			className={classNames(
-				"text-link underline-offset-2 hover:opacity-70 decoration-2 underline",
+				"text-brand-blue underline underline-offset-2 hover:text-brand",
 				className,
 			)}
+			{...props}
 		/>
 	);
 }

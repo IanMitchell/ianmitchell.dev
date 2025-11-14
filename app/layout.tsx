@@ -1,13 +1,13 @@
 import "@/app/styles.css";
 import Discord from "@/components/icons/Discord";
 import GitHub from "@/components/icons/GitHub";
-import Twitter from "@/components/icons/Twitter";
 import Logo from "@/components/Logo";
+import { Anchor } from "@/components/md/Anchor";
 import classNames from "@/lib/classnames";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
-import { DM_Serif_Display, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Link from "next/link";
 import { Suspense, type ComponentProps, type PropsWithChildren } from "react";
 
@@ -20,16 +20,13 @@ export const metadata: Metadata = {
 	description: "My corner of the internet.",
 };
 
-const ibm = IBM_Plex_Mono({
-	subsets: ["latin"],
-	weight: ["500", "700"],
-	variable: "--font-ibm",
-});
-
-const dmSerif = DM_Serif_Display({
-	subsets: ["latin"],
-	weight: ["400"],
-	variable: "--font-dm-serif",
+const berkeleyMono = localFont({
+	src: [
+		{
+			path: "./BerkeleyMonoVariable.woff2",
+		},
+	],
+	variable: "--font-berkeley",
 });
 
 function NavLink({
@@ -40,7 +37,7 @@ function NavLink({
 		<li>
 			<Link
 				href={href}
-				className="text-lg hover:underline hover:underline-offset-3 hover:text-[#0064E6]"
+				className="hover:underline hover:underline-offset-3 hover:text-brand-blue"
 			>
 				{children}
 			</Link>
@@ -56,8 +53,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 			lang="en"
 			className={classNames(
 				"h-full bg-light leading-[1.4]",
-				ibm.variable,
-				dmSerif.variable,
+				berkeleyMono.className,
+				berkeleyMono.variable,
 			)}
 		>
 			<head>
@@ -74,8 +71,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 							<ul className="flex gap-6">
 								<NavLink href="/">Home</NavLink>
 								<NavLink href="/blog">Blog</NavLink>
-								<NavLink href="/bookmarks">Bookmarks</NavLink>
-								<NavLink href="/uses">Uses</NavLink>
+								{/*<NavLink href="/bookmarks">Bookmarks</NavLink>
+								<NavLink href="/uses">Uses</NavLink>*/}
 							</ul>
 						</nav>
 					</header>
@@ -83,21 +80,23 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 					<Suspense>{children}</Suspense>
 
 					<footer className="mt-16 flex flex-col sm:flex-row  gap-4 justify-between items-center font-mono text-xs">
-						<span className="opacity-60">Thanks for visiting!</span>
+						<p className="text-gray-600">Hello from Seattle ☕</p>
 						<ul className="flex gap-4">
 							<li>
 								<span className="font-mono text-xs opacity-60">
-									ian.mitchell@hey.com
+									<Anchor href="mailto:ian.mitchell@hey.com">
+										ian.mitchell@hey.com
+									</Anchor>
 								</span>
 							</li>
-							<li>
+							{/*<li>
 								<a
 									href="https://twitter.com/ianmitchel1"
 									aria-label="My Twitter profile"
 								>
 									<Twitter className="w-4 h-4 text-[#1DA1F2] opacity-70 hover:opacity-100 transition-opacity" />
 								</a>
-							</li>
+							</li>*/}
 							<li>
 								<a href="https://discord.gg/ian" aria-label="My Discord server">
 									<Discord className="w-4 h-4 text-[#5865F2] opacity-70 hover:opacity-100 transition-opacity" />
