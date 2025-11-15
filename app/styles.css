@@ -1,39 +1,20 @@
 @import "tailwindcss";
 
-@layer base {
-	/* :root {
-		--color-dark: #1e2235;
-		--color-light: #f6f8ff;
-		--color-highlight: #ff007e;
-		--color-link: oklch(54% 0.25 260);
-	}
-
-	@supports (color: color(display-p3 1 1 1 / 1)) {
-		:root {
-			--color-dark: color(display-p3 0.12 0.13 0.21 / 1);
-			--color-light: color(display-p3 0.96 0.97 1 / 1);
-			--color-highlight: color(display-p3 1 0 0.492 / 1);
-		}
-	} */
-}
-
 @theme {
 	--font-mono:
 		var(--font-berkeley), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
 
-	/* TODO: RENAME TO THEME */
-	--color-dark: oklch(26% 0.04 277);
-	--color-light: oklch(98% 0.01 269);
-	--color-highlight: oklch(66.59% 0.3018840772950374 4.255646284110876);
-	--color-link: oklch(54% 0.25 260);
+	--color-theme-orange: oklch(68.69% 0.219 35.88);
+	--color-theme-blue: rgb(0, 100, 230);
+	--color-theme-orange-light: oklch(78.69% 0.219 35.88);
 
-	--color-brand-blue: rgb(0, 100, 230);
-	--color-brand-light: oklch(78.69% 0.219 35.88);
-	--color-brand: oklch(68.69% 0.219 35.88);
-	--color-brand-dark: oklch(58.69% 0.219 35.88);
+	--color-dark-theme-orange: oklch(58.69% 0.219 35.88);
+	--color-dark-theme-primary: #020d19;
+	--color-dark-theme-secondary: #0b1215;
+	--color-dark-theme-white: #efefef;
 
-	--font-display: var(--font-dm-serif);
+	--backtick: "`";
 }
 
 html {

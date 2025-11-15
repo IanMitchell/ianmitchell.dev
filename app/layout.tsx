@@ -4,6 +4,7 @@ import GitHub from "@/components/icons/GitHub";
 import Logo from "@/components/Logo";
 import { Anchor } from "@/components/md/Anchor";
 import classNames from "@/lib/classnames";
+import { env } from "@/lib/environment";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
@@ -52,7 +53,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 		<html
 			lang="en"
 			className={classNames(
-				"h-full bg-light leading-[1.4]",
+				"h-full bg-light dark:bg-dark-theme-secondary leading-[1.4] text-dark dark:text-dark-theme-white selection:bg-dark-theme-primary dark:selection:bg-dark-theme-secondary selection:text-white dark:selection:text-black",
 				berkeleyMono.className,
 				berkeleyMono.variable,
 			)}
@@ -60,7 +61,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 			<head>
 				<title>Ian Mitchell</title>
 			</head>
-			<body className="min-h-full pb-64 text-dark selection:bg-dark selection:text-light">
+			<body className="min-h-full pb-64">
 				<div className="mt-12 mx-auto max-w-3xl p-4">
 					<header className="flex flex-col sm:flex-row gap-4 justify-between sm:items-end mb-12">
 						<a href="/">
@@ -79,8 +80,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 
 					<Suspense>{children}</Suspense>
 
-					<footer className="mt-8 flex flex-col sm:flex-row  gap-4 justify-between items-center font-mono text-xs">
-						<p className="text-gray-600">Hello from Seattle ☕</p>
+					<footer className="mt-8 flex flex-col sm:flex-row  gap-4 justify-between items-baseline font-mono text-xs">
+						<div className="text-gray-400">
+							<p>Hello from Seattle ☕</p>
+							<p className="select-all before:content-['v.']">
+								{env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA.substring(0, 7)}
+							</p>
+						</div>
 						<ul className="flex gap-4">
 							<li>
 								<span className="font-mono text-xs opacity-60">

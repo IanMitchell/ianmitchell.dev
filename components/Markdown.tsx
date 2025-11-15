@@ -5,6 +5,7 @@ import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import "server-only";
 import { Anchor } from "./md/Anchor";
 import { BlockQuote } from "./md/BlockQuote";
+import { Code } from "./md/Code";
 import { Emphasis } from "./md/Emphasis";
 import FigureCaption from "./md/FigureCaption";
 import { H1, H2, H3, H4, H5, H6 } from "./md/Heading";
@@ -82,6 +83,7 @@ export function StaticMarkdown({
 					td: TableCell,
 					tfoot: TableFooter,
 					pre: Preformatted,
+					code: Code,
 					...components,
 				},
 				ignoreInvalidStyle: true,
