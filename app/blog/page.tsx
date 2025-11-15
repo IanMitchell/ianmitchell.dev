@@ -51,16 +51,16 @@ export default async function BlogIndexPage() {
 				.map(([year, posts]) => (
 					<div className="mt-4" key={year}>
 						<h2 className="mb-4">{year}</h2>
-						<ul className="mb-12 flex flex-col gap-2">
+						<ul className="mb-12 flex flex-col gap-4 sm:gap-2">
 							{posts
 								.sort((a, b) => b.date.getTime() - a.date.getTime())
 								.map((post) => (
 									<li
 										key={post.title}
-										className="gap-4 flex flex-row items-center -ml-13"
+										className="gap-4 flex flex-row items-baseline"
 									>
 										<span
-											className="hidden opacity-80 sm:inline"
+											className="hidden opacity-80 sm:inline-block lg:-ml-16"
 											title={post.date.toLocaleDateString("en-US", {
 												month: "long",
 												day: "numeric",
