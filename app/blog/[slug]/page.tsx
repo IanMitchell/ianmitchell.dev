@@ -36,6 +36,19 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 	return (
 		<Page>
 			<article className="mt-8 p-12 bg-white">
+				<ul className="mb-8">
+					<li className="flex items-center">
+						<span>
+							<time dateTime={post.date.toDateString()}>
+								{post.date.toLocaleDateString("en-US", {
+									month: "long",
+									day: "numeric",
+									year: "numeric",
+								})}
+							</time>
+						</span>
+					</li>
+				</ul>
 				<Markdown>{post.content}</Markdown>
 			</article>
 		</Page>

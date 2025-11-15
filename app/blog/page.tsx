@@ -59,15 +59,22 @@ export default async function BlogIndexPage() {
 										key={post.title}
 										className="gap-4 flex flex-row items-center -ml-13"
 									>
-										<span className="hidden opacity-80 sm:inline">
-											{new Date(post.date).toLocaleString("en-US", {
+										<span
+											className="hidden opacity-80 sm:inline"
+											title={post.date.toLocaleDateString("en-US", {
+												month: "long",
+												day: "numeric",
+												year: "numeric",
+											})}
+										>
+											{post.date.toLocaleString("en-US", {
 												month: "2-digit",
 												day: "2-digit",
 												timeZone: "UTC",
 											})}
 										</span>
 
-										<Anchor href={`/blog/${getSlug(post.title)}`}>
+										<Anchor href={`/blog/${getSlug(post.post)}`}>
 											{post.title}
 										</Anchor>
 									</li>
