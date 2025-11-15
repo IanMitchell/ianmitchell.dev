@@ -1,7 +1,4 @@
----
-title: On Simplifying
-date: 2024-03-10
----
+# On Simplifying
 
 Alright, so last year my endeavor to write weekly blog posts flared out pretty quickly. Part of that was work burnout (I’ve since left Discord and joined [Vanta](https://vanta.com)) and part of it was some frustrations with MDX and the build process of my website. I tried to do some tech upgrades after my Weekly Roundup II article, and ended up with a broken mess of dependencies. I couldn't get things to work, threw in the towel, and left the website to sit for many months.
 

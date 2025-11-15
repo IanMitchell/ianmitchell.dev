@@ -1,7 +1,4 @@
----
-title: BuilderTalks Podcast Interview
-date: 2023-01-07
----
+# BuilderTalks Podcast Interview
 
 I'm late in posting about this, but back in September I was invited on [Buildergroop's](https://www.buildergroop.com) BuilderTalks Podcast. I've been lurking in the Buildergroop server since it was created, and I'm continually impressed with the organization. Having the opportunity to join them on the podcast for an episode was a lot of fun!
 

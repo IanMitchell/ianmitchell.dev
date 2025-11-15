@@ -1,9 +1,10 @@
-import { PropsWithChildren } from "react";
+import type { ComponentProps } from "react";
 
-export function BlockQuote({ children, ...props }: PropsWithChildren) {
+export function BlockQuote(props: ComponentProps<"blockquote">) {
 	return (
-		<blockquote className="border-l-4 pl-4 border-link mb-4">
-			{children}
-		</blockquote>
+		<blockquote
+			{...props}
+			className="border-black mb-4 border-l-2 ml-[2ch] pl-4"
+		/>
 	);
 }

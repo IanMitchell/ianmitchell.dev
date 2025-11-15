@@ -1,7 +1,4 @@
----
-title: "New Technologies: 2020"
-date: 2020-06-01
----
+# New Technologies: 2020
 
 In no particular order, these are some of the technologies I've been interested in recently and am trying to learn more about:
 

@@ -1,13 +1,10 @@
----
-title: Forward PlanetScale Webhooks to Discord with Next.js
-date: 2024-05-23
----
+# Forward PlanetScale Webhooks to Discord with Next.js
 
 I wish more services offered built-in Discord integrations like they do for Slack. [Pierre](https://pierre.co) does this wonderfully. For the services that don’t, luckily forwarding webhooks is straightforward enough. I’ve written a lot of these forwarders in the past, and [even created free services](https://sentrydiscord.dev) for a couple of them. Here’s how we’re forwarding PlanetScale webhooks for 0x57!
 
 Some services provide Typescript definitions for their webhook events (if your company does that, thank you so much) - but for PlanetScale, I define them manually.
 
-```ts title="app/api/webhooks/planetscale/types.ts"
+```ts title="app/api/webhooks/planetscale/types.ts" showLineNumbers
 export interface PlanetscaleWebhook {
 	event: string;
 	timestamp: number;
@@ -158,7 +155,7 @@ export interface WebhookTestPayload extends PlanetscaleWebhook {
 
 The route handler receives these events, creates a custom Discord embed, and sends it to a Discord webhook.
 
-```ts title="app/api/webhooks/planetscale/route.ts"
+```ts title="app/api/webhooks/planetscale/route.ts" showLineNumbers
 import { getError } from "@/lib/errors";
 import { EmbedBuilder } from "@discordjs/builders";
 import crypto from "node:crypto";

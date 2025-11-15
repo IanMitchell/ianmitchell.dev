@@ -1,8 +1,4 @@
----
-title: Deploying a Discord Bot as a Vercel Serverless Function
-date: 2021-05-06
-excerpt: My last post talked about Discord slash commands and some of the benefits of the new HTTP API, but I didn't spend much time talking about hosting. Using HTTP instead of the Gateway for your bot unlocks some cool new options, like hosting it as a serverless function through a provider like Vercel!
----
+# Deploying a Discord Bot as a Vercel Serverless Function
 
 My [last post talked about Discord slash commands](/blog/creating-a-discord-http-slash-command-bot-with-fastify) and some of the benefits of the new HTTP API, but I didn't spend much time talking about hosting. Using HTTP instead of the Gateway for your bot unlocks some cool new options, like hosting it as a serverless function through a provider like [Vercel](https://vercel.com)!
 

@@ -32,14 +32,11 @@ export default async function Image({ params }: PageProps<"/blog/[slug]">) {
 		return null;
 	}
 
-	const formattedDate = new Date(post.frontmatter.date).toLocaleString(
-		"en-us",
-		{
-			month: "long",
-			year: "numeric",
-			day: "numeric",
-		},
-	);
+	const formattedDate = post.date.toLocaleString("en-us", {
+		month: "long",
+		year: "numeric",
+		day: "numeric",
+	});
 
 	return new ImageResponse(
 		(
@@ -75,7 +72,7 @@ export default async function Image({ params }: PageProps<"/blog/[slug]">) {
 						fontFamily: "DM Serif Display",
 					}}
 				>
-					{post.frontmatter.title}
+					{post.title}
 				</h1>
 
 				<div tw="flex flex-row items-center mt-auto ml-8">

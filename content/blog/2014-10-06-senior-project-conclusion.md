@@ -1,7 +1,4 @@
----
-title: Senior Project Conclusion
-date: 2014-10-06
----
+# Senior Project Conclusion
 
 I'm a bit late in posting this, but my Senior Project drew to a close in June after two quarters of work. In this post I discuss some of our design decisions and what our group accomplished.
 

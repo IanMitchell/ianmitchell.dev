@@ -1,8 +1,4 @@
----
-title: My 2021 Project Stacks
-date: 2021-04-13
-excerpt: The tools I'm using for several of my side projects
----
+# My 2021 Project Stacks
 
 It may sound dry, but one of my favorite things to do with my friends is compare project stacks. I think it's fascinating to hear what people are enjoying working with and what they've been disappointed in. A couple of friends and I spent a couple of hours in a Discord call comparing notes recently, and I thought it might be fun to write up what I'm using for a few of my more popular personal projects as a blog post here.
 

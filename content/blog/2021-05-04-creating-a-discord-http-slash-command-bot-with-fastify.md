@@ -1,8 +1,4 @@
----
-title: "Creating a Discord HTTP Slash Command Bot with Fastify"
-date: 2021-05-04
-excerpt: Slapping people with trout was a popular way of sending a notification to users back in the IRC days. Let's bring it back! Ah, nostalgia.
----
+# Creating a Discord HTTP Slash Command Bot with Fastify
 
 I've been dying to try out Discord's new slash commands for a few months now, but unfortunately the framework I use for my bots (discord.js) [hasn't shipped official support](https://github.com/discordjs/discord.js/pull/5448) for them yet. I finally got impatient enough to decide to write a slash command bot using the new HTTP API (instead of the persistent Gateway connection), which is a lot easier to use without a library wrapper.
 

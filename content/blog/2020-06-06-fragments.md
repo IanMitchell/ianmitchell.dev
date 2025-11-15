@@ -1,8 +1,4 @@
----
-title: Fragments
-date: 2020-06-06
-excerpt: I always type out `Fragment` because it's more discoverable for engineers new to React.
----
+# Fragments
 
 I sometimes get asked why I always use "Fragment" instead of the shorthand version:
 

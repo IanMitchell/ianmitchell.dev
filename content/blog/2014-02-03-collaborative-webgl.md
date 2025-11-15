@@ -1,7 +1,4 @@
----
-title: Collaborative WebGL
-date: 2014-02-03
----
+# Collaborative WebGL
 
 For my CSC 471 project, I thought it would be fun to take a 'Construct a House' lab which tasked students to make a scene editor using basic geometric shapes, and port it to the web. As a twist, I wanted to allow multiple users to edit the scene at once. I decided to use Node.JS, [socket.io](http://socket.io), and WebGL to accomplish my goal.
 

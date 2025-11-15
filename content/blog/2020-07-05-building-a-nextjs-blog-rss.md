@@ -1,8 +1,4 @@
----
-title: "Building a Next.js Blog: RSS"
-date: 2020-07-05
-excerpt: I love RSS, and wanted to add it to my static file-based Next.js blog. This tutorial will walk you through how to add it to yours!
----
+# Building a Next.js Blog: RSS
 
 > ℹ️ Webpack 5 Update
 >

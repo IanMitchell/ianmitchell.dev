@@ -1,7 +1,4 @@
----
-title: The Next Redesign
-date: 2020-05-28
----
+# The Next Redesign
 
 New year, new domain, new me, "old" technology. I moved my personal website over to a `.dev` domain and I switched frameworks back to Next.js! Why the flip-flop? Next.js recently added several new methods that create a nice way of [generating static websites](https://nextjs.org/blog/next-9-4) and it fit what I've been wanting for a while now. Getting MDX to work with it has been a bit of a pain, but I'm optimistic that the plugins will improve over time. The problems are do-it-once type fixes too.
 

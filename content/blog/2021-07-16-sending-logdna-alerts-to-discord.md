@@ -1,8 +1,4 @@
----
-title: Sending LogDNA Alerts to Discord
-date: 2021-07-16
-excerpt: Here's how I used Webhooks to send LogDNA Alerts to my Discord server
----
+# Sending LogDNA Alerts to Discord
 
 So turns out I broke [Sentry → Discord](https://sentrydiscord.dev) last week... oops. I have it hooked up to [LogDNA](https://www.logdna.com/) to log events and errors, but I, uh, don't actively check it. After I discovered the issue, I spent a little bit of time setting up a dashboard for it that sends a webhook alert to my Discord channel.
 

@@ -1,8 +1,4 @@
----
-title: Extending Background Color with Box Shadow
-date: 2017-12-29
-excerpt: You can use box-shadow to extend a background-color into an elements padding
----
+# Extending Background Color with Box Shadow
 
 _I haven't written anything this year so I figured I'd post a quick tip while I still have some time. I've been busy rewriting this website in React which should be launching soon!_
 

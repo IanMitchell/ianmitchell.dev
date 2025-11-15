@@ -1,8 +1,4 @@
----
-title: JavaScript Formatters
-date: 2021-07-17
-excerpt: JavaScript has some great modern formatters that you can use in your code!
----
+# JavaScript Formatters
 
 JavaScript has some excellent formatters in its newer APIs - they're starting to creep into StackOverflow answers, but check these out if you haven't seen them before!
 

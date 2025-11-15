@@ -1,8 +1,4 @@
----
-title: Creating Devcontainers for VS Code and GitHub Codespaces
-date: 2020-10-09
-excerpt: Creating Devcontainers for your projects is easy and comes with a lot of benefits!
----
+# Creating Devcontainers for VS Code and GitHub Codespaces
 
 I've been adding development containers to several of my projects with the news that [GitHub Codespaces](https://github.com/features/codespaces) is coming out of beta soon. Codespaces is a browser-based code environment - it's wicked cool! It works by creating a Docker-based container in the cloud, and then loading VS Code in the browser to write code with. I didn't have a lot of experience with Docker before playing around with Codespaces this week, and was intimidated going into it - but it turned out customizing the development containers wasn't that complicated!
 

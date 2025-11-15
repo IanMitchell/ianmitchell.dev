@@ -1,8 +1,4 @@
----
-title: Revamping my Dotfiles
-date: 2020-09-08
-excerpt: I broke my WSL installation while installing PostgreSQL and realized I hadn't updated my dotfile repository in over a year - whoops!
----
+# Revamping my Dotfiles
 
 Over the past few weeks I've been working on a few projects that need PostgreSQL databases. While trying to install it on [WSL2](https://docs.microsoft.com/en-us/windows/wsl/about) I inadvertently broke my linux installation, and I had to delete it and create a new WSL instance. I took this opportunity to revamp my [dotfiles](https://github.com/ianmitchell/dotfiles) which, admittedly, had been unmaintained for a while.
 

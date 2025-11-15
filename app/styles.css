@@ -18,12 +18,21 @@
 }
 
 @theme {
+	--font-mono:
+		var(--font-berkeley), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+
+	/* TODO: RENAME TO THEME */
 	--color-dark: oklch(26% 0.04 277);
 	--color-light: oklch(98% 0.01 269);
 	--color-highlight: oklch(66.59% 0.3018840772950374 4.255646284110876);
 	--color-link: oklch(54% 0.25 260);
 
-	--font-mono: var(--font-ibm);
+	--color-brand-blue: rgb(0, 100, 230);
+	--color-brand-light: oklch(78.69% 0.219 35.88);
+	--color-brand: oklch(68.69% 0.219 35.88);
+	--color-brand-dark: oklch(58.69% 0.219 35.88);
+
 	--font-display: var(--font-dm-serif);
 }
 
@@ -39,13 +48,6 @@ li > ul {
 
 p > code {
 	text-wrap: wrap;
-}
-
-.site-background {
-	background-image: url("/footer.svg");
-	background-size: 100% 250px;
-	background-position: bottom;
-	background-repeat: no-repeat;
 }
 
 .counter-reset {
@@ -76,8 +78,8 @@ p > code {
 .footnotes::before {
 	display: block;
 	content: "";
-	width: 20%;
-	border-top: 1px solid oklch(66.59% 0.3018840772950374 4.255646284110876);
+	width: 100%;
+	border-top: 1px solid black;
 	padding-top: 1rem;
 }
 
@@ -94,7 +96,7 @@ code {
 	counter-reset: line;
 }
 
-code > [data-line]::before {
+code[data-line-numbers] > [data-line]::before {
 	content: "";
 	display: inline-block;
 	width: 1rem;
@@ -143,14 +145,67 @@ code > [data-highlighted-chars] {
 	background-color: rgba(68, 119, 187, 0.2);
 }
 
-code > [data-chars-id="red"] {
+/**
+ * Blog post styling
+ */
+
+article {
+	counter-reset: section;
 }
 
-code > [data-chars-id="blue"] {
+article > h1 {
+	@apply mt-4 mb-12 w-full text-center uppercase;
 }
 
-code > [data-chars-id="green"] {
+article > h1 a {
+	&:after {
+		content: "↗";
+		display: inline-block;
+		margin-left: 0.5rem;
+	}
 }
 
-code > [data-chars-id="purple"] {
+article > h2 {
+	counter-increment: section;
+	counter-reset: subsection;
+}
+
+article > h2::before {
+	content: counters(section, "") ". ";
+}
+
+article > h2,
+article > h3 {
+	margin-left: -2ch;
+	font-weight: 700;
+}
+
+/*article > :not(h1, h2, h3) {
+	margin-left: 2ch;
+}*/
+
+article > h3 {
+	counter-increment: subsection;
+}
+
+article > h3::before {
+	content: counters(section, "") "." counters(subsection, "") ". ";
+}
+
+article > iframe {
+	@apply mb-4;
+}
+
+article > ul ol,
+article > ul ul,
+article > ol ol,
+article > ol ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+article > ol > li:has(ol, ul),
+article > ul > li:has(ol, ul) {
+	margin-bottom: 1rem;
 }

@@ -1,7 +1,4 @@
----
-title: Weekly Roundup I
-date: 2023-01-08
----
+# Weekly Roundup I
 
 A lot of blogs I follow publish weekly reading lists - I discover a lot of great content this way, and sometimes find new websites I hadn't heard of before. This year I'm joining in - both as a way to practice publishing more, but also to create an archive of posts I've found helpful over the years. I'm trying to think of publishing posts less as blogging and more as journaling.
 

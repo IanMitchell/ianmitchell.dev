@@ -1,8 +1,4 @@
----
-title: Design Updates
-date: 2021-05-01
-excerpt: I'm starting to take this blog a little more seriously, and have been ironing out some long standing bugs and design issues.
----
+# Design Updates
 
 I finally got the motivation to continue working on my website two or three weeks ago. I've made some design changes that attempt to fix several large issues the last one had. I think the new design is at the point now where I can ship it and iterate on the live site, so I'm going to take the plunge and launch it today with this post.
 

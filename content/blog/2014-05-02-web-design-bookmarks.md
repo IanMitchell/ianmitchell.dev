@@ -1,7 +1,4 @@
----
-title: Web Design Bookmarks
-date: 2014-05-02
----
+# Web Design Bookmarks
 
 <blockquote>
   <strong>➡️ Moved</strong>

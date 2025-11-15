@@ -1,8 +1,4 @@
----
-title: Styleguide Variable Trick
-date: 2016-04-28
-excerpt: You can use CSS to display values that you don't want a user to select and copy
----
+# Styleguide Variable Trick
 
 I recently [created a pen](http://codepen.io/IanMitchell/pen/grBvxw) that shows how to use a Sass mixin to display the value of a variable alongside the name, but in a way that doesn't allow the user to select it - no copy pasting the value, just the name!
 

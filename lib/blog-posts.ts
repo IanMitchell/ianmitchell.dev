@@ -1,29 +1,11 @@
 import { Glob } from "bun";
-import * as matter from "gray-matter";
+import type { Element } from "hast";
 import path from "node:path";
 import { cache } from "react";
-import {
-	date,
-	InferOutput,
-	object,
-	optional,
-	safeParse,
-	string,
-} from "valibot";
 import { getSlug } from "./slug";
+import { convert, getChildElement, getElementText } from "./unified";
 
 const CONTENT_DIRECTORY = path.join(process.cwd(), "/content/blog");
-
-const frontmatterSchema = object({
-	title: string(),
-	date: date(),
-	layout: optional(string()),
-	link: optional(string()),
-	href: optional(string()),
-	excerpt: optional(string()),
-});
-
-export type Frontmatter = InferOutput<typeof frontmatterSchema>;
 
 export const getAllPosts = cache(async () => {
 	const glob = new Glob("**/*.md");
@@ -31,26 +13,99 @@ export const getAllPosts = cache(async () => {
 });
 
 export const getPost = cache(async (slug: string) => {
-	const posts = await getAllPosts();
-	const post = posts.find((post) => getSlug(post) === slug);
+	try {
+		const posts = await getAllPosts();
+		const post = posts.find((post) => getSlug(post) === slug);
 
-	if (!post) {
-		throw new Error(`Unknown Post ${slug}`);
+		if (!post) {
+			throw new Error(`Unknown Post ${slug}`);
+		}
+
+		const file = Bun.file(path.join(CONTENT_DIRECTORY, post));
+		const content = await file.text();
+
+		const title = await getPostTitle(content);
+		const date = getPostDate(post);
+
+		return {
+			title,
+			date,
+			content,
+		};
+	} catch (err) {
+		console.error(`There was an error parsing post ${slug}`, err);
+		throw err;
+	}
+});
+
+export const getPostDate = cache((path: string) => {
+	const result = path.match(/\d{4}-\d{2}-\d{2}/i);
+
+	if (result != null) {
+		return new Date(result[0]);
 	}
 
-	const file = Bun.file(path.join(CONTENT_DIRECTORY, post));
-	const source = await file.text();
+	return new Date();
+});
 
-	const { data, content } = matter.default(source);
+// TODO: Verify this
+export const getPostContentWithoutTitle = cache(async (content: string) => {
+	const hastTree = await convert(content);
 
-	const result = safeParse(frontmatterSchema, data);
+	// The `Root` typing is slightly different, so we can't use `getChildElement`
+	const titleNode = hastTree.children.find(
+		(child): child is Element =>
+			child.type === "element" && child.tagName === "h1",
+	);
 
-	if (!result.success) {
-		throw new Error(`Frontmatter incorrect: ${JSON.stringify(result.issues)}`);
+	if (titleNode == null) {
+		throw new Error("No title found for Markdown post");
 	}
 
-	return {
-		frontmatter: result.output,
-		content,
-	};
+	// Handle text posts
+	let contentWithoutTitle = hastTree.children.filter(
+		(child) => child !== titleNode,
+	);
+
+	if (contentWithoutTitle.length === 0) {
+		throw new Error("No content found for Markdown post");
+	}
+
+	return contentWithoutTitle;
+});
+
+export const getPostTitle = cache(async (content: string) => {
+	const hastTree = await convert(content);
+
+	// The `Root` typing is slightly different, so we can't use `getChildElement`
+	const titleNode = hastTree.children.find(
+		(child): child is Element =>
+			child.type === "element" && child.tagName === "h1",
+	);
+
+	if (titleNode == null) {
+		throw new Error("No title found for Markdown post");
+	}
+
+	// Handle text posts
+	let titleText = getElementText(titleNode);
+
+	if (titleText != null) {
+		return titleText;
+	}
+
+	// Handle link posts
+	const anchorNode = getChildElement(titleNode, "a");
+
+	if (anchorNode == null) {
+		throw new Error("No anchor or text found in title");
+	}
+
+	titleText = getElementText(anchorNode);
+
+	if (titleText != null) {
+		return titleText;
+	}
+
+	throw new Error("No text content found in title");
 });

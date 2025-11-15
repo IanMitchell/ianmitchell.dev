@@ -1,7 +1,4 @@
----
-title: Switching from Feedly to Feedbin
-date: 2020-08-11
----
+# Switching from Feedly to Feedbin
 
 I switched to using Feedbin as my RSS reader today. Previously I had been using Feedly, but Feedbin's design and simplicity were more appealing to me. While I migrated my content over I noticed Feedbin added higher resolution favicons for about 50% of the blogs which was a nice surprise.
 

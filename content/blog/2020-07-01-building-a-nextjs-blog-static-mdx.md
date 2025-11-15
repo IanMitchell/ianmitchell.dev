@@ -1,8 +1,4 @@
----
-title: "Building a Next.js Blog: Static MDX"
-date: 2020-07-01
-excerpt: Statically rendered MDX with Frontmatter in a `content` directory... kind of like Jekyll!
----
+# Building a Next.js Blog: Static MDX
 
 <blockquote>
 <strong>⚠️ Out of Date</strong>

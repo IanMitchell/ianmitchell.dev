@@ -1,7 +1,4 @@
----
-title: "MDX to Markdown: Syntax Highlighting"
-date: 2024-03-13
----
+# MDX to Markdown: Syntax Highlighting
 
 I mentioned that there were some snags I hit last year that forced me to rethink how I approached my blog content, and finally drove me to drop MDX in favor of Markdown. One thing I wanted to talk about especially is the syntax highlighting.
 
