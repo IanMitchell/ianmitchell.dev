@@ -154,7 +154,7 @@ article {
 }
 
 article > h1 {
-	@apply mt-4 mb-12 w-full text-center text-xl uppercase;
+	@apply mt-4 mb-12 w-full text-center uppercase;
 }
 
 article > h1 a {
@@ -177,7 +177,7 @@ article > h2::before {
 article > h2,
 article > h3 {
 	margin-left: -2ch;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 /*article > :not(h1, h2, h3) {

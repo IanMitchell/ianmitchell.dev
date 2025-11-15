@@ -10,7 +10,9 @@ export function OrderedList(props: ComponentProps<"ol">) {
 }
 
 export function UnorderedList(props: ComponentProps<"ul">) {
-	return <ul {...props} className="list-['*'] my-4 ml-[3ch] flex flex-col" />;
+	return (
+		<ul {...props} className="list-['*'] my-4 ml-[1ch] flex flex-col gap-2" />
+	);
 }
 
 export function ListItem(props: ComponentProps<"li">) {

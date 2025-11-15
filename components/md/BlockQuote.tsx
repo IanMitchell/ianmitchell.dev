@@ -4,7 +4,7 @@ export function BlockQuote(props: ComponentProps<"blockquote">) {
 	return (
 		<blockquote
 			{...props}
-			className="border-black mb-4 border-l-4 pl-4 ml-[2ch]"
+			className="border-black mb-4 border-l-2 ml-[2ch] pl-4"
 		/>
 	);
 }
