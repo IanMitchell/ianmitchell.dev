@@ -4,7 +4,7 @@ I wish more services offered built-in Discord integrations like they do for Slac
 
 Some services provide Typescript definitions for their webhook events (if your company does that, thank you so much) - but for PlanetScale, I define them manually.
 
-```ts title="app/api/webhooks/planetscale/types.ts"
+```ts title="app/api/webhooks/planetscale/types.ts" showLineNumbers
 export interface PlanetscaleWebhook {
 	event: string;
 	timestamp: number;
@@ -155,7 +155,7 @@ export interface WebhookTestPayload extends PlanetscaleWebhook {
 
 The route handler receives these events, creates a custom Discord embed, and sends it to a Discord webhook.
 
-```ts title="app/api/webhooks/planetscale/route.ts"
+```ts title="app/api/webhooks/planetscale/route.ts" showLineNumbers
 import { getError } from "@/lib/errors";
 import { EmbedBuilder } from "@discordjs/builders";
 import crypto from "node:crypto";

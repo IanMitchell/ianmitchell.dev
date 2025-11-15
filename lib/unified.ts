@@ -50,6 +50,15 @@ export function getChildElement(
 }
 
 export function getElementText(node: Element): string | undefined {
-	const textNode = node.children.find((child) => child.type === "text");
-	return textNode?.value;
+	let text = "";
+
+	for (const child of node.children) {
+		if (child.type === "text") {
+			text += child.value;
+		} else if (child.type === "element") {
+			text += getElementText(child);
+		}
+	}
+
+	return text;
 }

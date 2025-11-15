@@ -7,12 +7,14 @@ I was doomscrolling on Twitter the other night and saw this tweet from [@FakeUni
 > "Share" buttons could probably populate the clipboard with both.
 >
 > <cite>
+>
 > 	[@FakeUnicode](https://twitter.com/FakeUnicode/status/1479298890985664512)
+>
 > </cite>
 
 I had no idea this was possible! I might not be @TwitterSupport, but I did recently add [alt text support to Discord](https://twitter.com/discord/status/1461442402917359618). Wiring this up in Discord was pretty easy - we're iterating on how to inform users we've prefilled image alt text from their clipboard, but the code to retrieve and set the data is pretty simple.
 
-```javascript
+```javascript showLineNumbers
 // Simplified function
 function handleClipboardEvent(event) {
 	const file = event.clipboardData.files[0];
