@@ -7,6 +7,8 @@
 
 	--color-theme-orange: oklch(68.69% 0.219 35.88);
 	--color-theme-blue: rgb(0, 100, 230);
+	--color-theme-yellow: rgb(240, 244, 165);
+
 	--color-theme-orange-light: oklch(78.69% 0.219 35.88);
 
 	--color-dark-theme-orange: oklch(58.69% 0.219 35.88);

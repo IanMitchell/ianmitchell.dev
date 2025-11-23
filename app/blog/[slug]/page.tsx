@@ -1,5 +1,5 @@
 import { Markdown } from "@/components/Markdown";
-import Page from "@/components/Page";
+import Paper from "@/components/Paper";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
@@ -36,23 +36,21 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 	}
 
 	return (
-		<Page>
-			<article className="mt-8 p-6 md:p-12 bg-white dark:bg-dark-theme-primary">
-				<ul className="mb-8">
-					<li className="flex items-center">
-						<span>
-							<time dateTime={post.date.toDateString()}>
-								{post.date.toLocaleDateString("en-US", {
-									month: "long",
-									day: "numeric",
-									year: "numeric",
-								})}
-							</time>
-						</span>
-					</li>
-				</ul>
-				<Markdown>{post.content}</Markdown>
-			</article>
-		</Page>
+		<Paper>
+			<ul className="mb-8">
+				<li className="flex items-center">
+					<span>
+						<time dateTime={post.date.toDateString()}>
+							{post.date.toLocaleDateString("en-US", {
+								month: "long",
+								day: "numeric",
+								year: "numeric",
+							})}
+						</time>
+					</span>
+				</li>
+			</ul>
+			<Markdown>{post.content}</Markdown>
+		</Paper>
 	);
 }

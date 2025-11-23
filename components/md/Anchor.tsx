@@ -5,7 +5,7 @@ export function Anchor({ className, ...props }: ComponentProps<"a">) {
 	return (
 		<a
 			className={classNames(
-				"text-brand-blue underline underline-offset-2 hover:text-brand",
+				"text-theme-blue underline underline-offset-2 hover:text-theme-orange",
 				className,
 			)}
 			{...props}

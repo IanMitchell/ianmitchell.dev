@@ -55,7 +55,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 		<html
 			lang="en"
 			className={classNames(
-				"h-full bg-light dark:bg-dark-theme-secondary leading-[1.4] text-dark dark:text-dark-theme-white selection:bg-dark-theme-primary dark:selection:bg-dark-theme-secondary selection:text-white dark:selection:text-black",
+				"h-full bg-[#F3F3F2] dark:bg-dark-theme-secondary leading-[1.4] text-dark dark:text-dark-theme-white selection:bg-dark-theme-primary dark:selection:bg-dark-theme-secondary selection:text-white dark:selection:text-black",
 				berkeleyMono.className,
 				berkeleyMono.variable,
 			)}
@@ -80,7 +80,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 						</nav>
 					</header>
 
-					<Suspense>{children}</Suspense>
+					<main>
+						<Suspense>{children}</Suspense>
+					</main>
 
 					<footer className="mt-8 flex flex-col sm:flex-row  gap-4 justify-between items-baseline font-mono text-xs">
 						<div className="text-gray-400">

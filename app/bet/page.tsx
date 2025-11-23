@@ -3,10 +3,10 @@ import { Anchor } from "@/components/md/Anchor";
 import { Emphasis } from "@/components/md/Emphasis";
 import { H1 } from "@/components/md/Heading";
 import { Paragraph } from "@/components/md/Paragraph";
+import Paper from "@/components/Paper";
 import { Metadata } from "next";
 import { cacheLife } from "next/cache";
 import path from "node:path";
-import { Fragment } from "react";
 
 export const metadata: Metadata = {
 	title: "Ian Mitchell | Bet",
@@ -22,8 +22,9 @@ export default async function BetPage() {
 	const table = await file.text();
 
 	return (
-		<Fragment>
+		<Paper>
 			<H1>A Dumb Sports Bet</H1>
+
 			<Paragraph>
 				My friend Staffan and I have a dumb recurring yearly bet on Seattle
 				sports. The bet revolves around the Seattle Mariners and Seattle
@@ -33,18 +34,24 @@ export default async function BetPage() {
 				Mariners have made the playoffs once since 2001, and the Sounders are an
 				elite team.
 			</Paragraph>
+
 			<Paragraph>
 				I update the running totals once a year, some time around October and
 				November depending on the results.
 			</Paragraph>
+
 			<Markdown>{table}</Markdown>
+
 			<Paragraph className="text-sm mt-2">
 				😞{" "}
 				<Emphasis>We have yet to encounter the best case scenario. </Emphasis>
+			</Paragraph>
+
+			<Paragraph className="text-sm">
 				<Anchor href="/blog/seattle-sports-teams-and-stupid-bets">
 					Original Article
 				</Anchor>
 			</Paragraph>
-		</Fragment>
+		</Paper>
 	);
 }

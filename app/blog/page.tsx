@@ -1,10 +1,10 @@
-import Page from "@/components/Page";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
 import { cacheLife } from "next/cache";
+import { Fragment } from "react";
 
 export const metadata: Metadata = {
 	title: "Blog",
@@ -38,16 +38,14 @@ export default async function BlogIndexPage() {
 	}
 
 	return (
-		<Page
-			header={
-				<header className="my-8 flex items-center justify-between">
-					<H1 className="mt-0 w-fit">Blog Posts</H1>
-					<Anchor href="/feed" className="text-sm">
-						RSS Feed
-					</Anchor>
-				</header>
-			}
-		>
+		<Fragment>
+			<header className="my-8 flex items-center justify-between">
+				<H1 className="mt-0 w-fit">Blog Posts</H1>
+				<Anchor href="/feed" className="text-sm">
+					RSS Feed
+				</Anchor>
+			</header>
+
 			{Object.entries(years)
 				.reverse()
 				.map(([year, posts]) => (
@@ -62,7 +60,7 @@ export default async function BlogIndexPage() {
 										className="gap-4 flex flex-row items-baseline"
 									>
 										<span
-											className="hidden opacity-80 sm:inline-block lg:-ml-16"
+											className="hidden opacity-50 sm:inline-block lg:-ml-16"
 											title={post.date.toLocaleDateString("en-US", {
 												month: "long",
 												day: "numeric",
@@ -84,6 +82,6 @@ export default async function BlogIndexPage() {
 						</ul>
 					</div>
 				))}
-		</Page>
+		</Fragment>
 	);
 }
