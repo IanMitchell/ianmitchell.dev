@@ -1,7 +1,4 @@
----
-title: Six Weeks and Change
-date: 2025-11-11
----
+# Six Weeks and Change
 
 Mimi and I welcomed our son Isaac on September 26th. We're coming up on seven weeks this upcoming Friday; it's been all the usual things you hear. A blur, a whirlwind, sleepless, fun, terrifying, exhilarating, we've been through it all (and yet, we've been through nothing at the same time).
 

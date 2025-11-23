@@ -1,7 +1,4 @@
----
-title: Pokémon GO Avatar
-date: 2016-11-07
----
+# Pokémon GO Avatar
 
 I'm a little late on posting this, but I made a really simple [Pokémon GO Avatar Generator](https://pokemon-cre3xe0l1-ianmitchell1.vercel.app) over the summer. It was mostly a proof-of-concept test for me to see how hard it would be to combine different canvas layering effects on an image and then save the result.
 

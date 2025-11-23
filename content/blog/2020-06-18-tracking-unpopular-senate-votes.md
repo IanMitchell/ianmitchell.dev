@@ -1,8 +1,4 @@
----
-title: Tracking Unpopular Senate Votes
-date: 2020-06-18
-excerpt: I launched a new project recently! It tracks Senate votes and how they map with the represented population.
----
+# Tracking Unpopular Senate Votes
 
 During the impeachment of Donald Trump there was a lot of discussion about how fair and just the power distribution in the Senate is. A lot of publications were running articles that described the vote breakdown in terms of Senators and the population they represented. Readers began to realize that a lot of the Senate votes were 'unpopular' - that is, they passed or failed due to votes from Senators representing smaller populations than their opposition.
 

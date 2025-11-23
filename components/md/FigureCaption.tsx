@@ -1,5 +1,5 @@
 import classNames from "@/lib/classnames";
-import { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import CodeFile from "../icons/CodeFile";
 
 export default function FigureCaption(props: ComponentProps<"figcaption">) {
@@ -19,7 +19,7 @@ export default function FigureCaption(props: ComponentProps<"figcaption">) {
 		<figcaption
 			{...rest}
 			className={classNames(
-				"flex font-mono justify-between font-bold items-center pb-2 text-xs sm:text-base",
+				"flex font-mono justify-between items-center pb-2 text-sm ml-[2ch]",
 				className,
 			)}
 		>
@@ -27,7 +27,7 @@ export default function FigureCaption(props: ComponentProps<"figcaption">) {
 				<CodeFile className="size-4" />
 				{children}
 			</div>
-			<span className="ml-4">{language}</span>
+			<span>{language}</span>
 		</figcaption>
 	);
 }

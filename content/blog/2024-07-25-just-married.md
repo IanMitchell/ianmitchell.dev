@@ -1,7 +1,4 @@
----
-title: "Just Married!"
-date: 2024-07-25
----
+# Just Married!
 
 I got married! This is a bit more personal than most of the posts on this blog, but earlier this month my now wife(!) and I were married in Banff, Canada. Neither of us had been before, and it was as magnificent as we dared hope. We found an elopement package from [Rocky Mountain Elopements](https://rockymountainelopements.ca) that included our immediate family members, and having a smaller more intimate ceremony was wonderful. Normally I would say I'd do it all again, but... 😜
 

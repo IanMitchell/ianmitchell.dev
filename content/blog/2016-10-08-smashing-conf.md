@@ -1,13 +1,10 @@
----
-title: Smashing Conf
-date: 2016-10-08
----
+# Smashing Conf
 
 I kept meaning to write up a blog post about my Smashing Conf reflections, but six months later and I have yet to do so. Accepting my fate as a slacker when it comes to this site, I'm just going to dump my (slightly edited) notes from the conference. If you have any questions, reach out to me via email or [Twitter](http://twitter.com/ianmitchel1)!
 
 Smashing Conf was a lot of fun, and San Francisco is a wonderful city to visit. I'm looking forward to attending again this year!
 
-# Smashing Conf SF 2016
+## Smashing Conf SF 2016
 
 ### Workshop Notes
 

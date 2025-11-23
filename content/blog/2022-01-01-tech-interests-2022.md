@@ -1,7 +1,4 @@
----
-title: "Tech Interests: 2022"
-date: 2022-01-01
----
+# Tech Interests: 2022
 
 I've been wanting to take the post I wrote about [technologies I was getting interested in](https://ianmitchell.dev/blog/new-technologies-2020) back in June 2020 and turn the topic into more of a recurring series. It seems like a fun way of tracking what I learn (or end up choosing not to learn) over the years, and reflect back on it. So, new year, new blog post! The plan going into 2022 is...
 

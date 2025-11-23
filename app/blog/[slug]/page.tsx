@@ -1,22 +1,18 @@
 import { Markdown } from "@/components/Markdown";
-import Page from "@/components/Page";
-import ExternalLink from "@/components/icons/ExternalLink";
-import { H1 } from "@/components/md/Heading";
+import Paper from "@/components/Paper";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
 	params,
 }: PageProps<"/blog/[slug]">): Promise<Metadata> {
 	const { slug } = await params;
-	const { frontmatter } = await getPost(slug);
+	const { title } = await getPost(slug);
 
-	return {
-		title: frontmatter.title,
-		description: frontmatter.excerpt ?? "",
-	};
+	return { title };
 }
 
 export async function generateStaticParams() {
@@ -29,6 +25,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 	"use cache";
+	cacheLife("max");
 
 	const { slug } = await params;
 	let post;
@@ -39,26 +36,21 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 	}
 
 	return (
-		<Page>
-			<article className="mt-8">
-				{post.frontmatter.layout !== "link" ? (
-					<H1 className="mb-8">{post.frontmatter.title}</H1>
-				) : null}
-
-				{post.frontmatter.layout === "link" ? (
-					<header className="mb-6 text-2xl">
-						<a
-							href={post.frontmatter.href}
-							className="text-link underline-offset-2 hover:opacity-70 decoration-2 underline"
-						>
-							{post.frontmatter.link}
-							<ExternalLink className="inline ml-2 mb-1 size-4" />
-						</a>
-					</header>
-				) : null}
-
-				<Markdown>{post.content}</Markdown>
-			</article>
-		</Page>
+		<Paper>
+			<ul className="mb-8">
+				<li className="flex items-center">
+					<span>
+						<time dateTime={post.date.toDateString()}>
+							{post.date.toLocaleDateString("en-US", {
+								month: "long",
+								day: "numeric",
+								year: "numeric",
+							})}
+						</time>
+					</span>
+				</li>
+			</ul>
+			<Markdown>{post.content}</Markdown>
+		</Paper>
 	);
 }

@@ -1,11 +1,8 @@
----
-title: How I Faked My Redesign
-date: 2016-12-13
----
+# How I Faked My Redesign
 
 Friends don't let friends do redesigns, folks. Unfortunately, I don't have any friends and ended up with a new look! I documented my wildly unfocused process below[^1] as well as listing some advice for developers about to embark on the same journey.
 
-# Generalized Advice
+## Generalized Advice
 
 > The worst thing as a designer is when the developer gets creative.
 >

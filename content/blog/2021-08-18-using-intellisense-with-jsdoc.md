@@ -1,8 +1,4 @@
----
-title: Using IntelliSense with JSDoc
-date: 2021-08-18
-excerpt: You can get VS Code IntelliSense by documenting JavaScript with JSDoc - no TypeScript required!
----
+# Using IntelliSense with JSDoc
 
 Did you know that you can get [VS Code IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) with vanilla JavaScript? By using [JSDoc](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html) annotations, VS Code's TypeScript Language Server can understand your code without it actually being strictly typed.
 

@@ -1,5 +1,7 @@
 import prismaLanguage from "@/lib/languages/prisma.json";
 import { transformerNotationDiff } from "@shikijs/transformers";
+import type { Element } from "hast";
+import { cacheLife } from "next/cache";
 import rehypePrettyCode, { Options } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -29,9 +31,36 @@ export const processor = unified()
 	.use(rehypeRaw);
 
 export async function convert(value: string) {
+	"use cache";
+	cacheLife("max");
+
 	const file = new VFile();
 	file.value = value;
 
 	const mdastTree = processor.parse(file);
 	return processor.run(mdastTree, file);
+}
+
+export function getChildElement(
+	tree: Element,
+	tagName: string,
+): Element | undefined {
+	return tree.children.find(
+		(child): child is Element =>
+			child.type === "element" && child.tagName === tagName,
+	);
+}
+
+export function getElementText(node: Element): string | undefined {
+	let text = "";
+
+	for (const child of node.children) {
+		if (child.type === "text") {
+			text += child.value;
+		} else if (child.type === "element") {
+			text += getElementText(child);
+		}
+	}
+
+	return text;
 }

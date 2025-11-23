@@ -1,8 +1,4 @@
----
-title: Development on Windows
-date: 2020-07-25
-excerpt: I've been using my Windows desktop to work on Aquarius recently and used it to make this website. It works pretty well as a development environment these days!
----
+# Development on Windows
 
 Windows 10 has become a compelling alternative to macOS for web development. I've been using it daily for several months now, and while it isn't perfect I've been enjoying it. As more of my tools become cross platform Windows has become a more viable option for me, and I don't find myself switching to macOS to do that 'one little thing' nearly as often as I used to.
 

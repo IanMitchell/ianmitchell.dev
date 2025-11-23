@@ -1,9 +1,4 @@
----
-title: Web APIs for Beginners
-startDate: 2015-05-19 # LOL
-date: 2016-04-19
-excerpt: A look at common API principles and information on how to use them.
----
+# Web APIs for Beginners
 
 While hanging out in [Milktea's Twitch Chat](http://twitch.tv/milktea)[^1] the other night a couple of viewers began asking me how to use APIs and for help understanding common terms. It came to light that people felt there weren't a lot of beginner-level posts about APIs; articles generally targeted an audience with an intermediate to high level of understanding. While answering questions and offering advice, I was encouraged to compile my knowledge into a blog post - and here we are!
 

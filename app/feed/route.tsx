@@ -2,15 +2,18 @@ import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { convert } from "@/lib/unified";
 import { Feed } from "feed";
+import { cacheLife } from "next/cache";
 import { Entry } from "./Entry";
 
 async function getRSS() {
 	"use cache";
+	cacheLife("max");
 
 	const { renderToStaticMarkup } = await import("react-dom/server");
 
 	const posts = await getAllPosts();
 
+	// todo: getPostContentWithoutTitle
 	const feed = new Feed({
 		title: "Ian Mitchell's Blog",
 		description: "My personal sliver of the web",
@@ -35,28 +38,27 @@ async function getRSS() {
 
 	for (const post of posts) {
 		const slug = getSlug(post);
-		const { frontmatter, content } = await getPost(slug);
-		const publishDate = new Date(frontmatter.date);
+		const { title, date, content } = await getPost(slug);
 
-		if (lastUpdated == null || lastUpdated < publishDate) {
-			lastUpdated = publishDate;
+		if (lastUpdated == null || lastUpdated < date) {
+			lastUpdated = date;
 		}
 
 		const tree = await convert(content);
 
 		feed.addItem({
-			title: frontmatter.title,
+			title,
+			date,
 			// image: post.image,
 			id: `https://ianmitchell.dev/blog/${slug}`,
 			link: `https://ianmitchell.dev/blog/${slug}`,
 			content: renderToStaticMarkup(
-				<Entry frontmatter={frontmatter} content={content} tree={tree} />,
+				<Entry title={title} content={content} tree={tree} />,
 			),
-			date: publishDate,
 		});
 	}
 
-	feed.options.updated = lastUpdated;
+	feed.options.updated = lastUpdated ?? new Date();
 
 	return feed.rss2();
 }

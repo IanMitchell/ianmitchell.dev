@@ -1,7 +1,4 @@
----
-title: Weekly Roundup II
-date: 2023-01-17
----
+# Weekly Roundup II
 
 Little bit late on this one due to distracting weekend plans (I got engaged!), but here is volume 2 of "the list of things I read this week".
 

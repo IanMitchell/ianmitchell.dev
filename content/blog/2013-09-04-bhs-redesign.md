@@ -1,7 +1,4 @@
----
-title: BHS Redesign
-date: 2013-09-04
----
+# BHS Redesign
 
 During my senior year at [Bainbridge High School (BHS)](http://www.bisd303.org/site/Domain/8), it was announced that the school administration would be looking at upgrading our website. Due to IT costs, they were considering outsourcing the design, development, and hosting to a third party. My Digital Design teacher, Ms. Rose, asked me to create an in-house design mockup to show to the committee in the hopes that they might ask students to create a design instead. It would make our website a bit more personal, and had the potential to save the district a ton of money. I was given less than 24 hours to create a proposal mockup to present as an alternative to the company's design.
 
