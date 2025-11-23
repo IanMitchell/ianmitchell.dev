@@ -3,6 +3,7 @@ import Page from "@/components/Page";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -24,6 +25,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 	"use cache";
+	cacheLife("max");
 
 	const { slug } = await params;
 	let post;

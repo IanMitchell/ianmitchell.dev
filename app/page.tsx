@@ -1,9 +1,11 @@
 import { H1 } from "@/components/md/Heading";
 import { Paragraph } from "@/components/md/Paragraph";
+import { cacheLife } from "next/cache";
 import { Fragment } from "react";
 
 export default async function IndexPage() {
 	"use cache";
+	cacheLife("max");
 
 	return (
 		<Fragment>

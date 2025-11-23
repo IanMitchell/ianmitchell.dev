@@ -1,6 +1,7 @@
 import prismaLanguage from "@/lib/languages/prisma.json";
 import { transformerNotationDiff } from "@shikijs/transformers";
 import type { Element } from "hast";
+import { cacheLife } from "next/cache";
 import rehypePrettyCode, { Options } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -31,6 +32,7 @@ export const processor = unified()
 
 export async function convert(value: string) {
 	"use cache";
+	cacheLife("max");
 
 	const file = new VFile();
 	file.value = value;

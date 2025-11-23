@@ -4,6 +4,7 @@ import { H1 } from "@/components/md/Heading";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 
 export const metadata: Metadata = {
 	title: "Blog",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function BlogIndexPage() {
 	"use cache";
+	cacheLife("max");
 
 	const posts = await getAllPosts();
 	const years: Record<

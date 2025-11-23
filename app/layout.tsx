@@ -8,6 +8,7 @@ import { env } from "@/lib/environment";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import localFont from "next/font/local";
 import Link from "next/link";
 import { Suspense, type ComponentProps, type PropsWithChildren } from "react";
@@ -48,6 +49,7 @@ function NavLink({
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
 	"use cache";
+	cacheLife("max");
 
 	return (
 		<html

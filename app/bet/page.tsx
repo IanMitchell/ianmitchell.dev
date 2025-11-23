@@ -4,6 +4,7 @@ import { Emphasis } from "@/components/md/Emphasis";
 import { H1 } from "@/components/md/Heading";
 import { Paragraph } from "@/components/md/Paragraph";
 import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import path from "node:path";
 import { Fragment } from "react";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 
 export default async function BetPage() {
 	"use cache";
+	cacheLife("max");
 
 	const file = Bun.file(path.join(process.cwd(), "app/bet/content.md"));
 	const table = await file.text();

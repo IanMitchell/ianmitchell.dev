@@ -2,10 +2,12 @@ import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { convert } from "@/lib/unified";
 import { Feed } from "feed";
+import { cacheLife } from "next/cache";
 import { Entry } from "./Entry";
 
 async function getRSS() {
 	"use cache";
+	cacheLife("max");
 
 	const { renderToStaticMarkup } = await import("react-dom/server");
 
