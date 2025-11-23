@@ -56,7 +56,7 @@ async function getRSS() {
 		});
 	}
 
-	feed.options.updated = lastUpdated;
+	feed.options.updated = lastUpdated ?? new Date();
 
 	return feed.rss2();
 }

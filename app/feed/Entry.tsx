@@ -1,6 +1,6 @@
 import { StaticMarkdown } from "@/components/Markdown";
+import type { Root } from "hast";
 import { Fragment } from "react";
-import type { Root } from "rehype-raw/lib";
 import "server-only";
 
 interface EntryProps {
