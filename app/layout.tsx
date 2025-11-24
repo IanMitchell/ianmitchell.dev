@@ -64,7 +64,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 				<title>Ian Mitchell</title>
 			</head>
 			<body className="min-h-full pb-8">
-				<div className="mt-12 mx-auto max-w-3xl p-4">
+				<div className="mt-12 p-4 wrapper-3xl gap-x-4">
 					<header className="flex flex-col sm:flex-row gap-4 justify-between sm:items-end mb-12">
 						<a href="/">
 							<Logo />

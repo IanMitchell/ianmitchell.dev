@@ -19,7 +19,10 @@ const highlighterOptions: Options = {
 			...options,
 			langs: [...Object.keys(bundledLanguages), prismaLanguage],
 		}),
-	theme: "github-light",
+	theme: {
+		dark: "github-dark-dimmed",
+		light: "github-light",
+	},
 	transformers: [transformerNotationDiff({ matchAlgorithm: "v3" })],
 };
 
