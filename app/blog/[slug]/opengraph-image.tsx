@@ -74,7 +74,7 @@ export default async function Image({ params }: PageProps<"/blog/[slug]">) {
 								textWrap: "balance",
 							}}
 						>
-							{`${post.title} `.repeat(2)}
+							{post.title}
 						</h1>
 					</div>
 				</div>
