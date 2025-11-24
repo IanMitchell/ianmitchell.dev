@@ -55,7 +55,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 		<html
 			lang="en"
 			className={classNames(
-				"h-full bg-[#F3F3F2] dark:bg-dark-theme-secondary leading-[1.4] text-dark dark:text-dark-theme-white selection:bg-dark-theme-primary dark:selection:bg-dark-theme-secondary selection:text-white dark:selection:text-black",
+				"h-full bg-[#F3F3F2] dark:bg-dark-theme-secondary leading-[1.4] text-dark dark:text-dark-theme-white selection:bg-dark-theme-primary dark:selection:bg-white selection:text-white dark:selection:text-black",
 				berkeleyMono.className,
 				berkeleyMono.variable,
 			)}
