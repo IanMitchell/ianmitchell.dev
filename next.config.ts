@@ -38,7 +38,7 @@ const config: NextConfig = {
 		return [
 			{
 				source: "/pokemon",
-				destination: "https://pokemon-cre3xe0l1-ianmitchell1.vercel.app",
+				destination: "https://pokemon-go-avatar.vercel.app",
 			},
 			{
 				source: "/bhs",

@@ -1,5 +1,6 @@
 import { getPost } from "@/lib/blog-posts";
 import { ImageResponse } from "next/og";
+import { join } from "node:path";
 
 // Image metadata
 export const size = {
@@ -11,18 +12,15 @@ export const contentType = "image/png";
 export default async function Image({ params }: PageProps<"/blog/[slug]">) {
 	const { slug } = await params;
 
-	// Load Fonts
-	const dmSerifyDisplay = fetch(
-		new URL("./DMSerifDisplay-Regular.ttf", import.meta.url),
-	).then((response) => response.arrayBuffer());
-
-	const inter = fetch(new URL("./Inter-Regular.ttf", import.meta.url)).then(
-		(res) => res.arrayBuffer(),
+	console.log("\tLoading font file");
+	const fontfile = Bun.file(
+		join(process.cwd(), "app/blog/[slug]/BerkeleyMono.otf"),
 	);
 
-	const ibm = fetch(new URL("./IBMPlexMono-Regular.ttf", import.meta.url)).then(
-		(res) => res.arrayBuffer(),
-	);
+	console.log("\tTurning into array buffer");
+	const font = await fontfile.arrayBuffer();
+
+	console.log("\tLoading post");
 
 	// Configure data
 	let post;
@@ -32,89 +30,72 @@ export default async function Image({ params }: PageProps<"/blog/[slug]">) {
 		return null;
 	}
 
-	const formattedDate = post.date.toLocaleString("en-us", {
+	console.log(`\tLoaded post ${post.title}`);
+
+	const formattedDate = post.date.toLocaleString("en-US", {
 		month: "long",
 		year: "numeric",
 		day: "numeric",
 	});
 
+	console.log(`\tFormatted date: ${formattedDate}`);
+
 	return new ImageResponse(
 		(
 			<div
-				tw="flex flex-col w-full h-full bg-white"
+				tw="flex flex-col w-full h-full p-8"
 				style={{
-					backgroundColor: "#f6f8ff",
-					color: "#1f2237",
+					backgroundColor: "#F3F3F2",
+					fontFamily: "berkeleyMono",
 				}}
 			>
-				<div
-					tw="mt-8 ml-8 flex p-2 rounded-3xl w-24 h-24"
-					style={{
-						borderColor: "#ff3783",
-						borderWidth: "6px",
-					}}
-				>
+				{/* Logo */}
+				<div tw="flex flex-row justify-between mb-8">
 					<div
-						tw="rounded-xl h-12 w-12 flex items-center justify-center"
-						style={{ backgroundColor: "#333333" }}
+						tw="flex p-2 w-24 h-24 border-black"
+						style={{
+							borderWidth: "6px",
+						}}
 					>
-						<span tw="text-2xl text-white" style={{ fontFamily: "IBM" }}>
-							i
-						</span>
+						<div tw="h-12 w-12 flex items-center justify-center bg-black">
+							<span tw="text-2xl text-white">i</span>
+						</div>
+					</div>
+
+					<p tw="text-2xl mt-auto mb-0">{formattedDate}</p>
+				</div>
+
+				{/* Content */}
+				<div tw="flex grow w-full mb-6">
+					<div tw="p-12 w-full h-full bg-white flex flex-row items-center justify-center">
+						<h1
+							tw="text-6xl leading-tight uppercase"
+							style={{
+								textWrap: "balance",
+							}}
+						>
+							{`${post.title} `.repeat(2)}
+						</h1>
 					</div>
 				</div>
 
-				<h1
-					tw="ml-8 mr-8 mt-4 text-7xl leading-tight"
-					style={{
-						color: "#ff3783",
-						textWrap: "balance",
-						fontFamily: "DM Serif Display",
-					}}
-				>
-					{post.title}
-				</h1>
-
-				<div tw="flex flex-row items-center mt-auto ml-8">
-					<img
-						src="https://pbs.twimg.com/profile_images/1706472056458797056/cb63cZ9Z_400x400.jpg"
-						tw="rounded-full w-20 h-20 mr-8"
-					/>
-
-					<div tw="flex flex-col">
-						<h2 tw="m-0 text-3xl" style={{ fontFamily: "Inter" }}>
-							Ian Mitchell
-						</h2>
-						<p tw="m-0 text-2xl" style={{ color: "#777", fontFamily: "IBM" }}>
+				{/* Footer */}
+				<div tw="flex flex-row items-center justify-between">
+					<div tw="flex flex-row ml-auto">
+						<h2 tw="m-0 text-2xl mr-6">Ian Mitchell</h2>
+						<p tw="m-0 text-2xl" style={{ color: "#777" }}>
 							@IanMitchel1
 						</p>
 					</div>
-					<p tw="ml-auto mr-8 text-2xl" style={{ fontFamily: "Inter" }}>
-						{formattedDate}
-					</p>
 				</div>
-
-				<img tw="w-full h-24" src="https://ianmitchell.dev/footer.svg" />
 			</div>
 		),
 		{
 			...size,
 			fonts: [
 				{
-					name: "Inter",
-					data: await inter,
-					style: "normal",
-					weight: 400,
-				},
-				{
-					name: "IBM",
-					data: await ibm,
-					style: "normal",
-					weight: 400,
-				},
-				{
-					name: "DM Serif Display",
-					data: await dmSerifyDisplay,
+					name: "berkeleyMono",
+					data: font,
 					style: "normal",
 					weight: 400,
 				},
