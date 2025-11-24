@@ -5,6 +5,7 @@ import { getSlug } from "@/lib/slug";
 import { Metadata } from "next";
 import { cacheLife } from "next/cache";
 import { Fragment } from "react";
+import PostDate from "./post-date";
 
 export const metadata: Metadata = {
 	title: "Blog",
@@ -59,20 +60,7 @@ export default async function BlogIndexPage() {
 										key={post.title}
 										className="gap-4 flex flex-row items-baseline"
 									>
-										<span
-											className="hidden opacity-50 sm:inline-block lg:-ml-16"
-											title={post.date.toLocaleDateString("en-US", {
-												month: "long",
-												day: "numeric",
-												year: "numeric",
-											})}
-										>
-											{post.date.toLocaleString("en-US", {
-												month: "2-digit",
-												day: "2-digit",
-												timeZone: "UTC",
-											})}
-										</span>
+										<PostDate date={post.date} />
 
 										<Anchor href={`/blog/${getSlug(post.post)}`}>
 											{post.title}
