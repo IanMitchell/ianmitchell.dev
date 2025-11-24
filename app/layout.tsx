@@ -63,7 +63,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 			<head>
 				<title>Ian Mitchell</title>
 			</head>
-			<body className="min-h-full pb-64">
+			<body className="min-h-full pb-8">
 				<div className="mt-12 mx-auto max-w-3xl p-4">
 					<header className="flex flex-col sm:flex-row gap-4 justify-between sm:items-end mb-12">
 						<a href="/">
@@ -93,7 +93,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 						</div>
 						<ul className="flex gap-4">
 							<li>
-								<span className="font-mono text-xs opacity-60">
+								<span className="font-mono text-xs">
 									<Anchor href="mailto:ian.mitchell@hey.com">
 										ian.mitchell@hey.com
 									</Anchor>
@@ -109,7 +109,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 							</li>*/}
 							<li>
 								<a href="https://discord.gg/ian" aria-label="My Discord server">
-									<Discord className="w-4 h-4 text-[#5865F2] opacity-70 hover:opacity-100 transition-opacity" />
+									<Discord className="w-4 h-4 text-black dark:text-white hover:text-[#5865F2]" />
 								</a>
 							</li>
 							<li>
@@ -117,7 +117,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 									href="https://github.com/ianmitchell"
 									aria-label="My GitHub profile"
 								>
-									<GitHub className="w-4 h-4 text-[#333] opacity-70 hover:opacity-100 transition-opacity" />
+									<GitHub className="w-4 h-4 text-black dark:text-white hover:text-[#333] dark:hover:text-[#ccc] opacity-70 hover:opacity-100 transition-opacity" />
 								</a>
 							</li>
 						</ul>
