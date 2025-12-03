@@ -16,7 +16,7 @@
 		"clsx": "2.1.1",
 		"feed": "5.1.0",
 		"hast-util-to-jsx-runtime": "^2.3.6",
-		"next": "16.0.1",
+		"next": "16.0.7",
 		"react": "19.2.0",
 		"react-dom": "19.2.0",
 		"rehype-pretty-code": "0.14.1",
