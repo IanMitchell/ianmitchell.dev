@@ -6,7 +6,7 @@ const config: NextConfig = {
 	cacheComponents: true,
 	experimental: {
 		browserDebugInfoInTerminal: true,
-		clientSegmentCache: true,
+		cacheComponents: true,
 		globalNotFound: true,
 		turbopackFileSystemCacheForDev: true,
 	},
