@@ -48,31 +48,9 @@ export const getPostDate = cache((path: string) => {
 	return new Date();
 });
 
-// TODO: Verify this
-export const getPostContentWithoutTitle = cache(async (content: string) => {
-	const hastTree = await convert(content);
-
-	// The `Root` typing is slightly different, so we can't use `getChildElement`
-	const titleNode = hastTree.children.find(
-		(child): child is Element =>
-			child.type === "element" && child.tagName === "h1",
-	);
-
-	if (titleNode == null) {
-		throw new Error("No title found for Markdown post");
-	}
-
-	// Handle text posts
-	let contentWithoutTitle = hastTree.children.filter(
-		(child) => child !== titleNode,
-	);
-
-	if (contentWithoutTitle.length === 0) {
-		throw new Error("No content found for Markdown post");
-	}
-
-	return contentWithoutTitle;
-});
+export const getPostContentWithoutTitle = (content: string): string => {
+	return content.replace(/^#\s+.+\n?/, "").trimStart();
+};
 
 export const getPostTitle = cache(async (content: string) => {
 	const hastTree = await convert(content);

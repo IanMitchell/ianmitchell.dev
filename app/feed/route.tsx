@@ -1,4 +1,8 @@
-import { getAllPosts, getPost } from "@/lib/blog-posts";
+import {
+	getAllPosts,
+	getPost,
+	getPostContentWithoutTitle,
+} from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
 import { convert } from "@/lib/unified";
 import { Feed } from "feed";
@@ -13,7 +17,6 @@ async function getRSS() {
 
 	const posts = await getAllPosts();
 
-	// todo: getPostContentWithoutTitle
 	const feed = new Feed({
 		title: "Ian Mitchell's Blog",
 		description: "My personal sliver of the web",
@@ -39,12 +42,13 @@ async function getRSS() {
 	for (const post of posts) {
 		const slug = getSlug(post);
 		const { title, date, content } = await getPost(slug);
+		const feedContent = getPostContentWithoutTitle(content);
 
 		if (lastUpdated == null || lastUpdated < date) {
 			lastUpdated = date;
 		}
 
-		const tree = await convert(content);
+		const tree = await convert(feedContent);
 
 		feed.addItem({
 			title,
@@ -53,7 +57,7 @@ async function getRSS() {
 			id: `https://ianmitchell.dev/blog/${slug}`,
 			link: `https://ianmitchell.dev/blog/${slug}`,
 			content: renderToStaticMarkup(
-				<Entry title={title} content={content} tree={tree} />,
+				<Entry title={title} content={feedContent} tree={tree} />,
 			),
 		});
 	}
