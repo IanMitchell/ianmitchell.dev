@@ -35,8 +35,9 @@ Rely on Typography for the core design elements. It's easy to make typography lo
 
 ```css
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 ```
 
@@ -234,7 +235,11 @@ And thus concludes my tale of how a pretty simple redesign ended up taking over 
 ![Post Redesign State](/images/posts/redesign_state.jpg)
 
 [^1]: This post is gonna paint me in a bad light mostly for humor's sake; In my defense, I juggled a lot of personal projects while working on this redesign. Updating my website wasn't a pressing concern since I was mostly happy with the last design I used. So if you're a potential employer please don't pass on me because of this post 😅
+
 [^2]: I'm so sorry to all the designers I just offended. I know it's more complicated, but for a developer without much insight into the world of design it holds true basic typography is a crutch
+
 [^3]: This is the designer equivalent of a dad joke
+
 [^4]: This phrase was hip when I began writing this post I swear
+
 [^5]: This would be quick to fix with a custom plugin, but that would mean I would have to either leave GitHub pages or add a precompile step. I didn't want to go down either of those paths.
