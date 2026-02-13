@@ -35,13 +35,16 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 		notFound();
 	}
 
+	const postDate = new Date(post.date);
+	postDate.setDate(postDate.getDate() + 1);
+
 	return (
 		<Paper>
 			<ul className="mb-8">
 				<li className="flex items-center">
 					<span>
-						<time dateTime={post.date.toDateString()}>
-							{post.date.toLocaleDateString("en-US", {
+						<time dateTime={postDate.toDateString()}>
+							{postDate.toLocaleDateString("en-US", {
 								month: "long",
 								day: "numeric",
 								year: "numeric",

@@ -1,0 +1,3 @@
+# [Styling Tables the Modern CSS Way](https://piccalil.li/blog/styling-tables-the-modern-css-way/)
+
+I’ve been in Tailwind land for a long time now. While I follow the new features being introduced in vanilla CSS, I don’t routinely use and internalize them. I thought this post from Michelle Barker was all around an excellent piece, but I really found value in seeing a lot of these modern features pieced together in a well structured manner.
