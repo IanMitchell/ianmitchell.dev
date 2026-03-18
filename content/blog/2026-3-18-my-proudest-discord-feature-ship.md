@@ -1,0 +1,5 @@
+# My Proudest Discord Feature Ship
+
+I spent part of last evening cleaning out a bunch of old files I had lying around and stumbled on a note that [linked to this Verge article titled “Discord now lets you send up to 10 (accessible) memes at a time”](https://www.theverge.com/2021/11/19/22791035/discord-alt-text-support-10-image-uploads-at-a-time). I shipped a lot of features I am proud of (a send message button on desktop that helped accessibility), and features that were well received by the community (silently leaving group DMs), but I think the new upload experience is still the highest impact thing I did, and what I’m most proud of. It was rewarding to see it mentioned in a Verge article, but hearing from screen reader users directly on Twitter was hugely gratifying.
+
+While I have no way of proving this anymore, I am fairly certain I posted the first ever message with alt text in it. I uploaded the box art for Golden Sun and Golden Sun: The Lost Age in my personal server, where I routinely talk about the games.
