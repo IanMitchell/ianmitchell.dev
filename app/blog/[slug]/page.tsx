@@ -1,14 +1,12 @@
+import { Metadata } from "next";
+import { cacheLife } from "next/cache";
+import { notFound } from "next/navigation";
 import { Markdown } from "@/components/Markdown";
 import Paper from "@/components/Paper";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
-import { Metadata } from "next";
-import { cacheLife } from "next/cache";
-import { notFound } from "next/navigation";
 
-export async function generateMetadata({
-	params,
-}: PageProps<"/blog/[slug]">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
 	const { slug } = await params;
 	const { title } = await getPost(slug);
 

@@ -1,5 +1,5 @@
-import classNames from "@/lib/classnames";
 import type { ComponentProps } from "react";
+import classNames from "@/lib/classnames";
 
 // Drop color lightness by 10% oklch?
 export function Paragraph({ className, ...props }: ComponentProps<"p">) {

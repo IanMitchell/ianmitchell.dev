@@ -1,4 +1,4 @@
-import prismaLanguage from "@/lib/languages/prisma.json";
+import "server-only";
 import { transformerNotationDiff } from "@shikijs/transformers";
 import type { Element } from "hast";
 import { cacheLife } from "next/cache";
@@ -7,10 +7,10 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import "server-only";
 import { bundledLanguages, createHighlighter } from "shiki";
 import { unified } from "unified";
 import { VFile } from "vfile";
+import prismaLanguage from "@/lib/languages/prisma.json";
 
 const highlighterOptions: Options = {
 	// @ts-expect-error ???
@@ -44,13 +44,9 @@ export async function convert(value: string) {
 	return processor.run(mdastTree, file);
 }
 
-export function getChildElement(
-	tree: Element,
-	tagName: string,
-): Element | undefined {
+export function getChildElement(tree: Element, tagName: string): Element | undefined {
 	return tree.children.find(
-		(child): child is Element =>
-			child.type === "element" && child.tagName === tagName,
+		(child): child is Element => child.type === "element" && child.tagName === tagName,
 	);
 }
 

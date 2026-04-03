@@ -86,9 +86,7 @@ const formatter = new Intl.ListFormat("en", {
 	type: "conjunction",
 });
 
-console.log(
-	formatter.format(["Soccer", "Politics", "Video Games", "Programming"]),
-);
+console.log(formatter.format(["Soccer", "Politics", "Video Games", "Programming"]));
 // => "Soccer, Politics, Video Games, and Programming"
 ```
 

@@ -282,11 +282,7 @@ Then we can import them and add some helper definitions back in our server code:
 ```javascript title="server.js" copy
 import fastify from "fastify";
 import rawBody from "fastify-raw-body";
-import {
-	InteractionResponseType,
-	InteractionType,
-	verifyKey,
-} from "discord-interactions";
+import { InteractionResponseType, InteractionType, verifyKey } from "discord-interactions";
 import { SLAP_COMMAND, INVITE_COMMAND } from "./servers.js"; // [!code ++]
 
 const INVITE_URL = `https://discord.com/oauth2/authorize?client_id=${process.env.APPLICATION_ID}&scope=applications.commands`; // [!code ++]

@@ -1,5 +1,5 @@
-import classNames from "@/lib/classnames";
 import type { ComponentProps } from "react";
+import classNames from "@/lib/classnames";
 
 const headingClasses = "mb-4 w-full";
 
@@ -9,10 +9,7 @@ export function H1({ className, ...props }: ComponentProps<"h1">) {
 
 export function H2({ className, ...props }: ComponentProps<"h2">) {
 	return (
-		<h2
-			{...props}
-			className={classNames(headingClasses, "text-center uppercase", className)}
-		/>
+		<h2 {...props} className={classNames(headingClasses, "text-center uppercase", className)} />
 	);
 }
 

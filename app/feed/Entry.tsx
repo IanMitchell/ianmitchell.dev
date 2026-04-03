@@ -1,7 +1,7 @@
-import { StaticMarkdown } from "@/components/Markdown";
-import type { Root } from "hast";
-import { Fragment } from "react";
 import "server-only";
+import { Fragment } from "react";
+import type { Root } from "hast";
+import { StaticMarkdown } from "@/components/Markdown";
 
 interface EntryProps {
 	title: string;
@@ -14,9 +14,7 @@ export function Entry({ title, content, tree }: EntryProps) {
 		<Fragment>
 			<StaticMarkdown tree={tree}>{content}</StaticMarkdown>
 
-			<a href={`mailto:ian.mitchell@hey.com?subject=Reply%20to:%20“${title}”`}>
-				Reply via e-mail
-			</a>
+			<a href={`mailto:ian.mitchell@hey.com?subject=Reply%20to:%20“${title}”`}>Reply via e-mail</a>
 		</Fragment>
 	);
 }

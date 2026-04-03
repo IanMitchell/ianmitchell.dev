@@ -31,11 +31,7 @@ The only two dependencies here are used to verify incoming Discord requests (an 
 The serverless function looks pretty similar to the [server I created with fastify](/blog/creating-a-discord-http-slash-command-bot-with-fastify). Vercel requires functions be put into an `api` directory - [you can find additional documentation here](https://vercel.com/docs/serverless-functions/introduction).
 
 ```javascript title="api/index.js" showLineNumbers
-const {
-	InteractionResponseType,
-	InteractionType,
-	verifyKey,
-} = require("discord-interactions");
+const { InteractionResponseType, InteractionType, verifyKey } = require("discord-interactions");
 const getRawBody = require("raw-body");
 
 const INVITE_COMMAND = {
@@ -63,12 +59,7 @@ module.exports = async (request, response) => {
 		const timestamp = request.headers["x-signature-timestamp"];
 		const rawBody = await getRawBody(request);
 
-		const isValidRequest = verifyKey(
-			rawBody,
-			signature,
-			timestamp,
-			process.env.PUBLIC_KEY,
-		);
+		const isValidRequest = verifyKey(rawBody, signature, timestamp, process.env.PUBLIC_KEY);
 
 		if (!isValidRequest) {
 			console.error("Invalid Request");

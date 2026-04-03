@@ -2,8 +2,8 @@
 
 @theme {
 	--font-mono:
-		var(--font-berkeley), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		"Liberation Mono", "Courier New", monospace;
+		var(--font-berkeley), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace;
 
 	--color-theme-orange: oklch(68.69% 0.219 35.88);
 	--color-theme-blue: rgb(0, 100, 230);

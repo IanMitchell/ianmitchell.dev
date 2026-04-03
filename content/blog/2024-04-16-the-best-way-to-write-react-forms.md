@@ -13,22 +13,21 @@ This submission style circumvents relying on controlled inputs, form submission 
 Once the data hits the backend, you’ll need to verify it. You can use Valibot or Zod to parse the `formData` input into a typed and validated structure.
 
 ```ts title="actions/create-workspace.ts"
-const { workspaceName, developmentName, developmentOrigin, developmentRPID } =
-	parse(
-		object({
-			// Simplified assertions
-			workspaceName: string(),
-			developmentName: string(),
-			developmentOrigin: string(),
-			developmentRPID: string(),
-		}),
-		{
-			workspaceName: formData.get("workspaceName")?.toString(),
-			developmentName: formData.get("developmentName")?.toString(),
-			developmentOrigin: formData.get("developmentOrigin")?.toString(),
-			developmentRPID: formData.get("developmentRPID")?.toString(),
-		},
-	);
+const { workspaceName, developmentName, developmentOrigin, developmentRPID } = parse(
+	object({
+		// Simplified assertions
+		workspaceName: string(),
+		developmentName: string(),
+		developmentOrigin: string(),
+		developmentRPID: string(),
+	}),
+	{
+		workspaceName: formData.get("workspaceName")?.toString(),
+		developmentName: formData.get("developmentName")?.toString(),
+		developmentOrigin: formData.get("developmentOrigin")?.toString(),
+		developmentRPID: formData.get("developmentRPID")?.toString(),
+	},
+);
 ```
 
 You can even write custom error messages here for different failure states. For instance, you can enforce a required parameter with one error message and an invalid length with another.
@@ -50,14 +49,7 @@ export function EditUsernameForm() {
 	return (
 		// `validationErrors={}` is the only step needed!
 		<Form action={create} validationErrors={result.errors}>
-			<TextField
-				autoFocus
-				label="Name"
-				id="username"
-				name="username"
-				type="text"
-				isRequired
-			/>
+			<TextField autoFocus label="Name" id="username" name="username" type="text" isRequired />
 		</Form>
 	);
 }
@@ -157,9 +149,7 @@ export function isError<T>(response: ActionResult<T>): response is ErrorResult {
 	return response.ok === false;
 }
 
-export function isSuccess<T>(
-	response: ActionResult<T>,
-): response is SuccessResult<T> {
+export function isSuccess<T>(response: ActionResult<T>): response is SuccessResult<T> {
 	return response.ok === true;
 }
 ```

@@ -1,15 +1,14 @@
+import { Fragment } from "react";
+import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { Anchor } from "@/components/md/Anchor";
 import { H1 } from "@/components/md/Heading";
 import { getAllPosts, getPost } from "@/lib/blog-posts";
 import { getSlug } from "@/lib/slug";
-import { Metadata } from "next";
-import { cacheLife } from "next/cache";
-import { Fragment } from "react";
 
 export const metadata: Metadata = {
 	title: "Blog",
-	description:
-		"I sometimes write blog posts. Not quite as often as I want to, but I try!",
+	description: "I sometimes write blog posts. Not quite as often as I want to, but I try!",
 };
 
 export default async function BlogIndexPage() {
@@ -17,10 +16,7 @@ export default async function BlogIndexPage() {
 	cacheLife("max");
 
 	const posts = await getAllPosts();
-	const years: Record<
-		number,
-		Array<{ date: Date; title: string; post: string }>
-	> = {};
+	const years: Record<number, Array<{ date: Date; title: string; post: string }>> = {};
 
 	for (const post of posts) {
 		const { title, date } = await getPost(getSlug(post));
@@ -55,10 +51,7 @@ export default async function BlogIndexPage() {
 							{posts
 								.sort((a, b) => b.date.getTime() - a.date.getTime())
 								.map((post) => (
-									<li
-										key={post.title}
-										className="gap-4 flex flex-row items-baseline"
-									>
+									<li key={post.title} className="flex flex-row items-baseline gap-4">
 										<span
 											className="hidden opacity-50 sm:inline-block lg:-ml-16"
 											title={post.date.toLocaleDateString("en-US", {
@@ -74,9 +67,7 @@ export default async function BlogIndexPage() {
 											})}
 										</span>
 
-										<Anchor href={`/blog/${getSlug(post.post)}`}>
-											{post.title}
-										</Anchor>
+										<Anchor href={`/blog/${getSlug(post.post)}`}>{post.title}</Anchor>
 									</li>
 								))}
 						</ul>

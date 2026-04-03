@@ -17,12 +17,7 @@ export function TableRow(props: ComponentProps<"tr">) {
 }
 
 export function TableCell(props: ComponentProps<"td">) {
-	return (
-		<td
-			{...props}
-			className="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-		/>
-	);
+	return <td {...props} className="py-4 pr-3 pl-4 text-sm font-medium text-gray-900 sm:pl-0" />;
 }
 
 export function TableFooter(props: ComponentProps<"tfoot">) {

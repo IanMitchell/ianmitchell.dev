@@ -206,9 +206,7 @@ async function sendDiscordEmbed(payload: EmbedBuilder) {
 			}
 
 			default: {
-				console.error(
-					`Discord API returned an unhandled ${result.status} error`,
-				);
+				console.error(`Discord API returned an unhandled ${result.status} error`);
 			}
 		}
 	}
@@ -339,8 +337,7 @@ export async function POST(request) {
 				`Deploy started by ${resource.actor.display_name} for request #${
 					resource.number
 				} encountered an error.\n\`\`\`${
-					resource.deployment?.lint_errors?.[0]?.error_description ??
-					"Unknown Error"
+					resource.deployment?.lint_errors?.[0]?.error_description ?? "Unknown Error"
 				}\`\`\``,
 			);
 			break;
@@ -353,13 +350,10 @@ export async function POST(request) {
 			embed.setURL(resource.html_url);
 			embed.setTitle(`Deploy Request #${resource.number} Applied`);
 			embed.setColor(COLORS.SUCCESS);
-			embed.setDescription(
-				`Deploy for request #${resource.number} successfully applied.`,
-			);
+			embed.setDescription(`Deploy for request #${resource.number} successfully applied.`);
 			break;
 		case "deploy_request.reverted":
-			resource =
-				body.resource as DeployRequestSchemaRevertedPayload["resource"];
+			resource = body.resource as DeployRequestSchemaRevertedPayload["resource"];
 			embed.setAuthor({
 				name: resource.actor.display_name,
 				iconURL: resource.actor.avatar_url,
@@ -385,9 +379,7 @@ export async function POST(request) {
 			embed.setURL(resource.html_url);
 			embed.setTitle(`Successful ${resource.name} webhook test`);
 			embed.setColor(COLORS.SUCCESS);
-			embed.setDescription(
-				`Successfully tested the PlanetScale webhook on ${resource.name}.`,
-			);
+			embed.setDescription(`Successfully tested the PlanetScale webhook on ${resource.name}.`);
 			break;
 		default:
 			request.log.error(`Unknown Webhook Event ${body.event}`);

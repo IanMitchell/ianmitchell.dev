@@ -345,10 +345,7 @@ export function isLoggedIn(request: SessionRequest) {
 ```
 
 ```ts title="pages/register.tsx"
-export const getServerSideProps = withIronSessionSsr(async function ({
-	req,
-	res,
-}) {
+export const getServerSideProps = withIronSessionSsr(async function ({ req, res }) {
 	if (isLoggedIn(req)) {
 		// [!code ++]
 		return {
@@ -402,10 +399,7 @@ import type {
 	VerifiedAuthenticationResponse,
 	VerifiedRegistrationResponse,
 } from "@simplewebauthn/server";
-import {
-	verifyAuthenticationResponse,
-	verifyRegistrationResponse,
-} from "@simplewebauthn/server";
+import { verifyAuthenticationResponse, verifyRegistrationResponse } from "@simplewebauthn/server";
 import type {
 	PublicKeyCredentialWithAssertionJSON,
 	PublicKeyCredentialWithAttestationJSON,
@@ -430,8 +424,7 @@ function binaryToBase64url(bytes: Uint8Array) {
 
 export async function register(request: NextApiRequest) {
 	const challenge = request.session.challenge ?? "";
-	const credential = request.body
-		.credential as PublicKeyCredentialWithAttestationJSON;
+	const credential = request.body.credential as PublicKeyCredentialWithAttestationJSON;
 	const { email, username } = request.body;
 
 	let verification: VerifiedRegistrationResponse;
@@ -456,8 +449,7 @@ export async function register(request: NextApiRequest) {
 		throw new Error("Registration verification failed");
 	}
 
-	const { credentialID, credentialPublicKey } =
-		verification.registrationInfo ?? {};
+	const { credentialID, credentialPublicKey } = verification.registrationInfo ?? {};
 
 	if (credentialID == null || credentialPublicKey == null) {
 		throw new Error("Registration failed");
@@ -494,9 +486,7 @@ import { Fragment } from "react";
 import { isLoggedIn } from "../../lib/auth";
 import { sessionOptions } from "../../lib/session";
 
-export default function Admin({
-	userId,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Admin({ userId }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	return (
 		<Fragment>
 			<h1>Admin</h1>
@@ -505,25 +495,22 @@ export default function Admin({
 	);
 }
 
-export const getServerSideProps = withIronSessionSsr(
-	async ({ req: request, res: response }) => {
-		if (!isLoggedIn(request)) {
-			return {
-				redirect: {
-					destination: "/login",
-					permanent: false,
-				},
-			};
-		}
-
+export const getServerSideProps = withIronSessionSsr(async ({ req: request, res: response }) => {
+	if (!isLoggedIn(request)) {
 		return {
-			props: {
-				userId: request.session.userId ?? null,
+			redirect: {
+				destination: "/login",
+				permanent: false,
 			},
 		};
-	},
-	sessionOptions,
-);
+	}
+
+	return {
+		props: {
+			userId: request.session.userId ?? null,
+		},
+	};
+}, sessionOptions);
 ```
 
 If you register a new account, you should get automatically redirected to this page!
@@ -550,9 +537,7 @@ export default withIronSessionApiRoute(handler, sessionOptions);
 Then we can add a form to our admin page to logout users with a button click:
 
 ```tsx title="pages/admin/index.tsx" highlight=8-10;add
-export default function Admin({
-	userId,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Admin({ userId }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	return (
 		<Fragment>
 			<h1>Admin</h1>
@@ -591,8 +576,7 @@ export default function Login({ challenge }: { challenge: string }) {
 
 	useEffect(() => {
 		const checkAvailability = async () => {
-			const available =
-				await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+			const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
 			setIsAvailable(available && supported());
 		};
 
@@ -651,10 +635,7 @@ export default function Login({ challenge }: { challenge: string }) {
 	);
 }
 
-export const getServerSideProps = withIronSessionSsr(async function ({
-	req,
-	res,
-}) {
+export const getServerSideProps = withIronSessionSsr(async function ({ req, res }) {
 	if (isLoggedIn(req)) {
 		return {
 			redirect: {
@@ -702,8 +683,7 @@ Then we can add the `login` method to our auth file. This function requires a fe
 ```ts title="lib/auth.ts"
 export async function login(request: NextApiRequest) {
 	const challenge = request.session.challenge ?? "";
-	const credential = request.body
-		.credential as PublicKeyCredentialWithAssertionJSON;
+	const credential = request.body.credential as PublicKeyCredentialWithAssertionJSON;
 	const email = request.body.email;
 
 	if (credential?.id == null) {

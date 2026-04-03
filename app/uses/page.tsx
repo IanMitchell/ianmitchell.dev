@@ -1,8 +1,8 @@
+import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { H1 } from "@/components/md/Heading";
 import { Paragraph } from "@/components/md/Paragraph";
 import Paper from "@/components/Paper";
-import { Metadata } from "next";
-import { cacheLife } from "next/cache";
 
 export const metadata: Metadata = {
 	title: "My Tools",

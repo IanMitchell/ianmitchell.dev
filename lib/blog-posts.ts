@@ -1,7 +1,7 @@
-import { Glob } from "bun";
-import type { Element } from "hast";
 import path from "node:path";
 import { cache } from "react";
+import { Glob } from "bun";
+import type { Element } from "hast";
 import { getSlug } from "./slug";
 import { convert, getChildElement, getElementText } from "./unified";
 
@@ -57,8 +57,7 @@ export const getPostTitle = cache(async (content: string) => {
 
 	// The `Root` typing is slightly different, so we can't use `getChildElement`
 	const titleNode = hastTree.children.find(
-		(child): child is Element =>
-			child.type === "element" && child.tagName === "h1",
+		(child): child is Element => child.type === "element" && child.tagName === "h1",
 	);
 
 	if (titleNode == null) {

@@ -43,9 +43,7 @@ export async function getAllPosts() {
 	const files = fs.readdirSync(directory);
 
 	// Loop through all the files and import them
-	const entries = await Promise.all(
-		files.map((file) => import(`../content/posts/${file}`)),
-	);
+	const entries = await Promise.all(files.map((file) => import(`../content/posts/${file}`)));
 
 	const posts = entries.map((entry, index) => ({
 		// Use filename as our slug
@@ -255,10 +253,7 @@ const builder = require("unist-builder");
 function exportFrontmatter() {
 	return (tree, file) => {
 		const value = JSON.stringify(file.data.frontmatter, null, 2);
-		const frontmatter = builder(
-			"export",
-			`export const frontmatter = ${value}`,
-		);
+		const frontmatter = builder("export", `export const frontmatter = ${value}`);
 		tree.children = [frontmatter, ...tree.children];
 	};
 }
@@ -310,10 +305,7 @@ function extractFrontmatter() {
 function exportFrontmatter() {
 	return (tree, file) => {
 		const value = JSON.stringify(file.data.frontmatter, null, 2);
-		const frontmatter = builder(
-			"export",
-			`export const frontmatter = ${value}`,
-		);
+		const frontmatter = builder("export", `export const frontmatter = ${value}`);
 		tree.children = [frontmatter, ...tree.children];
 	};
 }
@@ -337,9 +329,7 @@ export async function getAllPosts() {
 	const directory = path.join(process.cwd(), "content", "posts");
 	const files = fs.readdirSync(directory);
 
-	const entries = await Promise.all(
-		files.map((file) => import(`../content/posts/${file}`)),
-	);
+	const entries = await Promise.all(files.map((file) => import(`../content/posts/${file}`)));
 
 	const posts = entries.map((entry) => ({
 		frontmatter: {
@@ -349,9 +339,7 @@ export async function getAllPosts() {
 		MDXContent: entry.default,
 	}));
 
-	return posts.sort(
-		(a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
-	);
+	return posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 }
 ```
 
@@ -368,9 +356,7 @@ export default function Post({ frontmatter, content }) {
 }
 
 export async function getStaticProps(context) {
-	const post = (await getAllPosts()).find(
-		(post) => post.frontmatter.slug === context.params.post,
-	);
+	const post = (await getAllPosts()).find((post) => post.frontmatter.slug === context.params.post);
 
 	const { frontmatter, MDXContent } = post;
 

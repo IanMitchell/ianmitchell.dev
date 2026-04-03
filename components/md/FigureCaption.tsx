@@ -1,5 +1,5 @@
-import classNames from "@/lib/classnames";
 import type { ComponentProps, ReactNode } from "react";
+import classNames from "@/lib/classnames";
 import CodeFile from "../icons/CodeFile";
 
 export default function FigureCaption(props: ComponentProps<"figcaption">) {

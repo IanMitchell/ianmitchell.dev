@@ -1,6 +1,6 @@
-import { getPost } from "@/lib/blog-posts";
-import { ImageResponse } from "next/og";
 import { join } from "node:path";
+import { ImageResponse } from "next/og";
+import { getPost } from "@/lib/blog-posts";
 
 // Image metadata
 export const size = {
@@ -13,9 +13,7 @@ export const contentType = "image/png";
 export default async function Image({ params }: PageProps<"/blog/[slug]">) {
 	const { slug } = await params;
 
-	const fontfile = Bun.file(
-		join(process.cwd(), "app/blog/[slug]/BerkeleyMono.otf"),
-	);
+	const fontfile = Bun.file(join(process.cwd(), "app/blog/[slug]/BerkeleyMono.otf"));
 
 	const font = await fontfile.arrayBuffer();
 

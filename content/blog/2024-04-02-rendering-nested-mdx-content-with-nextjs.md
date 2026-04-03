@@ -81,11 +81,7 @@ export function generateStaticParams() {
 	for (const target of targets) {
 		// Skip directories
 		if (
-			fs
-				.lstatSync(
-					path.join(process.cwd(), CONTENT_DIRECTORY, target.toString()),
-				)
-				.isDirectory()
+			fs.lstatSync(path.join(process.cwd(), CONTENT_DIRECTORY, target.toString())).isDirectory()
 		) {
 			continue;
 		}
@@ -162,11 +158,7 @@ export function generateStaticParams() {
 
 	for (const target of targets) {
 		if (
-			fs
-				.lstatSync(
-					path.join(process.cwd(), CONTENT_DIRECTORY, target.toString()),
-				)
-				.isDirectory()
+			fs.lstatSync(path.join(process.cwd(), CONTENT_DIRECTORY, target.toString())).isDirectory()
 		) {
 			continue;
 		}

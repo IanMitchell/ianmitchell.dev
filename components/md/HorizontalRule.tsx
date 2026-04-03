@@ -4,7 +4,7 @@ export function HorizontalRule(props: ComponentProps<"hr">) {
 	return (
 		<hr
 			{...props}
-			className="my-12 block h-px w-full border-0 border-t border-solid border-t-dark p-0"
+			className="border-t-dark my-12 block h-px w-full border-0 border-t border-solid p-0"
 		/>
 	);
 }

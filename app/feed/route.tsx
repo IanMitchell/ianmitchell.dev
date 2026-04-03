@@ -1,12 +1,8 @@
-import {
-	getAllPosts,
-	getPost,
-	getPostContentWithoutTitle,
-} from "@/lib/blog-posts";
-import { getSlug } from "@/lib/slug";
-import { convert } from "@/lib/unified";
 import { Feed } from "feed";
 import { cacheLife } from "next/cache";
+import { getAllPosts, getPost, getPostContentWithoutTitle } from "@/lib/blog-posts";
+import { getSlug } from "@/lib/slug";
+import { convert } from "@/lib/unified";
 import { Entry } from "./Entry";
 
 async function getRSS() {
@@ -56,9 +52,7 @@ async function getRSS() {
 			// image: post.image,
 			id: `https://ianmitchell.dev/blog/${slug}`,
 			link: `https://ianmitchell.dev/blog/${slug}`,
-			content: renderToStaticMarkup(
-				<Entry title={title} content={feedContent} tree={tree} />,
-			),
+			content: renderToStaticMarkup(<Entry title={title} content={feedContent} tree={tree} />),
 		});
 	}
 

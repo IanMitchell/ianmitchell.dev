@@ -1,5 +1,5 @@
-import classNames from "@/lib/classnames";
 import type { ComponentProps } from "react";
+import classNames from "@/lib/classnames";
 
 export function Anchor({ className, ...props }: ComponentProps<"a">) {
 	return (

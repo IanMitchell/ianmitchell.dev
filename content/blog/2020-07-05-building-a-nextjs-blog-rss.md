@@ -90,12 +90,7 @@ Finally we need to add a `<link>` reference! I include the following in my `_app
 
 ```jsx
 <Head>
-	<link
-		rel="alternate"
-		type="application/rss+xml"
-		title="RSS"
-		href="/feed.xml"
-	/>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
 </Head>
 ```
 

@@ -1,8 +1,8 @@
-import { convert } from "@/lib/unified";
+import "server-only";
 import type { Nodes } from "hast";
 import { toJsxRuntime, type Components } from "hast-util-to-jsx-runtime";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import "server-only";
+import { convert } from "@/lib/unified";
 import { Anchor } from "./md/Anchor";
 import { BlockQuote } from "./md/BlockQuote";
 import { Code } from "./md/Code";
@@ -15,14 +15,7 @@ import { ListItem, OrderedList, UnorderedList } from "./md/Lists";
 import { Paragraph } from "./md/Paragraph";
 import Preformatted from "./md/Preformatted";
 import { Strong } from "./md/Strong";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableFooter,
-	TableHeader,
-	TableRow,
-} from "./md/Table";
+import { Table, TableBody, TableCell, TableFooter, TableHeader, TableRow } from "./md/Table";
 
 interface MarkdownProps {
 	className?: string;
