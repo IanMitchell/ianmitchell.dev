@@ -58,6 +58,7 @@ export default async function BlogIndexPage() {
 												month: "long",
 												day: "numeric",
 												year: "numeric",
+												timeZone: "UTC",
 											})}
 										>
 											{post.date.toLocaleString("en-US", {
