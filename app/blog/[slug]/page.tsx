@@ -34,7 +34,6 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
 	}
 
 	const postDate = new Date(post.date);
-	postDate.setDate(postDate.getDate() + 1);
 
 	return (
 		<Paper>
